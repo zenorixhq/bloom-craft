@@ -1,0 +1,47 @@
+{
+  "reviews": [
+    {
+      "id": "rev-1",
+      "author": "Ananya S.",
+      "location": "Bengaluru, Karnataka",
+      "piece": "The Artisanal Botanical Gift Hamper",
+      "rating": 5,
+      "quote": "The hamper arrived in a handcrafted pinewood box with real wax seals and raw linen ribbons. It was by far the most thoughtful, elegant anniversary gift I've ever given."
+    },
+    {
+      "id": "rev-2",
+      "author": "Rhea M.",
+      "location": "Kochi, Kerala",
+      "piece": "Handcrafted Leather Journal & Brass Pen",
+      "rating": 5,
+      "quote": "The leather journal is delightfully supple and opens completely flat. The 120gsm paper handles my wet fountain pen inks with zero bleeding or feathering."
+    },
+    {
+      "id": "rev-3",
+      "author": "Tanya K.",
+      "location": "Mumbai, Maharashtra",
+      "piece": "Celebration Blooms Deluxe Hamper",
+      "rating": 5,
+      "quote": "Ordered custom gift boxes for our executive team. Every recipient was stunned by the presentation, the organic rose tea, and the wax-sealed customized cards."
+    },
+    {
+      "id": "rev-4",
+      "author": "Devika P.",
+      "location": "New Delhi",
+      "piece": "Botanical Brass Wax Seal & Sealing Wax Beads",
+      "rating": 5,
+      "quote": "The brass wax stamp produces such deep, crisp impressions on our wedding invitation envelopes. The metallic gold and sage wax beads melt like liquid silk."
+    },
+    {
+      "id": "rev-5",
+      "author": "Arjun V.",
+      "location": "Pune, Maharashtra",
+      "piece": "Solid Walnut Desk Organizer Set",
+      "rating": 5,
+      "quote": "Solid American walnut with rich natural grain. Elevates my entire workspace aesthetic and keeps my daily writing pens beautifully organized."
+    }
+  ],
+  "videoReels": [],
+  "feedbackScreenshots": [],
+  "instagramVideos": []
+}

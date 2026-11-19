@@ -1,0 +1,64 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import { storeConfig } from "@/config/store.config";
+import { useSiteImages } from "@/hooks/useSiteImages";
+
+interface BrandLogoProps {
+  variant?: "full" | "compact" | "emblem-only";
+  showTagline?: boolean;
+  className?: string;
+  theme?: "light" | "dark";
+}
+
+export function BrandLogo({
+  variant = "full",
+  showTagline = true,
+  className = "",
+  theme = "light",
+}: BrandLogoProps) {
+  const { images } = useSiteImages();
+
+  return (
+    <Link
+      href="/"
+      className={`inline-flex items-center gap-2.5 sm:gap-3 group select-none ${className}`}
+      aria-label="Bloom Craft Home"
+    >
+      {/* 1. Official Bloom Craft Emblem */}
+      <div className="relative w-9 h-9 sm:w-11 sm:h-11 flex-shrink-0 flex items-center justify-center rounded-full overflow-hidden border border-primary/20 shadow-xs bg-white group-hover:scale-105 transition-all duration-300">
+        <img
+          src={images.brandLogo || storeConfig?.brand?.logo?.imageUrl || "/bloom-craft-logo.png"}
+          alt="Bloom Craft Logo"
+          className="w-full h-full object-contain p-1"
+        />
+      </div>
+
+      {/* 2. Brand Wordmark & Tagline */}
+      {variant !== "emblem-only" && (
+        <div className="flex flex-col text-left justify-center">
+          <div className="flex items-center gap-1.5">
+            <span
+              className={`font-serif-luxury text-lg sm:text-xl font-bold tracking-[0.14em] uppercase transition-colors ${
+                theme === "dark" ? "text-white" : "text-foreground"
+              }`}
+            >
+              BLOOM CRAFT
+            </span>
+            <span className="text-[10px] text-[#DC9924]">✦</span>
+          </div>
+          {showTagline && (
+            <span
+              className={`font-editorial italic text-[10px] sm:text-[11.5px] tracking-wide mt-[-2px] truncate max-w-[210px] sm:max-w-none ${
+                theme === "dark" ? "text-emerald-200/90" : "text-primary/90"
+              }`}
+            >
+              {storeConfig.meta.tagline}
+            </span>
+          )}
+        </div>
+      )}
+    </Link>
+  );
+}
