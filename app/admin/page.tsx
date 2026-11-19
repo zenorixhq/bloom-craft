@@ -283,7 +283,7 @@ export default function AdminDashboardPage() {
     sizeStock: Record<string, number>;
   }>({
     title: "",
-    category: "necklaces-and-chains",
+    category: "hamper",
     price: "",
     salePrice: "",
     priceQatar: "",
@@ -1632,7 +1632,19 @@ https://bloomcraft.in/products`;
     }
   };
 
-  // Curated Collections / Category Cards Handlers
+  // Categories & Curated Collections Handlers with cross-tab live synchronization
+  const syncCategories = (newList: Category[]) => {
+    setCategoriesList(newList);
+    if (typeof window !== "undefined") {
+      try {
+        sessionStorage.setItem("bloomcraft_categories", JSON.stringify(newList));
+        localStorage.setItem("bloomcraft_categories", JSON.stringify(newList));
+        localStorage.setItem("bloomcraft_categories_updated", Date.now().toString());
+        window.dispatchEvent(new CustomEvent("bloomcraft:categories-updated", { detail: newList }));
+      } catch (e) {}
+    }
+  };
+
   const handleCategoryCardImageUpload = async (catId: string, file: File) => {
     setUpdatingCatId(catId);
     try {
@@ -1640,12 +1652,11 @@ https://bloomcraft.in/products`;
       if (!imageUrl) throw new Error("Image upload failed");
 
       // Update state immediately
-      setCategoriesList((prev) =>
-        prev.map((c) => (c.id === catId ? { ...c, image: imageUrl } : c))
-      );
+      const catToUpdate = categoriesList.find((c) => c.id === catId);
+      const intermediateList = categoriesList.map((c) => (c.id === catId ? { ...c, image: imageUrl } : c));
+      syncCategories(intermediateList);
 
       // Persist to Neon PostgreSQL via PUT /api/categories
-      const catToUpdate = categoriesList.find((c) => c.id === catId);
       const res = await fetch("/api/categories", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -1658,7 +1669,7 @@ https://bloomcraft.in/products`;
 
       const data = await res.json();
       if (Array.isArray(data.categories)) {
-        setCategoriesList(data.categories);
+        syncCategories(data.categories);
       }
     } catch (err: any) {
       console.error("Failed to update category card image:", err);
@@ -1687,7 +1698,7 @@ https://bloomcraft.in/products`;
       name: "",
       slug: "",
       description: "",
-      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
+      image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
     });
     setIsCategoryModalOpen(true);
   };
@@ -1721,10 +1732,10 @@ https://bloomcraft.in/products`;
         });
         const data = await res.json();
         if (Array.isArray(data.categories)) {
-          setCategoriesList(data.categories);
+          syncCategories(data.categories);
         } else {
-          setCategoriesList((prev) =>
-            prev.map((c) => (c.id === categoryForm.id ? { ...c, ...categoryForm } : c))
+          syncCategories(
+            categoriesList.map((c) => (c.id === categoryForm.id ? { ...c, ...categoryForm } : c))
           );
         }
       } else {
@@ -1735,9 +1746,9 @@ https://bloomcraft.in/products`;
         });
         const data = await res.json();
         if (Array.isArray(data.categories)) {
-          setCategoriesList(data.categories);
+          syncCategories(data.categories);
         } else {
-          setCategoriesList((prev) => [...prev, { ...categoryForm, productCount: 0 }]);
+          syncCategories([...categoriesList, { ...categoryForm, productCount: 0 }]);
         }
       }
       setIsCategoryModalOpen(false);
@@ -1750,16 +1761,16 @@ https://bloomcraft.in/products`;
   };
 
   const handleDeleteCategory = async (catId: string) => {
-    if (!confirm("Are you sure you want to remove this category card from the homepage?")) return;
+    if (!confirm("Are you sure you want to remove this category card from the homepage and catalog?")) return;
     try {
       const res = await fetch(`/api/categories?id=${encodeURIComponent(catId)}`, {
         method: "DELETE",
       });
       const data = await res.json();
       if (Array.isArray(data.categories)) {
-        setCategoriesList(data.categories);
+        syncCategories(data.categories);
       } else {
-        setCategoriesList((prev) => prev.filter((c) => c.id !== catId));
+        syncCategories(categoriesList.filter((c) => c.id !== catId));
       }
     } catch (err) {
       console.error("Error deleting category:", err);
@@ -1785,7 +1796,7 @@ https://bloomcraft.in/products`;
 
     setFormState({
       title: "",
-      category: "necklaces-and-chains",
+      category: categoriesList[0]?.slug || "hamper",
       price: "",
       salePrice: "",
       priceQatar: "",
@@ -2339,7 +2350,7 @@ https://bloomcraft.in/products`;
             }`}
           >
             <Sparkles className="w-4 h-4 text-[#C5A059]" />
-            <span>Curated Collections Cards ({categoriesList.length})</span>
+            <span>Categories & Collections ({categoriesList.length})</span>
           </button>
 
           <button
@@ -3331,11 +3342,11 @@ https://bloomcraft.in/products`;
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-[#C5A059]" />
                   <h3 className="text-base font-bold text-foreground">
-                    Curated Collections Cards ({categoriesList.length})
+                    Categories &amp; Collections ({categoriesList.length})
                   </h3>
                 </div>
                 <p className="text-xs text-muted-foreground mt-0.5">
-                  Manage the category cards displayed on the Homepage &quot;Shop by Category&quot; section. Upload high-res jewelry photos, change titles, or edit category details.
+                  Manage product categories and collection cards displayed on the Homepage, Products Catalog, and Navigation. Upload photos, change titles, or add new categories.
                 </p>
               </div>
 
@@ -3346,7 +3357,7 @@ https://bloomcraft.in/products`;
                   className="px-4 py-2 rounded-xl bg-primary text-primary-foreground font-semibold text-xs flex items-center gap-1.5 shadow-sm hover:bg-primary/90 transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" />
-                  <span>Add Collection Card</span>
+                  <span>Add New Category</span>
                 </button>
               </div>
             </div>
@@ -4271,48 +4282,34 @@ https://bloomcraft.in/products`;
                 />
               </div>
 
-              {/* Category & Stock */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-semibold text-foreground">Category *</label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-semibold text-foreground">Category *</label>
+                    <button
+                      type="button"
+                      onClick={() => handleOpenAddCategory()}
+                      className="text-[11px] text-primary hover:underline font-medium"
+                    >
+                      + Add New Category
+                    </button>
+                  </div>
                   <select
                     value={formState.category}
                     onChange={(e) => setFormState({ ...formState, category: e.target.value })}
                     className="w-full px-3 py-2 text-xs rounded-lg bg-background border border-border focus:ring-1 focus:ring-primary outline-none"
+                    required
                   >
-                    <optgroup label="Bloom Craft Atelier Collections">
-                      <option value="jhumkas">Jhumkas</option>
-                      <option value="minimal-chains">Minimal Chains</option>
-                      <option value="hanging-chains">Hanging Chains</option>
-                      <option value="traditional-sets">Traditional Sets</option>
-                      <option value="stud-and-hoops">Stud & Hoops</option>
-                      <option value="traditional-earrings">Traditional Earrings</option>
-                      <option value="bangles">Bangles</option>
-                      <option value="bangles-kada">Bangles / Kada</option>
-                      <option value="bracelet">Bracelet</option>
-                      <option value="bracelets">Bracelets</option>
-                      <option value="ring">Ring</option>
-                      <option value="rings">Rings</option>
-                      <option value="anklets">Anklets</option>
-                      <option value="nosepin">Nosepin</option>
-                      <option value="offer-products">Offer Products</option>
-                    </optgroup>
-                    {categoriesList.filter(c => ![
-                      "jhumkas", "minimal-chains", "hanging-chains", "traditional-sets", 
-                      "stud-and-hoops", "traditional-earrings", "bangles", "bangles-kada", 
-                      "bracelet", "bracelets", "ring", "rings", "anklets", "nosepin", "offer-products"
-                    ].includes(c.slug)).length > 0 && (
-                      <optgroup label="Other Collections">
-                        {categoriesList
-                          .filter(c => ![
-                            "jhumkas", "minimal-chains", "hanging-chains", "traditional-sets", 
-                            "stud-and-hoops", "traditional-earrings", "bangles", "bangles-kada", 
-                            "bracelet", "bracelets", "ring", "rings", "anklets", "nosepin", "offer-products"
-                          ].includes(c.slug))
-                          .map((c) => (
-                            <option key={c.slug} value={c.slug}>{c.name}</option>
-                          ))}
-                      </optgroup>
+                    <option value="" disabled>Select a Category</option>
+                    {categoriesList.map((c) => (
+                      <option key={c.slug || c.id} value={c.slug}>
+                        {c.name} ({c.slug})
+                      </option>
+                    ))}
+                    {formState.category && !categoriesList.some((c) => c.slug === formState.category) && (
+                      <option value={formState.category}>
+                        {formState.category}
+                      </option>
                     )}
                   </select>
                 </div>
@@ -5713,10 +5710,10 @@ https://bloomcraft.in/products`;
             <div className="px-6 py-4 border-b border-border flex items-center justify-between">
               <div>
                 <h3 className="text-base font-bold text-foreground">
-                  {editingCategory ? "Edit Curated Collection Card" : "Add New Collection Card"}
+                  {editingCategory ? "Edit Category & Collection" : "Add New Category"}
                 </h3>
                 <p className="text-xs text-muted-foreground">
-                  Customize the title, photo, and URL slug shown on the homepage grid.
+                  Customize the title, photo, and URL slug shown across the website.
                 </p>
               </div>
               <button
@@ -5730,11 +5727,11 @@ https://bloomcraft.in/products`;
 
             <form onSubmit={handleSaveCategoryModal} className="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
               <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">Collection Name *</label>
+                <label className="text-xs font-semibold text-foreground">Category Name *</label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Necklaces & Chains"
+                  placeholder="e.g. Hampers & Gift Sets"
                   value={categoryForm.name}
                   onChange={(e) => {
                     const name = e.target.value;
@@ -5755,7 +5752,7 @@ https://bloomcraft.in/products`;
                 <input
                   type="text"
                   required
-                  placeholder="e.g. necklaces-and-chains"
+                  placeholder="e.g. hamper"
                   value={categoryForm.slug}
                   onChange={(e) => setCategoryForm({ ...categoryForm, slug: e.target.value })}
                   className="w-full px-3 py-2 text-xs rounded-lg bg-background border border-border focus:ring-1 focus:ring-primary outline-none font-mono"
@@ -5766,7 +5763,7 @@ https://bloomcraft.in/products`;
                 <label className="text-xs font-semibold text-foreground">Subtitle / Short Description</label>
                 <input
                   type="text"
-                  placeholder="e.g. Waterproof everyday pendants & chains"
+                  placeholder="e.g. Handcrafted celebration gift boxes & bespoke keepsakes"
                   value={categoryForm.description}
                   onChange={(e) => setCategoryForm({ ...categoryForm, description: e.target.value })}
                   className="w-full px-3 py-2 text-xs rounded-lg bg-background border border-border focus:ring-1 focus:ring-primary outline-none"

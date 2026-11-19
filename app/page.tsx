@@ -13,19 +13,49 @@ import { useProductStore } from "@/store/useProductStore";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function HomePage() {
-  const [categoryList, setCategoryList] = useState<Category[]>(categories);
+  const [categoryList, setCategoryList] = useState<Category[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const cached = sessionStorage.getItem("bloomcraft_categories");
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+    }
+    return categories;
+  });
   const fetchProducts = useProductStore((s) => s.fetchProducts);
   const productsLoaded = useProductStore((s) => s.hasLoaded);
 
   useEffect(() => {
-    fetch(`/api/categories?t=${Date.now()}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setCategoryList(data);
-        }
-      })
-      .catch(() => {});
+    const loadCategories = () => {
+      fetch(`/api/categories?t=${Date.now()}`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) {
+            setCategoryList(data);
+            try {
+              sessionStorage.setItem("bloomcraft_categories", JSON.stringify(data));
+            } catch (e) {}
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadCategories();
+
+    const handleUpdate = (e?: any) => {
+      if (e?.detail && Array.isArray(e.detail) && e.detail.length > 0) {
+        setCategoryList(e.detail);
+      } else {
+        loadCategories();
+      }
+    };
+
+    window.addEventListener("bloomcraft:categories-updated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    window.addEventListener("focus", loadCategories);
 
     // Non-blocking background preload after initial page render
     if (!productsLoaded) {
@@ -35,6 +65,12 @@ export default function HomePage() {
         setTimeout(() => fetchProducts(), 800);
       }
     }
+
+    return () => {
+      window.removeEventListener("bloomcraft:categories-updated", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+      window.removeEventListener("focus", loadCategories);
+    };
   }, [fetchProducts, productsLoaded]);
   return (
     <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-glacial">
@@ -72,8 +108,8 @@ export default function HomePage() {
             </div>
 
             {/* Editorial Framed Arch Category Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 sm:gap-4">
-              {categoryList.slice(0, 6).map((cat, idx) => (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4">
+              {categoryList.map((cat, idx) => (
                 <Link
                   key={cat.id}
                   href={`/products?category=${cat.slug}`}

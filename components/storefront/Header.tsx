@@ -18,6 +18,8 @@ import {
 import { useProductStore } from "@/store/useProductStore";
 import { formatPrice } from "@/lib/utils";
 import { BrandLogo } from "@/components/storefront/BrandLogo";
+import { Category } from "@/types/store";
+import { categories as defaultCategories } from "@/data/mockData";
 
 export function Header() {
   const pathname = usePathname();
@@ -26,6 +28,18 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [categoryList, setCategoryList] = useState<Category[]>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const cached = sessionStorage.getItem("bloomcraft_categories");
+        if (cached) {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+    }
+    return defaultCategories;
+  });
 
   const products = useProductStore((s) => s.products);
   const items = useCartStore((s) => s.items);
@@ -41,7 +55,41 @@ export function Header() {
       setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const loadCategories = () => {
+      fetch(`/api/categories?t=${Date.now()}`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) {
+            setCategoryList(data);
+            try {
+              sessionStorage.setItem("bloomcraft_categories", JSON.stringify(data));
+            } catch (e) {}
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadCategories();
+
+    const handleUpdate = (e?: any) => {
+      if (e?.detail && Array.isArray(e.detail) && e.detail.length > 0) {
+        setCategoryList(e.detail);
+      } else {
+        loadCategories();
+      }
+    };
+
+    window.addEventListener("bloomcraft:categories-updated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    window.addEventListener("focus", loadCategories);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("bloomcraft:categories-updated", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+      window.removeEventListener("focus", loadCategories);
+    };
   }, []);
 
   const searchResults = searchQuery.trim()
@@ -61,21 +109,20 @@ export function Header() {
   const isDarkNav = false;
 
   const primaryNavLinks = [
-    { label: "Shop All", href: "/products" },
-    { label: "Gift Hampers", href: "/products?category=gift-hampers", highlight: true },
-    { label: "Journals & Planners", href: "/products?category=journals-planners" },
-    { label: "Wax Seals & Calligraphy", href: "/products?category=wax-seals-calligraphy" },
-    { label: "Desk Accessories", href: "/products?category=desk-accessories" },
+    { label: "Shop All", href: "/products", highlight: false },
+    ...categoryList.slice(0, 4).map((c) => ({
+      label: c.name.replace(/\s*Collection/gi, "").trim(),
+      href: `/products?category=${c.slug}`,
+      highlight: c.slug === "hamper" || c.slug === "gift-hampers",
+    })),
   ];
 
   const allCategoryLinks = [
     { label: "Shop All", href: "/products" },
-    { label: "Curated Gift Hampers", href: "/products?category=gift-hampers" },
-    { label: "Journals & Planners", href: "/products?category=journals-planners" },
-    { label: "Wax Seals & Calligraphy", href: "/products?category=wax-seals-calligraphy" },
-    { label: "Desk Accessories", href: "/products?category=desk-accessories" },
-    { label: "Greeting Cards & Envelopes", href: "/products?category=cards-envelopes" },
-    { label: "Gifting Keepsakes", href: "/products?category=gifting-keepsakes" },
+    ...categoryList.map((c) => ({
+      label: c.name.replace(/\s*Collection/gi, "").trim(),
+      href: `/products?category=${c.slug}`,
+    })),
   ];
 
   return (
@@ -131,10 +178,10 @@ export function Header() {
                           ? "text-purple-300 font-semibold hover:text-white"
                           : "text-white/90 hover:text-white"
                         : isActive
-                        ? "text-[#7E22CE] font-bold"
+                        ? "text-[#214332] font-bold"
                         : link.highlight
-                        ? "text-[#7E22CE] font-bold hover:text-[#581C87]"
-                        : "text-[#1C1917] hover:text-[#7E22CE]"
+                        ? "text-[#214332] font-bold hover:text-[#581C87]"
+                        : "text-[#1C1917] hover:text-[#214332]"
                     }`}
                   >
                     {link.highlight && <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />}
@@ -150,7 +197,7 @@ export function Header() {
                   className={`flex items-center gap-1 text-xs xl:text-sm font-medium transition-colors py-2 cursor-pointer whitespace-nowrap ${
                     isDarkNav
                       ? "text-white/90 hover:text-white"
-                      : "text-[#1C1917] hover:text-[#7E22CE]"
+                      : "text-[#1C1917] hover:text-[#214332]"
                   }`}
                 >
                   <span>Categories</span>
@@ -169,7 +216,7 @@ export function Header() {
                         href={item.href}
                         className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
                           item.label === "Shop All"
-                            ? "font-bold text-[#7E22CE] bg-purple-50/80 hover:bg-purple-100"
+                            ? "font-bold text-[#214332] bg-purple-50/80 hover:bg-purple-100"
                             : "font-medium text-stone-800 hover:text-primary hover:bg-[#FAF7F2]"
                         }`}
                       >
@@ -179,7 +226,7 @@ export function Header() {
                     <div className="pt-2 border-t border-[#EADBBE]/50 mt-1">
                       <Link
                         href="/products"
-                        className="block px-3 py-1.5 text-xs font-bold text-[#7E22CE] hover:text-stone-900 transition-colors"
+                        className="block px-3 py-1.5 text-xs font-bold text-[#214332] hover:text-stone-900 transition-colors"
                       >
                         ✦ View All Catalog
                       </Link>
@@ -283,7 +330,7 @@ export function Header() {
                 <Link
                   href="/products"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-[#7E22CE] text-white font-semibold text-sm shadow-md hover:bg-[#6B21A8] transition-colors"
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-[#214332] text-white font-semibold text-sm shadow-md hover:bg-[#6B21A8] transition-colors"
                 >
                   <span className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-purple-200" />
@@ -303,8 +350,8 @@ export function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block text-sm font-medium transition-colors py-2 px-3 rounded-lg ${
                     link.label === "Shop All"
-                      ? "text-[#7E22CE] font-bold bg-purple-50 hover:bg-purple-100"
-                      : "text-foreground hover:text-[#7E22CE] hover:bg-muted/40"
+                      ? "text-[#214332] font-bold bg-purple-50 hover:bg-purple-100"
+                      : "text-foreground hover:text-[#214332] hover:bg-muted/40"
                   }`}
                 >
                   {link.label}
@@ -353,7 +400,7 @@ export function Header() {
               <Search className="w-5 h-5 text-muted-foreground" />
               <input
                 type="text"
-                placeholder="Search chains, jhumkas, bangles, rings..."
+                placeholder="Search hampers, journals, wax seals, stationery..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 autoFocus
@@ -410,7 +457,7 @@ export function Header() {
                   </div>
                 ) : (
                   <p className="text-xs text-muted-foreground py-4 text-center">
-                    No jewelry matching &ldquo;{searchQuery}&rdquo;.
+                    No gifts or stationery matching &ldquo;{searchQuery}&rdquo;.
                   </p>
                 )}
               </div>

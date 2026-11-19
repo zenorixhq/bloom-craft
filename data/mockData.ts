@@ -2,12 +2,12 @@ import { Product, Category, Order } from "@/types/store";
 
 export const categories: Category[] = [
   {
-    id: "cat-gift-hampers",
-    slug: "gift-hampers",
-    name: "Curated Gift Hampers",
-    description: "Handcrafted wooden celebration boxes, gourmet tea sets, artisanal journals & bespoke hampers.",
+    id: "cat-hamper",
+    slug: "hamper",
+    name: "Hamper",
+    description: "Handcrafted celebration hampers, bespoke gourmet gift boxes & personalized artisanal keepsakes.",
     image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
-    productCount: 8,
+    productCount: 4,
   },
   {
     id: "cat-journals-planners",
@@ -61,8 +61,8 @@ export const products: Product[] = [
     description: "Our signature luxury hamper thoughtfully curated for celebrations, birthdays, and cherished milestones. Includes an A5 olive linen journal, a solid brass rollerball pen, a hand-poured wild fig & cedar soy candle, a botanical wax seal kit with 100 metallic beads, and a handwritten personalized message card presented in a handcrafted pine wood slide box with raw cotton ribbon.",
     price: 2499,
     salePrice: 2199,
-    category: "gift-hampers",
-    tags: ["Gift Hamper", "Celebration", "Bestseller", "Botanical", "Luxury"],
+    category: "hamper",
+    tags: ["Hamper", "Gift Hamper", "Celebration", "Bestseller", "Botanical", "Luxury"],
     images: [
       "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
@@ -90,8 +90,8 @@ export const products: Product[] = [
     description: "An authentic scribe's dream. Hand-turned walnut calligraphy dip pen with 5 vintage steel nibs, a 30ml glass inkwell bottle of archival black ink, solid brass botanical seal stamp, 3 metallic sealing wax sticks, a brass melting spoon, and 12 sheets of handmade deckle edge cotton paper enclosed in a velvet-lined archival keepsake case.",
     price: 2999,
     salePrice: 2699,
-    category: "gift-hampers",
-    tags: ["Calligraphy", "Vintage", "Gift Set", "Wax Seal", "Handmade"],
+    category: "hamper",
+    tags: ["Hamper", "Calligraphy", "Vintage", "Gift Set", "Wax Seal", "Handmade"],
     images: [
       "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800"
@@ -116,8 +116,8 @@ export const products: Product[] = [
     description: "A sensorial gifting experience designed to pamper and celebrate. Features a foil-embossed hardcover journal, a glass jar of organic Kashmir rose herbal tea, raw single-origin wildflower honey with a brass honeycomb dipper, an artisanal amber glass soy candle, and a handcrafted deckle edge greeting card personalized with your custom message.",
     price: 3499,
     salePrice: 2999,
-    category: "gift-hampers",
-    tags: ["Luxury Hamper", "Celebration", "Herbal Tea", "Honey", "Keepsake"],
+    category: "hamper",
+    tags: ["Hamper", "Luxury Hamper", "Celebration", "Herbal Tea", "Honey", "Keepsake"],
     images: [
       "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
       "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"
@@ -141,7 +141,7 @@ export const products: Product[] = [
     description: "Transform any workspace into a serene, inspiring sanctuary. Includes a solid American walnut pen tray with hand-rubbed oil finish, a 60-sheet undated landscape weekly desk pad, a heavy solid brass bookmark clip, and a 50ml glass spray bottle of cedarwood and bergamot workspace mist.",
     price: 1899,
     salePrice: 1699,
-    category: "gift-hampers",
+    category: "hamper",
     tags: ["Desk Decor", "Gift Box", "Productivity", "Walnut Wood"],
     images: [
       "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800",

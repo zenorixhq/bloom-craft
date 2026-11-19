@@ -55,8 +55,14 @@ const categoryIconMap: Record<string, string> = {
 function matchesCategory(p: Product, catSlug: string): boolean {
   if (!catSlug || catSlug === "all") return true;
   if (catSlug === "new-arrivals") return !!p.isNewArrival || p.category === "new-arrivals";
-  if (catSlug === "gift-hampers") {
-    return p.category === "gift-hampers" || /hamper|gift box|gift set/i.test(p.title);
+  if (catSlug === "hamper" || catSlug === "gift-hampers" || catSlug === "hampers") {
+    return (
+      p.category === "hamper" ||
+      p.category === "gift-hampers" ||
+      p.category === "hampers" ||
+      /hamper|gift box|gift set/i.test(p.title) ||
+      p.tags?.some((t) => /hamper/i.test(t))
+    );
   }
   if (catSlug === "journals-planners") {
     return p.category === "journals-planners" || /journal|planner|notebook/i.test(p.title);
@@ -73,7 +79,11 @@ function matchesCategory(p: Product, catSlug: string): boolean {
   if (catSlug === "gifting-keepsakes") {
     return p.category === "gifting-keepsakes" || /candle|bookmark|ribbon|wrap/i.test(p.title);
   }
-  return p.category === catSlug || p.tags?.some((t) => t.toLowerCase() === catSlug.toLowerCase());
+  return (
+    p.category === catSlug ||
+    p.category?.toLowerCase() === catSlug.toLowerCase() ||
+    p.tags?.some((t) => t.toLowerCase() === catSlug.toLowerCase())
+  );
 }
 
 const sortOptions = [
@@ -95,7 +105,7 @@ function ProductCatalogContent() {
   const [categoryList, setCategoryList] = useState<Category[]>(() => {
     if (typeof window !== "undefined") {
       try {
-        const cached = sessionStorage.getItem("bloomcraft_categories") || sessionStorage.getItem("alnaya_categories");
+        const cached = sessionStorage.getItem("bloomcraft_categories");
         if (cached) {
           const parsed = JSON.parse(cached);
           if (Array.isArray(parsed) && parsed.length > 0) return parsed;
@@ -105,20 +115,42 @@ function ProductCatalogContent() {
     return defaultCategories;
   });
 
-  // Sync with database on mount
+  // Sync with database on mount and listen to dynamic category updates
   useEffect(() => {
     fetchProducts();
-    fetch(`/api/categories?t=${Date.now()}`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setCategoryList(data);
-          try {
-            sessionStorage.setItem("bloomcraft_categories", JSON.stringify(data));
-          } catch (e) {}
-        }
-      })
-      .catch(() => {});
+    const loadCategories = () => {
+      fetch(`/api/categories?t=${Date.now()}`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (Array.isArray(data) && data.length > 0) {
+            setCategoryList(data);
+            try {
+              sessionStorage.setItem("bloomcraft_categories", JSON.stringify(data));
+            } catch (e) {}
+          }
+        })
+        .catch(() => {});
+    };
+
+    loadCategories();
+
+    const handleUpdate = (e?: any) => {
+      if (e?.detail && Array.isArray(e.detail) && e.detail.length > 0) {
+        setCategoryList(e.detail);
+      } else {
+        loadCategories();
+      }
+    };
+
+    window.addEventListener("bloomcraft:categories-updated", handleUpdate);
+    window.addEventListener("storage", handleUpdate);
+    window.addEventListener("focus", loadCategories);
+
+    return () => {
+      window.removeEventListener("bloomcraft:categories-updated", handleUpdate);
+      window.removeEventListener("storage", handleUpdate);
+      window.removeEventListener("focus", loadCategories);
+    };
   }, [fetchProducts]);
 
   // Primary filter & sort states
@@ -373,8 +405,8 @@ function ProductCatalogContent() {
             <div
               className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl p-2 flex items-center justify-center transition-all duration-300 border-2 ${
                 selectedCategory === "all"
-                  ? "bg-white border-[#7E22CE] shadow-md -translate-y-0.5"
-                  : "bg-white border-stone-200/90 shadow-xs hover:border-[#7E22CE] hover:shadow-md hover:-translate-y-0.5"
+                  ? "bg-white border-[#214332] shadow-md -translate-y-0.5"
+                  : "bg-white border-stone-200/90 shadow-xs hover:border-[#214332] hover:shadow-md hover:-translate-y-0.5"
               }`}
             >
               <img
@@ -386,7 +418,7 @@ function ProductCatalogContent() {
             <span
               className={`text-xs sm:text-[13px] text-center whitespace-nowrap mt-2 transition-colors ${
                 selectedCategory === "all"
-                  ? "font-bold text-[#7E22CE]"
+                  ? "font-bold text-[#214332]"
                   : "font-medium text-stone-700 group-hover/card:text-stone-900"
               }`}
             >
@@ -418,8 +450,8 @@ function ProductCatalogContent() {
                 <div
                   className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl sm:rounded-3xl p-2 flex items-center justify-center transition-all duration-300 border-2 ${
                     selectedCategory === cat.slug
-                      ? "bg-white border-[#7E22CE] shadow-md -translate-y-0.5"
-                      : "bg-white border-stone-200/90 shadow-xs hover:border-[#7E22CE] hover:shadow-md hover:-translate-y-0.5"
+                      ? "bg-white border-[#214332] shadow-md -translate-y-0.5"
+                      : "bg-white border-stone-200/90 shadow-xs hover:border-[#214332] hover:shadow-md hover:-translate-y-0.5"
                   }`}
                 >
                   <img
@@ -431,7 +463,7 @@ function ProductCatalogContent() {
                 <span
                   className={`text-xs sm:text-[13px] text-center whitespace-nowrap mt-2 transition-colors truncate max-w-full ${
                     selectedCategory === cat.slug
-                      ? "font-bold text-[#7E22CE]"
+                      ? "font-bold text-[#214332]"
                       : "font-medium text-stone-700 group-hover/card:text-stone-900"
                   }`}
                   title={displayName}
@@ -652,7 +684,7 @@ function ProductCatalogContent() {
             <ArrowUpDown className="w-4 h-4 text-stone-700" />
             <span>Sort By</span>
             {sortBy !== "featured" && (
-              <span className="w-1.5 h-1.5 rounded-full bg-[#7E22CE]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#214332]" />
             )}
           </button>
 
@@ -664,7 +696,7 @@ function ProductCatalogContent() {
             <Filter className="w-4 h-4 text-stone-700" />
             <span>Filter</span>
             {activeFilterCount > 0 && (
-              <span className="w-4.5 h-4.5 rounded-full bg-[#7E22CE] text-white text-[10px] font-bold flex items-center justify-center leading-none">
+              <span className="w-4.5 h-4.5 rounded-full bg-[#214332] text-white text-[10px] font-bold flex items-center justify-center leading-none">
                 {activeFilterCount}
               </span>
             )}
@@ -691,7 +723,7 @@ function ProductCatalogContent() {
             {/* Sheet Header */}
             <div className="flex items-center justify-between px-6 py-3.5 border-b border-stone-100 shrink-0">
               <div className="flex items-center gap-2">
-                <ArrowUpDown className="w-4 h-4 text-[#7E22CE]" />
+                <ArrowUpDown className="w-4 h-4 text-[#214332]" />
                 <h3 className="font-editorial text-lg font-bold text-stone-900 tracking-wide">
                   Sort By
                 </h3>
@@ -723,7 +755,7 @@ function ProductCatalogContent() {
                     <div>
                       <span
                         className={`text-sm block ${
-                          isSelected ? "font-bold text-[#7E22CE]" : "font-medium text-stone-800"
+                          isSelected ? "font-bold text-[#214332]" : "font-medium text-stone-800"
                         }`}
                       >
                         {opt.label}
@@ -737,7 +769,7 @@ function ProductCatalogContent() {
                     <div
                       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${
                         isSelected
-                          ? "border-[#7E22CE] bg-[#7E22CE]"
+                          ? "border-[#214332] bg-[#214332]"
                           : "border-stone-300 bg-white"
                       }`}
                     >
@@ -770,7 +802,7 @@ function ProductCatalogContent() {
             {/* Drawer Header */}
             <div className="flex items-center justify-between px-6 py-3.5 border-b border-stone-100 shrink-0">
               <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-[#7E22CE]" />
+                <Filter className="w-4 h-4 text-[#214332]" />
                 <h3 className="font-editorial text-lg font-bold text-stone-900 tracking-wide">
                   Filter Pieces
                 </h3>
@@ -779,7 +811,7 @@ function ProductCatalogContent() {
               <div className="flex items-center gap-3">
                 <button
                   onClick={resetDraftFilters}
-                  className="text-xs font-semibold text-[#7E22CE] hover:text-[#581C87] transition-colors"
+                  className="text-xs font-semibold text-[#214332] hover:text-[#581C87] transition-colors"
                 >
                   Clear All
                 </button>
@@ -806,7 +838,7 @@ function ProductCatalogContent() {
                     onClick={() => setDraftCategory("all")}
                     className={`px-3.5 py-2 rounded-xl text-xs font-medium border transition-all ${
                       draftCategory === "all"
-                        ? "bg-[#7E22CE] text-white border-[#7E22CE] shadow-xs font-bold"
+                        ? "bg-[#214332] text-white border-[#214332] shadow-xs font-bold"
                         : "bg-stone-50 text-stone-700 border-stone-200 hover:border-purple-300"
                     }`}
                   >
@@ -823,7 +855,7 @@ function ProductCatalogContent() {
                         onClick={() => setDraftCategory(cat.slug)}
                         className={`px-3.5 py-2 rounded-xl text-xs font-medium border transition-all ${
                           isSelected
-                            ? "bg-[#7E22CE] text-white border-[#7E22CE] shadow-xs font-bold"
+                            ? "bg-[#214332] text-white border-[#214332] shadow-xs font-bold"
                             : "bg-stone-50 text-stone-700 border-stone-200 hover:border-purple-300"
                         }`}
                       >
@@ -855,7 +887,7 @@ function ProductCatalogContent() {
                         onClick={() => setDraftPriceRange(pOpt.id)}
                         className={`p-3 rounded-xl text-xs font-medium border text-center transition-all ${
                           isSelected
-                            ? "bg-[#7E22CE] text-white border-[#7E22CE] shadow-xs font-bold"
+                            ? "bg-[#214332] text-white border-[#214332] shadow-xs font-bold"
                             : "bg-stone-50 text-stone-700 border-stone-200 hover:border-purple-300"
                         }`}
                       >
@@ -879,7 +911,7 @@ function ProductCatalogContent() {
                     type="checkbox"
                     checked={draftInStockOnly}
                     onChange={(e) => setDraftInStockOnly(e.target.checked)}
-                    className="w-4 h-4 accent-[#7E22CE] rounded cursor-pointer"
+                    className="w-4 h-4 accent-[#214332] rounded cursor-pointer"
                   />
                 </label>
               </div>
@@ -896,7 +928,7 @@ function ProductCatalogContent() {
                     placeholder="Search e.g. clover, evil eye, drop..."
                     value={draftSearchTerm}
                     onChange={(e) => setDraftSearchTerm(e.target.value)}
-                    className="w-full pl-9 pr-8 py-2.5 text-xs rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-1 focus:ring-[#7E22CE]"
+                    className="w-full pl-9 pr-8 py-2.5 text-xs rounded-xl bg-stone-50 border border-stone-200 focus:outline-none focus:ring-1 focus:ring-[#214332]"
                   />
                   {draftSearchTerm && (
                     <button
@@ -920,7 +952,7 @@ function ProductCatalogContent() {
               </button>
               <button
                 onClick={applyDraftFilters}
-                className="w-2/3 py-3 px-4 rounded-xl bg-[#1C1917] hover:bg-[#7E22CE] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all active:scale-[0.98] text-center"
+                className="w-2/3 py-3 px-4 rounded-xl bg-[#1C1917] hover:bg-[#214332] text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all active:scale-[0.98] text-center"
               >
                 Apply Filters ({draftFilteredCount})
               </button>
@@ -934,7 +966,7 @@ function ProductCatalogContent() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-[#1C1917]/90 hover:bg-[#7E22CE] text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20 backdrop-blur-sm group cursor-pointer"
+          className="fixed bottom-6 right-6 z-40 w-11 h-11 rounded-full bg-[#1C1917]/90 hover:bg-[#214332] text-white shadow-xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 border border-white/20 backdrop-blur-sm group cursor-pointer"
           title="Smooth scroll to top"
           aria-label="Scroll to top"
         >
