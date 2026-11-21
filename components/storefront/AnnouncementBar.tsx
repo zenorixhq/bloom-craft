@@ -14,46 +14,46 @@ export function AnnouncementBar() {
     setMounted(true);
   }, []);
 
-  // On the homepage, do not render announcement bar so the transparent navbar floats seamlessly over the full-bleed video hero
-  if (!mounted || !storeConfig.features.enableAnnouncementBar || !visible || pathname === "/") {
+  // Show on all pages when enabled
+  if (!mounted || !storeConfig.features.enableAnnouncementBar || !visible) {
     return null;
   }
 
   const tickerItems = [
-    "Handcrafted Stationery & Bespoke Hampers",
+    "Handcrafted Stationery & Bespoke Gift Hampers",
     `Free Pan-India Delivery Above ₹${storeConfig.commerce.freeShippingThreshold}`,
-    "Personalized Wax Seals & Calligraphy Notes",
-    "100% Acid-Free Archival Paper & Pure Soy Candles",
-    "Fast Dispatch Within 24-48 Hours",
-    "Secure UPI, Card & NetBanking Checkout",
+    "Complimentary Handwritten Calligraphy Note in Every Hamper",
+    "Hand-Poured Soy Wax & Solid Brass Monogram Seals",
+    "Express Dispatch Within 24-48 Hours",
+    "Custom Corporate & Wedding Gifting Concierge",
   ];
 
   return (
     <aside
       aria-label="Store Announcement Ticker"
-      className="bg-[#1C1917] text-[#FAF5EB] py-2 text-xs font-medium relative overflow-hidden select-none border-b border-[#332E27] font-glacial"
+      className="bg-[#182C22] text-[#FAF5EB] py-2 sm:py-2.5 text-xs font-medium relative overflow-hidden select-none border-b border-[#214332]/40 font-glacial z-30"
     >
       <div className="flex items-center overflow-hidden w-full pr-10">
         <div className="animate-marquee flex items-center gap-8 py-0.5 whitespace-nowrap">
           {/* First sequence */}
           {tickerItems.map((item, idx) => (
             <div key={`ticker-a-${idx}`} className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-purple-400 flex-shrink-0 animate-pulse" />
-              <span className="tracking-wide uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
+              <Sparkles className="w-3 h-3 text-[#DC9924] flex-shrink-0 animate-pulse" />
+              <span className="tracking-wider uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
                 {item}
               </span>
-              <span className="text-purple-400/60 text-xs ml-3 font-serif">✦</span>
+              <span className="text-[#DC9924]/70 text-xs ml-3 font-serif">✦</span>
             </div>
           ))}
 
           {/* Duplicate sequence for continuous seamless scrolling */}
           {tickerItems.map((item, idx) => (
             <div key={`ticker-b-${idx}`} className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-purple-400 flex-shrink-0 animate-pulse" />
-              <span className="tracking-wide uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
+              <Sparkles className="w-3 h-3 text-[#DC9924] flex-shrink-0 animate-pulse" />
+              <span className="tracking-wider uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
                 {item}
               </span>
-              <span className="text-purple-400/60 text-xs ml-3 font-serif">✦</span>
+              <span className="text-[#DC9924]/70 text-xs ml-3 font-serif">✦</span>
             </div>
           ))}
         </div>
