@@ -22,12 +22,7 @@ export function HeroEditorial() {
         "From hand-bound linen journals and vintage brass wax seals to artfully curated celebration hampers, every Bloom Craft creation is crafted to inspire creativity, warmth, and lifelong keepsakes.",
       primaryCta: { label: "Discover Hampers", href: "/products?category=hamper" },
       secondaryCta: { label: "Shop All Stationery", href: "/products" },
-      image:
-        images.heroDesktop &&
-        !images.heroDesktop.includes("aleena") &&
-        !images.heroDesktop.includes("founder")
-          ? images.heroDesktop
-          : "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=1200",
+      image: "/images/hero-hamper-curation.jpg",
       productHighlight: {
         tag: "BESTSELLER CURATION",
         title: "The Artisanal Botanical Hamper",
@@ -45,7 +40,7 @@ export function HeroEditorial() {
         "Solid brass monogram wax stamps, shimmering pearlescent wax beads, and hand-turned walnut dip pens engineered for the modern artisan and poetic soul.",
       primaryCta: { label: "Shop Wax Seals", href: "/products?category=wax-seals-calligraphy" },
       secondaryCta: { label: "Explore Scribe Sets", href: "/products" },
-      image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=1200",
+      image: "/images/hero-calligraphy-seal.jpg",
       productHighlight: {
         tag: "ARTISANAL SET",
         title: "The Vintage Scribe Calligraphy Set",
@@ -63,7 +58,7 @@ export function HeroEditorial() {
         "Gilded foil-embossed hardcover journals, pure organic Kashmir rose herbal tea, raw wildflower honey with a brass dipper, and hand-poured botanical soy candles in magnetic keepsake boxes.",
       primaryCta: { label: "Celebration Hampers", href: "/products?category=hamper" },
       secondaryCta: { label: "Custom Keepsakes", href: "/products?category=gifting-keepsakes" },
-      image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=1200",
+      image: "/images/hero-celebration-box.jpg",
       productHighlight: {
         tag: "DELUXE PAMPER",
         title: "Celebration Blooms Deluxe Hamper",
