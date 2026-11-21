@@ -128,12 +128,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`w-full font-glacial transition-all duration-300 ${
-          isHomePage
-            ? isScrolled
-              ? "fixed top-0 left-0 right-0 z-50 bg-[#FAF7F2]/95 backdrop-blur-md shadow-md border-b border-[#EADBBE] text-[#1C1917]"
-              : "absolute top-0 left-0 right-0 z-40 bg-[#FAF7F2]/70 backdrop-blur-xs text-[#1C1917] border-b border-[#EADBBE]/50"
-            : "sticky top-0 z-50 bg-[#FAF7F2] text-foreground border-b border-[#EADBBE]/80 shadow-2xs"
+        className={`w-full font-glacial transition-all duration-300 sticky top-0 z-40 border-b border-[#E7E3DC] text-[#18221D] ${
+          isScrolled
+            ? "bg-[#FAF8F5]/98 backdrop-blur-md shadow-md"
+            : "bg-[#FAF8F5]/95 backdrop-blur-sm shadow-2xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,11 +140,7 @@ export function Header() {
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className={`p-2 -ml-2 rounded-md ${
-                  isDarkNav
-                    ? "text-white hover:bg-white/10"
-                    : "text-[#1C1917] hover:bg-[#F0E6D2]"
-                }`}
+                className="p-2 -ml-2 rounded-md text-[#1C1917] hover:bg-[#EEF3F0]"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -158,7 +152,7 @@ export function Header() {
               <BrandLogo
                 variant="full"
                 showTagline={false}
-                theme={isDarkNav ? "dark" : "light"}
+                theme="light"
               />
             </div>
 
@@ -170,21 +164,15 @@ export function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-xs xl:text-sm font-medium tracking-wide transition-colors whitespace-nowrap flex items-center gap-1 ${
-                      isDarkNav
-                        ? isActive
-                          ? "text-purple-300 font-semibold"
-                          : link.highlight
-                          ? "text-purple-300 font-semibold hover:text-white"
-                          : "text-white/90 hover:text-white"
-                        : isActive
+                    className={`text-xs xl:text-sm font-medium tracking-wide transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                      isActive
                         ? "text-[#214332] font-bold"
                         : link.highlight
-                        ? "text-[#214332] font-bold hover:text-[#581C87]"
+                        ? "text-[#214332] font-semibold hover:text-[#162f23]"
                         : "text-[#1C1917] hover:text-[#214332]"
                     }`}
                   >
-                    {link.highlight && <Sparkles className="w-3.5 h-3.5 text-purple-600 dark:text-purple-400" />}
+                    {link.highlight && <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />}
                     <span>{link.label}</span>
                   </Link>
                 );
@@ -194,36 +182,30 @@ export function Header() {
               <div className="relative group">
                 <button
                   type="button"
-                  className={`flex items-center gap-1 text-xs xl:text-sm font-medium transition-colors py-2 cursor-pointer whitespace-nowrap ${
-                    isDarkNav
-                      ? "text-white/90 hover:text-white"
-                      : "text-[#1C1917] hover:text-[#214332]"
-                  }`}
+                  className="flex items-center gap-1 text-xs xl:text-sm font-medium transition-colors py-2 cursor-pointer whitespace-nowrap text-[#1C1917] hover:text-[#214332]"
                 >
                   <span>Categories</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200 ${
-                      isDarkNav ? "text-white/70" : "text-[#786E5E]"
-                    }`}
+                    className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200 text-[#786E5E]"
                   />
                 </button>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-64 bg-[#FFFDF9] border border-[#EADBBE] rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
+                  <div className="w-64 bg-[#FFFDF9] border border-[#E7E3DC] rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
                     {allCategoryLinks.map((item) => (
                       <Link
                         key={item.href + item.label}
                         href={item.href}
                         className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
                           item.label === "Shop All"
-                            ? "font-bold text-[#214332] bg-purple-50/80 hover:bg-purple-100"
-                            : "font-medium text-stone-800 hover:text-primary hover:bg-[#FAF7F2]"
+                            ? "font-bold text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6]"
+                            : "font-medium text-stone-800 hover:text-[#214332] hover:bg-[#FAF8F5]"
                         }`}
                       >
                         {item.label === "Shop All" ? "✦ " + item.label : item.label}
                       </Link>
                     ))}
-                    <div className="pt-2 border-t border-[#EADBBE]/50 mt-1">
+                    <div className="pt-2 border-t border-[#E7E3DC]/60 mt-1">
                       <Link
                         href="/products"
                         className="block px-3 py-1.5 text-xs font-bold text-[#214332] hover:text-stone-900 transition-colors"
@@ -330,13 +312,13 @@ export function Header() {
                 <Link
                   href="/products"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-[#214332] text-white font-semibold text-sm shadow-md hover:bg-[#6B21A8] transition-colors"
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-[#214332] text-white font-semibold text-sm shadow-md hover:bg-[#162f23] transition-colors"
                 >
                   <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-purple-200" />
-                    <span>Shop All Jewelry</span>
+                    <Sparkles className="w-4 h-4 text-[#DC9924]" />
+                    <span>Shop All Collections</span>
                   </span>
-                  <span className="text-xs uppercase tracking-wider text-purple-200 font-mono">All →</span>
+                  <span className="text-xs uppercase tracking-wider text-[#DC9924] font-glacial">All →</span>
                 </Link>
               </div>
 
@@ -350,7 +332,7 @@ export function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`block text-sm font-medium transition-colors py-2 px-3 rounded-lg ${
                     link.label === "Shop All"
-                      ? "text-[#214332] font-bold bg-purple-50 hover:bg-purple-100"
+                      ? "text-[#214332] font-bold bg-[#EEF3F0] hover:bg-[#E2ECE6]"
                       : "text-foreground hover:text-[#214332] hover:bg-muted/40"
                   }`}
                 >
