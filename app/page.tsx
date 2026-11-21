@@ -5,10 +5,13 @@ import Link from "next/link";
 import { categories } from "@/data/mockData";
 import { Category } from "@/types/store";
 import { HeroEditorial } from "@/components/storefront/HeroEditorial";
-import { ShopByOccasion } from "@/components/storefront/ShopByOccasion";
 import { FeaturedHampersSection } from "@/components/storefront/FeaturedHampersSection";
+import { CustomHamperBanner } from "@/components/storefront/CustomHamperBanner";
+import { ShopByOccasion } from "@/components/storefront/ShopByOccasion";
+import { MilestoneTickerBanner } from "@/components/storefront/MilestoneTickerBanner";
 import { AboutUsSection } from "@/components/storefront/AboutUsSection";
 import { BrandValueBadges } from "@/components/storefront/BrandValueBadges";
+import { GiftingFAQSection } from "@/components/storefront/GiftingFAQSection";
 import { CustomerReviewsWithVideos } from "@/components/storefront/CustomerReviewsWithVideos";
 import { FollowTheHouseSection } from "@/components/storefront/FollowTheHouseSection";
 import { useProductStore } from "@/store/useProductStore";
@@ -80,7 +83,7 @@ export default function HomePage() {
       {/* 1. Dynamic Hero Slideshow & Campaign Showcase */}
       <HeroEditorial />
 
-      {/* 2. The Atelier Collection / Shop by Category Grid */}
+      {/* 2. The Atelier Collection / Shop by Category Grid (Crafto Arte Collection List) */}
       <div id="shop-collection" className="scroll-mt-16 sm:scroll-mt-20">
         <section className="w-full py-8 sm:py-10 lg:py-12 bg-[#FAF8F5] border-b border-[#E7E3DC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
@@ -107,7 +110,7 @@ export default function HomePage() {
 
               {/* Editorial Framed Arch Category Cards */}
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
-                {categoryList.map((cat, idx) => (
+                {categoryList.map((cat) => (
                   <Link
                     key={cat.id}
                     href={`/products?category=${cat.slug}`}
@@ -144,24 +147,33 @@ export default function HomePage() {
         </section>
       </div>
 
-      {/* 3. Shop by Occasion & Celebration (Inspired by Crafto Arte Gift Selector) */}
-      <ShopByOccasion />
-
-      {/* 4. Curated Celebration Hampers & Quick Add Shelf (Crafto Arte-Inspired Product Row) */}
+      {/* 3. Curated Celebration Hampers & Quick Add Shelf (Crafto Arte-Inspired Budget & Deluxe Shelf) */}
       <FeaturedHampersSection />
 
-      {/* 5. Brand Story & Craftsmanship Atelier */}
+      {/* 4. Customise Your Hamper Banner (Crafto Arte High-Conversion WhatsApp Concierge Banner) */}
+      <CustomHamperBanner />
+
+      {/* 5. Shop by Occasion & Celebration (Crafto Arte Occasion Finder) */}
+      <ShopByOccasion />
+
+      {/* 6. Capture Every Milestone Word Rotator Ticker (Crafto Arte Interactive Milestone Section) */}
+      <MilestoneTickerBanner />
+
+      {/* 7. Brand Story & Craftsmanship Atelier (Crafto Arte: "A Small Brand with a Big Heart") */}
       <div id="about-us" className="scroll-mt-16 sm:scroll-mt-20">
         <AboutUsSection />
       </div>
 
-      {/* 6. Five Signature Brand Badges & WhatsApp Concierge Banner */}
+      {/* 8. Five Signature Brand Badges & Guarantees */}
       <BrandValueBadges />
 
-      {/* 7. Follow The House (Instagram Community Mosaic) */}
+      {/* 9. Gifting FAQ Accordion (Crafto Arte: "Got Questions? We've Got Answers") */}
+      <GiftingFAQSection />
+
+      {/* 10. Follow The House (Instagram Community Mosaic) */}
       <FollowTheHouseSection />
 
-      {/* 8. Customer Testimonials & Verified Unboxing Reviews */}
+      {/* 11. Customer Testimonials & Verified Unboxing Reviews */}
       <CustomerReviewsWithVideos />
     </div>
   );
