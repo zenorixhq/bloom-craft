@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ArrowRight, Sparkles, ChevronLeft, ChevronRight, Gift, Star, ShieldCheck } from "lucide-react";
 import { storeConfig } from "@/config/store.config";
@@ -12,6 +12,13 @@ export function HeroEditorial() {
   const [isPaused, setIsPaused] = useState(false);
   const [introReady, setIntroReady] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isProgrammaticScroll = useRef(false);
+
+  // Mouse drag-to-scroll state for desktop
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragStartScrollLeft, setDragStartScrollLeft] = useState(0);
 
   const slides = [
     {
@@ -75,42 +82,109 @@ export function HeroEditorial() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Programmatic smooth scroll to slide
+  const scrollToSlide = useCallback((index: number) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    isProgrammaticScroll.current = true;
+    setCurrentSlide(index);
+
+    const slideWidth = container.clientWidth;
+    container.scrollTo({
+      left: index * slideWidth,
+      behavior: "smooth",
+    });
+
+    // Reset programmatic flag after smooth scroll finishes
+    setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 450);
+  }, []);
+
+  // Synchronize scroll on user touch swipe or scroll
+  const handleScroll = useCallback(() => {
+    if (isProgrammaticScroll.current) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const { scrollLeft, clientWidth } = container;
+    if (clientWidth === 0) return;
+
+    const newIndex = Math.round(scrollLeft / clientWidth);
+    if (newIndex >= 0 && newIndex < slides.length && newIndex !== currentSlide) {
+      setCurrentSlide(newIndex);
+    }
+  }, [currentSlide, slides.length]);
+
+  // Auto-play timer (pauses when user hovers or interacts)
   useEffect(() => {
     if (isPaused) return;
     timerRef.current = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => {
+        const next = (prev + 1) % slides.length;
+        scrollToSlide(next);
+        return next;
+      });
     }, 6500);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isPaused, slides.length]);
+  }, [isPaused, slides.length, scrollToSlide]);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    const next = (currentSlide + 1) % slides.length;
+    scrollToSlide(next);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    const prev = (currentSlide - 1 + slides.length) % slides.length;
+    scrollToSlide(prev);
+  };
+
+  // Mouse Drag-to-Scroll Handlers (for desktop)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    setIsDragging(true);
+    setDragStartX(e.pageX - container.offsetLeft);
+    setDragStartScrollLeft(container.scrollLeft);
+    setIsPaused(true);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const walk = (x - dragStartX) * 1.4;
+    container.scrollLeft = dragStartScrollLeft - walk;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    const container = scrollContainerRef.current;
+    if (container) {
+      const { scrollLeft, clientWidth } = container;
+      const targetIndex = Math.round(scrollLeft / clientWidth);
+      const clampedIndex = Math.max(0, Math.min(slides.length - 1, targetIndex));
+      scrollToSlide(clampedIndex);
+    }
+    setIsPaused(false);
   };
 
   const current = slides[currentSlide];
 
-  const scrollToSection = (id: string) => {
-    const target = document.getElementById(id);
-    if (target) {
-      if (typeof window !== "undefined" && (window as any).__lenis) {
-        (window as any).__lenis.scrollTo(target, { offset: -30, duration: 1.2 });
-      } else {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   return (
     <section
       onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseLeave={() => {
+        setIsPaused(false);
+        if (isDragging) handleMouseUpOrLeave();
+      }}
       className="relative w-full bg-[#FAF8F5] text-[#18221D] overflow-hidden select-none border-b border-[#E7E3DC] min-h-[82svh] lg:min-h-[88svh] flex flex-col justify-center font-glacial"
     >
       {/* Background Subtle Gradient & Organic Texture */}
@@ -196,7 +270,8 @@ export function HeroEditorial() {
                 {slides.map((_, idx) => (
                   <button
                     key={idx}
-                    onClick={() => setCurrentSlide(idx)}
+                    type="button"
+                    onClick={() => scrollToSlide(idx)}
                     aria-label={`Go to slide ${idx + 1}`}
                     className={`h-2 rounded-full transition-all duration-500 cursor-pointer ${
                       currentSlide === idx
@@ -225,58 +300,152 @@ export function HeroEditorial() {
                   <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
+
+              <span className="text-xs text-stone-400 font-medium pl-1">
+                Swipe or scroll images →
+              </span>
             </div>
 
           </div>
 
-          {/* Right Column: Visual Showcase Card */}
+          {/* Right Column: 3 Scrollable Image Showcase Gallery */}
           <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border border-[#E7E3DC] group bg-stone-100">
-              <img
-                key={currentSlide}
-                src={current.image}
-                alt={current.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out animate-fadeIn"
-                loading="eager"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none" />
+            <div className="relative group">
+              
+              {/* Scrollable / Swipeable Track Container */}
+              <div
+                ref={scrollContainerRef}
+                onScroll={handleScroll}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUpOrLeave}
+                className="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] rounded-3xl overflow-x-auto snap-x snap-mandatory flex shadow-xl border border-[#E7E3DC] bg-stone-100 select-none cursor-grab active:cursor-grabbing scroll-smooth"
+                style={{
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+                  WebkitOverflowScrolling: "touch",
+                }}
+              >
+                {slides.map((slide, idx) => (
+                  <div
+                    key={idx}
+                    className="min-w-full w-full h-full flex-shrink-0 relative snap-center overflow-hidden"
+                  >
+                    <img
+                      src={slide.image}
+                      alt={slide.title}
+                      className="w-full h-full object-cover select-none pointer-events-none group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading={idx === 0 ? "eager" : "lazy"}
+                      draggable={false}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent pointer-events-none" />
 
-              {/* Top Floating Badge */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="bg-[#214332]/95 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20 shadow-md flex items-center gap-1">
-                  <Star className="w-3 h-3 fill-[#DC9924] text-[#DC9924]" />
-                  <span>CRAFTED IN INDIA</span>
-                </span>
-              </div>
+                    {/* Slide Counter on Image */}
+                    <div className="absolute top-4 right-4 z-10 pointer-events-none">
+                      <span className="bg-black/50 backdrop-blur-md text-white text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full border border-white/20 shadow-xs">
+                        0{idx + 1} / 0{slides.length}
+                      </span>
+                    </div>
 
-              {/* Floating Product Highlight Overlay */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/80 shadow-lg flex items-center justify-between gap-3">
-                <div className="min-w-0">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#214332] block">
-                    {current.productHighlight.tag}
-                  </span>
-                  <h4 className="font-editorial text-sm sm:text-base font-semibold text-stone-900 leading-tight truncate">
-                    {current.productHighlight.title}
-                  </h4>
-                  <p className="text-[11px] sm:text-xs text-stone-600 truncate mt-0.5">
-                    {current.productHighlight.subtitle}
-                  </p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <span className="text-xs sm:text-sm font-bold text-[#214332]">
-                      {current.productHighlight.price}
-                    </span>
-                    <span className="text-[11px] text-stone-400 line-through">
-                      {current.productHighlight.originalPrice}
-                    </span>
+                    {/* Floating Product Highlight Overlay */}
+                    <div className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-stone-200/80 shadow-lg flex items-center justify-between gap-3 z-10 pointer-events-auto">
+                      <div className="min-w-0">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-[#214332] block">
+                          {slide.productHighlight.tag}
+                        </span>
+                        <h4 className="font-editorial text-sm sm:text-base font-semibold text-stone-900 leading-tight truncate">
+                          {slide.productHighlight.title}
+                        </h4>
+                        <p className="text-[11px] sm:text-xs text-stone-600 truncate mt-0.5">
+                          {slide.productHighlight.subtitle}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-xs sm:text-sm font-bold text-[#214332]">
+                            {slide.productHighlight.price}
+                          </span>
+                          <span className="text-[11px] text-stone-400 line-through">
+                            {slide.productHighlight.originalPrice}
+                          </span>
+                        </div>
+                      </div>
+                      <Link
+                        href={slide.productHighlight.href}
+                        className="px-3.5 py-2 rounded-xl bg-[#214332] text-white text-xs font-semibold hover:bg-[#162f23] transition-colors whitespace-nowrap shadow-xs flex-shrink-0"
+                      >
+                        View Set
+                      </Link>
+                    </div>
                   </div>
+                ))}
+
+                {/* Top Floating Badge */}
+                <div className="absolute top-4 left-4 z-20 pointer-events-none">
+                  <span className="bg-[#214332]/95 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20 shadow-md flex items-center gap-1">
+                    <Star className="w-3 h-3 fill-[#DC9924] text-[#DC9924]" />
+                    <span>CRAFTED IN INDIA</span>
+                  </span>
                 </div>
-                <Link
-                  href={current.productHighlight.href}
-                  className="px-3.5 py-2 rounded-xl bg-[#214332] text-white text-xs font-semibold hover:bg-[#162f23] transition-colors whitespace-nowrap shadow-xs flex-shrink-0"
+
+                {/* Direct On-Image Left / Right Overlay Arrows */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevSlide();
+                  }}
+                  aria-label="Previous slide"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/85 hover:bg-white text-stone-800 hover:text-[#214332] shadow-md hover:shadow-lg flex items-center justify-center transition-all opacity-85 group-hover:opacity-100 backdrop-blur-xs cursor-pointer active:scale-95"
                 >
-                  View Set
-                </Link>
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextSlide();
+                  }}
+                  aria-label="Next slide"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/85 hover:bg-white text-stone-800 hover:text-[#214332] shadow-md hover:shadow-lg flex items-center justify-center transition-all opacity-85 group-hover:opacity-100 backdrop-blur-xs cursor-pointer active:scale-95"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
+
+              {/* 3 Interactive Thumbnail Preview Cards Strip */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-3">
+                {slides.map((s, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => scrollToSlide(idx)}
+                    aria-label={`Scroll to image ${idx + 1}: ${s.productHighlight.title}`}
+                    className={`group/thumb flex items-center gap-2 p-1.5 sm:p-2 rounded-xl border text-left transition-all duration-300 cursor-pointer ${
+                      currentSlide === idx
+                        ? "bg-white border-[#DC9924] shadow-sm ring-2 ring-[#DC9924]/20 scale-[1.02]"
+                        : "bg-white/70 hover:bg-white border-stone-200/80 opacity-75 hover:opacity-100"
+                    }`}
+                  >
+                    <img
+                      src={s.image}
+                      alt={s.productHighlight.title}
+                      className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg object-cover flex-shrink-0 border border-stone-200/60"
+                    />
+                    <div className="min-w-0 pr-1 hidden sm:block">
+                      <span
+                        className={`text-[9px] uppercase font-bold tracking-wider block truncate ${
+                          currentSlide === idx ? "text-[#DC9924]" : "text-stone-400"
+                        }`}
+                      >
+                        0{idx + 1} • {s.badge.split(" ")[0]}
+                      </span>
+                      <p className="text-xs font-semibold text-stone-800 truncate leading-tight mt-0.5">
+                        {s.productHighlight.title.replace("The ", "")}
+                      </p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
             </div>
           </div>
 
