@@ -23,8 +23,11 @@ export function HeroEditorial() {
       primaryCta: { label: "Discover Hampers", href: "/products?category=hamper" },
       secondaryCta: { label: "Shop All Stationery", href: "/products" },
       image:
-        images.heroDesktop ||
-        "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=1200",
+        images.heroDesktop &&
+        !images.heroDesktop.includes("aleena") &&
+        !images.heroDesktop.includes("founder")
+          ? images.heroDesktop
+          : "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=1200",
       productHighlight: {
         tag: "BESTSELLER CURATION",
         title: "The Artisanal Botanical Hamper",

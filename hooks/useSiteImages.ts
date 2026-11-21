@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { SiteImagesConfig, defaultSiteImages } from "@/types/siteImages";
 
-const STORAGE_KEY = "bloomcraft_site_images_v1";
+const STORAGE_KEY = "bloomcraft_site_images_v2";
 const STORAGE_TIME_KEY = "bloomcraft_site_images_time";
 const EVENT_NAME = "bloomcraft:site-images-updated";
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours client cache to protect database
