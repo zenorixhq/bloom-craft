@@ -22,6 +22,8 @@ export function FeaturedHampersSection() {
   const hamperProducts = useMemo(() => {
     const hampers = allProducts.filter(
       (p) =>
+        p.isHamper ||
+        p.category === "hamper-boxes" ||
         p.category === "hamper" ||
         p.tags?.some((t) => /hamper|gift box|gift set/i.test(t)) ||
         p.title.toLowerCase().includes("hamper") ||
@@ -31,7 +33,7 @@ export function FeaturedHampersSection() {
     // If hampers list is small, also include featured gift items
     if (hampers.length < 4) {
       const additional = allProducts.filter(
-        (p) => p.featured || p.category === "gifting-keepsakes"
+        (p) => p.featured || p.category === "basket" || p.category === "trolley"
       );
       return Array.from(new Set([...hampers, ...additional])).slice(0, 8);
     }
@@ -75,7 +77,7 @@ export function FeaturedHampersSection() {
           </div>
 
           <Link
-            href="/products?category=hamper"
+            href="/products?category=hamper-boxes"
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0"
           >
             <span>View All Hampers</span>

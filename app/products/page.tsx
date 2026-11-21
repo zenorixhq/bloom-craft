@@ -51,12 +51,13 @@ const categoryIconMap: Record<string, string> = {
   "offer-products": "/images/category-cards/necklace.png",
 };
 
-// Robust Category Matcher for Collections
 function matchesCategory(p: Product, catSlug: string): boolean {
   if (!catSlug || catSlug === "all") return true;
   if (catSlug === "new-arrivals") return !!p.isNewArrival || p.category === "new-arrivals";
-  if (catSlug === "hamper" || catSlug === "gift-hampers" || catSlug === "hampers") {
+  if (catSlug === "hamper" || catSlug === "hamper-boxes" || catSlug === "gift-hampers" || catSlug === "hampers") {
     return (
+      !!p.isHamper ||
+      p.category === "hamper-boxes" ||
       p.category === "hamper" ||
       p.category === "gift-hampers" ||
       p.category === "hampers" ||
@@ -64,25 +65,10 @@ function matchesCategory(p: Product, catSlug: string): boolean {
       p.tags?.some((t) => /hamper/i.test(t))
     );
   }
-  if (catSlug === "journals-planners") {
-    return p.category === "journals-planners" || /journal|planner|notebook/i.test(p.title);
-  }
-  if (catSlug === "wax-seals-calligraphy") {
-    return p.category === "wax-seals-calligraphy" || /wax|seal|stamp|calligraphy|quill|ink/i.test(p.title);
-  }
-  if (catSlug === "desk-accessories") {
-    return p.category === "desk-accessories" || /desk|pen stand|ruler|mat|tray/i.test(p.title);
-  }
-  if (catSlug === "cards-envelopes") {
-    return p.category === "cards-envelopes" || /card|envelope|note/i.test(p.title);
-  }
-  if (catSlug === "gifting-keepsakes") {
-    return p.category === "gifting-keepsakes" || /candle|bookmark|ribbon|wrap/i.test(p.title);
-  }
   return (
     p.category === catSlug ||
-    p.category?.toLowerCase() === catSlug.toLowerCase() ||
-    p.tags?.some((t) => t.toLowerCase() === catSlug.toLowerCase())
+    p.subcategory === catSlug ||
+    p.tags?.some((t) => t.toLowerCase().replace(/\s+/g, "-") === catSlug.toLowerCase())
   );
 }
 

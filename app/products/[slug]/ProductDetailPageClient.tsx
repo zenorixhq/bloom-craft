@@ -383,6 +383,45 @@ export default function ProductDetailPageClient({
             {product.description}
           </p>
 
+          {/* Multi-Category Hamper Breakdown */}
+          {product.hamperItems && product.hamperItems.length > 0 && (
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#E7E3DC] shadow-sm space-y-3 font-glacial">
+              <div className="flex items-center justify-between border-b border-[#E7E3DC] pb-2.5">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-[#DC9924]" />
+                  <h3 className="font-editorial text-base sm:text-lg font-bold text-[#18221D]">
+                    Included in This Hamper Box
+                  </h3>
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-wider bg-[#214332] text-white px-2.5 py-0.5 rounded-full">
+                  {product.hamperItems.length} Curated Items
+                </span>
+              </div>
+
+              <p className="text-xs text-stone-600">
+                This gift box brings together hand-selected pieces across different categories, packaged in our signature keepsake box with ribbons and wax seal:
+              </p>
+
+              <div className="grid grid-cols-1 gap-2 pt-1">
+                {product.hamperItems.map((item, idx) => (
+                  <div key={idx} className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-white border border-[#E7E3DC] text-xs">
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span className="w-5 h-5 rounded-full bg-[#EEF3F0] text-[#214332] flex items-center justify-center text-[10px] font-bold shrink-0">
+                        {idx + 1}
+                      </span>
+                      <span className="font-semibold text-stone-900 truncate">
+                        {item.title}
+                      </span>
+                    </div>
+                    <span className="text-[10px] uppercase font-bold text-[#DC9924] bg-[#FAF8F5] px-2 py-0.5 rounded-md border border-stone-200 shrink-0">
+                      {item.category.replace("-", " ")}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Ring / Bangle Dedicated Sizing (Adjustable vs Specific Sizes) */}
           {sizeInfo && (
             <div className="space-y-2 p-3 sm:p-3.5 rounded-xl bg-card border border-border/80 shadow-sm">

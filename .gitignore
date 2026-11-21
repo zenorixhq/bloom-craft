@@ -40,3 +40,6 @@ prisma/dev.db-journal
 *.db
 *.db-journal
 data/neon_backup.json
+
+.vercel
+.env*

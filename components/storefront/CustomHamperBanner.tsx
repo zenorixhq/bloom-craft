@@ -58,22 +58,29 @@ export function CustomHamperBanner() {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-3.5 pt-3">
+                <Link
+                  href="/custom-hamper"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#DC9924] hover:bg-[#c9891c] text-[#14261D] text-sm font-bold tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                >
+                  <Gift className="w-4 h-4 text-[#14261D]" />
+                  <span>Build Custom Hamper</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  href="/products?category=hamper-boxes"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 hover:border-white text-white text-sm font-semibold transition-all hover:bg-white/10"
+                >
+                  <span>Browse Ready Hampers</span>
+                </Link>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#DC9924] hover:bg-[#c9891c] text-[#14261D] text-sm font-bold tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                  className="inline-flex items-center gap-1.5 text-xs text-stone-200 hover:text-[#DC9924] underline underline-offset-4 py-2 transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4 fill-[#14261D]" />
-                  <span>Start Now (WhatsApp)</span>
+                  <MessageCircle className="w-3.5 h-3.5" />
+                  <span>Or Chat on WhatsApp</span>
                 </a>
-                <Link
-                  href="/products?category=hamper"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 hover:border-white text-white text-sm font-semibold transition-all hover:bg-white/10"
-                >
-                  <span>Browse Ready Hampers</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </div>
 

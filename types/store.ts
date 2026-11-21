@@ -49,6 +49,13 @@ export interface Product {
     options: string[]; // e.g., ["S", "M", "L"]
     sizeStock?: Record<string, number>; // Maps specific size option to stock count (e.g. { "Size 10 (15.9 mm)": 1 })
   }[];
+  isHamper?: boolean;
+  hamperItems?: {
+    category: string;
+    title: string;
+    quantity?: number;
+    image?: string;
+  }[];
   specifications?: { [key: string]: string };
   reviews?: Review[];
 }
@@ -72,6 +79,13 @@ export interface CartItem {
   image: string;
   quantity: number;
   stockCount?: number;
+  isCustomHamper?: boolean;
+  hamperItems?: {
+    category: string;
+    title: string;
+    quantity?: number;
+  }[];
+  customMessage?: string;
   selectedVariant?: {
     id: string;
     name: string;

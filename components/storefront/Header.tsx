@@ -110,15 +110,17 @@ export function Header() {
 
   const primaryNavLinks = [
     { label: "Shop All", href: "/products", highlight: false },
+    { label: "Build Hamper", href: "/custom-hamper", highlight: true },
     ...categoryList.slice(0, 4).map((c) => ({
       label: c.name.replace(/\s*Collection/gi, "").trim(),
       href: `/products?category=${c.slug}`,
-      highlight: c.slug === "hamper" || c.slug === "gift-hampers",
+      highlight: c.slug === "hamper-boxes" || c.slug === "hamper",
     })),
   ];
 
   const allCategoryLinks = [
-    { label: "Shop All", href: "/products" },
+    { label: "Build Custom Hamper ✨", href: "/custom-hamper" },
+    { label: "Shop All Products", href: "/products" },
     ...categoryList.map((c) => ({
       label: c.name.replace(/\s*Collection/gi, "").trim(),
       href: `/products?category=${c.slug}`,

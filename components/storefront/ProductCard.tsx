@@ -80,17 +80,23 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           ) : (
             <>
+              {(product.isHamper || (product.hamperItems && product.hamperItems.length > 0)) && (
+                <span className="bg-[#214332] text-white text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm tracking-wide uppercase flex items-center gap-1 border border-white/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#DC9924] animate-pulse" />
+                  <span>{product.hamperItems ? `${product.hamperItems.length}-Item Gift Box` : "Hamper"}</span>
+                </span>
+              )}
               {discountPercent > 0 && (
                 <span className="bg-destructive text-destructive-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
                   -{discountPercent}%
                 </span>
               )}
-              {product.isNewArrival && (
+              {product.isNewArrival && !product.isHamper && (
                 <span className="bg-primary text-primary-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
                   NEW
                 </span>
               )}
-              {product.isBestSeller && !product.isNewArrival && (
+              {product.isBestSeller && !product.isNewArrival && !product.isHamper && (
                 <span className="bg-accent text-accent-foreground text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm">
                   BESTSELLER
                 </span>
@@ -156,7 +162,9 @@ export function ProductCard({ product }: ProductCardProps) {
       <div className="p-2 sm:p-3 flex-1 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between gap-1 text-[9px] sm:text-[10px] text-muted-foreground mb-1">
-            <span className="capitalize truncate max-w-[80px] sm:max-w-[100px]">{product.category}</span>
+            <span className={`capitalize truncate max-w-[120px] ${product.isHamper ? "text-emerald-700 font-bold" : ""}`}>
+              {product.isHamper ? "Multi-Item Hamper" : product.category.replace("-", " ")}
+            </span>
             {product.rating && (
               <span className="flex items-center gap-0.5 font-medium text-foreground text-[9px] sm:text-[10px]">
                 <Star className="w-2.5 h-2.5 fill-amber-400 text-amber-400" />

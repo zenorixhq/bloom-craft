@@ -2,549 +2,652 @@ import { Product, Category, Order } from "@/types/store";
 
 export const categories: Category[] = [
   {
-    id: "cat-hamper",
-    slug: "hamper",
-    name: "Hamper",
-    description: "Handcrafted celebration hampers, bespoke gourmet gift boxes & personalized artisanal keepsakes.",
+    id: "cat-hamper-boxes",
+    slug: "hamper-boxes",
+    name: "Hamper Boxes",
+    description: "Rigid magnetic gift boxes, sliding pine wood keepsakes, and velvet-lined gift presentation boxes.",
     image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
-    productCount: 4,
+    productCount: 8,
   },
   {
-    id: "cat-journals-planners",
-    slug: "journals-planners",
-    name: "Journals & Planners",
-    description: "Handcrafted full-grain leather journals, botanical linen notebooks & undated daily planners.",
-    image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800",
-    productCount: 12,
+    id: "cat-plushies",
+    slug: "plushies",
+    name: "Plushies",
+    description: "Ultra-soft cuddle plushies, aesthetic bunny keepsakes, and adorable gifting companions.",
+    image: "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=800",
+    productCount: 6,
   },
   {
-    id: "cat-wax-seals-calligraphy",
-    slug: "wax-seals-calligraphy",
-    name: "Wax Seals & Calligraphy",
-    description: "Solid brass monogram wax stamps, pearlescent sealing wax beads & vintage dip pen sets.",
-    image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-    productCount: 10,
-  },
-  {
-    id: "cat-desk-accessories",
-    slug: "desk-accessories",
-    name: "Desk Accessories",
-    description: "Carved solid walnut pen stands, vintage brass ruler clips & handcrafted leather desk mats.",
-    image: "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800",
-    productCount: 9,
-  },
-  {
-    id: "cat-cards-envelopes",
-    slug: "cards-envelopes",
-    name: "Greeting Cards & Envelopes",
-    description: "Handmade deckle-edge cotton cards, botanical pressed floral stationery & wax-sealed notelets.",
-    image: "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=800",
+    id: "cat-korean-stationery",
+    slug: "korean-stationery",
+    name: "Korean Stationery",
+    description: "Pastel mildliners, archival grid journals, aesthetic deco stickers, and kawaii washi tapes.",
+    image: "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800",
     productCount: 14,
   },
   {
-    id: "cat-gifting-keepsakes",
-    slug: "gifting-keepsakes",
-    name: "Gifting Keepsakes",
-    description: "Hand-poured botanical soy candles, solid brass floral bookmarks & luxury velvet ribbon wraps.",
+    id: "cat-anti-tarnish-jewellery",
+    slug: "anti-tarnish-jewellery",
+    name: "Anti-tarnish Jewellery",
+    description: "Radiant 18K gold-plated waterproof necklaces, dainty clover bracelets, and timeless rings.",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
+    productCount: 12,
+  },
+  {
+    id: "cat-perfume",
+    slug: "perfume",
+    name: "Perfume",
+    description: "Artisanal French vanilla, midnight rose & oud, and long-lasting luxury pocket perfumes.",
+    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800",
+    productCount: 8,
+  },
+  {
+    id: "cat-ribbons",
+    slug: "ribbons",
+    name: "Ribbons",
+    description: "Raw hand-frayed silk chiffon ribbons, double-face satin spools, and metallic organza ribbon wraps.",
     image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
-    productCount: 11,
+    productCount: 7,
+  },
+  {
+    id: "cat-frames",
+    slug: "frames",
+    name: "Frames",
+    description: "Handcrafted vintage brass pressed glass frames, arch tabletop frames, and floral border frames.",
+    image: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&q=80&w=800",
+    productCount: 9,
+  },
+  {
+    id: "cat-quran-musalla",
+    slug: "quran-musalla",
+    name: "Quran Musalla",
+    description: "Embroidered velvet travel musalla prayer mats, pearl tasbih beads, and Quran gift sets.",
+    image: "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=800",
+    productCount: 6,
+  },
+  {
+    id: "cat-acrylic-cutouts",
+    slug: "acrylic-cutouts",
+    name: "Acrylic Cutouts",
+    description: "Personalized custom song plaques, illuminated LED acrylic stands, and calligraphy cutouts.",
+    image: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800",
+    productCount: 7,
+  },
+  {
+    id: "cat-keychains",
+    slug: "keychains",
+    name: "Keychains",
+    description: "Hand-beaded pearl charms, initial floral resin keychains, and plushie bag accessories.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800",
+    productCount: 10,
+  },
+  {
+    id: "cat-basket",
+    slug: "basket",
+    name: "Basket",
+    description: "Natural handwoven seagrass hamper baskets, wicker trays, and cotton rope gift baskets.",
+    image: "https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&q=80&w=800",
+    productCount: 5,
+  },
+  {
+    id: "cat-trolley",
+    slug: "trolley",
+    name: "Trolley",
+    description: "Tiered metal gifting carts, rolling presentation trolleys, and miniature surprise trays.",
+    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800",
+    productCount: 4,
+  },
+  {
+    id: "cat-bouquet-sheet",
+    slug: "bouquet-sheet",
+    name: "Bouquet Sheet",
+    description: "Waterproof Korean frosted bouquet sheets, gold-lined floral wrapping, and vintage kraft papers.",
+    image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=800",
+    productCount: 8,
   },
 ];
 
 export const products: Product[] = [
-  // 1. Curated Gift Hampers
+  // ==========================================
+  // 1. MULTI-CATEGORY CURATED HAMPERS (Gift Boxes)
+  // ==========================================
   {
-    id: "prod-botanical-hamper",
-    slug: "artisanal-botanical-gift-hamper",
-    title: "The Artisanal Botanical Gift Hamper",
-    shortDescription: "Hand-bound linen journal, brass rollerball pen, scented soy candle, and wax seal kit in a pinewood keepsake box.",
-    description: "Our signature luxury hamper thoughtfully curated for celebrations, birthdays, and cherished milestones. Includes an A5 olive linen journal, a solid brass rollerball pen, a hand-poured wild fig & cedar soy candle, a botanical wax seal kit with 100 metallic beads, and a handwritten personalized message card presented in a handcrafted pine wood slide box with raw cotton ribbon.",
-    price: 2499,
-    salePrice: 2199,
-    category: "hamper",
-    tags: ["Hamper", "Gift Hamper", "Celebration", "Bestseller", "Botanical", "Luxury"],
-    images: [
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 38,
-    inStock: true,
-    stockCount: 14,
-    featured: true,
-    isBestSeller: true,
-    isNewArrival: false,
-    specifications: {
-      "Contents": "A5 Linen Journal, Brass Pen, Soy Candle (120g), Wax Seal Kit, Keepsake Box",
-      "Box Material": "Natural Pinewood with sliding lid",
-      "Packaging": "Linen ribbon with dried botanical sprig and wax seal",
-      "Occasion": "Birthdays, Anniversaries, Corporate, Wedding Gifting"
-    }
-  },
-  {
-    id: "prod-vintage-scribe-hamper",
-    slug: "vintage-scribe-calligraphy-hamper",
-    title: "The Vintage Scribe Calligraphy Gift Set",
-    shortDescription: "Walnut wood dip pen, 5 calligraphy nibs, iron gall ink vial, brass wax seal, and deckle-edge cotton papers.",
-    description: "An authentic scribe's dream. Hand-turned walnut calligraphy dip pen with 5 vintage steel nibs, a 30ml glass inkwell bottle of archival black ink, solid brass botanical seal stamp, 3 metallic sealing wax sticks, a brass melting spoon, and 12 sheets of handmade deckle edge cotton paper enclosed in a velvet-lined archival keepsake case.",
-    price: 2999,
-    salePrice: 2699,
-    category: "hamper",
-    tags: ["Hamper", "Calligraphy", "Vintage", "Gift Set", "Wax Seal", "Handmade"],
-    images: [
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.9,
-    reviewCount: 24,
-    inStock: true,
-    stockCount: 8,
-    featured: true,
-    isBestSeller: true,
-    specifications: {
-      "Included": "Dip Pen, 5 Nibs, 30ml Ink, Brass Stamp, 3 Wax Sticks, Melting Spoon, 12 Deckle Sheets",
-      "Box": "Forest green velvet-lined rigid case with gold foil accents",
-      "Paper": "100% Cotton Rag handmade 250gsm"
-    }
-  },
-  {
-    id: "prod-celebration-deluxe-box",
-    slug: "celebration-blooms-deluxe-hamper",
-    title: "Celebration Blooms Deluxe Gift Hamper",
-    shortDescription: "Gilded notebook, organic rose herbal infusion, raw wildflower honey with brass dipper, and scented candle.",
-    description: "A sensorial gifting experience designed to pamper and celebrate. Features a foil-embossed hardcover journal, a glass jar of organic Kashmir rose herbal tea, raw single-origin wildflower honey with a brass honeycomb dipper, an artisanal amber glass soy candle, and a handcrafted deckle edge greeting card personalized with your custom message.",
+    id: "prod-ultimate-celebration-hamper",
+    slug: "ultimate-celebration-deluxe-hamper",
+    title: "The Ultimate Celebration Deluxe Hamper",
+    shortDescription: "Curated luxury gift box combining 18K Anti-Tarnish Jewellery, French Vanilla Perfume, Korean Stationery, Plushie, and Silk Ribbon.",
+    description: "Our signature multi-category celebration hamper, thoughtfully assembled to delight. Presented inside a handcrafted matte pinewood slide box, this gift contains: a waterproof 18K Gold Plated Clover Necklace, an artisanal French Madagascar Vanilla Eau de Parfum (30ml), a Korean pastel grid journal with pastel mildliners, a soft bunny plushie, and hand-frayed sage silk chiffon ribbon wrapping.",
     price: 3499,
     salePrice: 2999,
-    category: "hamper",
-    tags: ["Hamper", "Luxury Hamper", "Celebration", "Herbal Tea", "Honey", "Keepsake"],
+    category: "hamper-boxes",
+    tags: ["Hamper", "Gift Box", "Celebration", "Jewellery", "Perfume", "Plushie", "Bestseller"],
     images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=800",
     ],
     rating: 5.0,
-    reviewCount: 42,
-    inStock: true,
-    stockCount: 10,
-    featured: true,
-    specifications: {
-      "Dimensions": "30 cm x 24 cm x 12 cm",
-      "Box": "Handcrafted rigid matte box with magnetic closure and moss lining",
-      "Dietary": "100% Vegetarian & Pure Organic Ingredients"
-    }
-  },
-  {
-    id: "prod-cozy-desk-sanctuary",
-    slug: "cozy-desk-sanctuary-gift-set",
-    title: "Cozy Desk Sanctuary Gift Set",
-    shortDescription: "Solid walnut pen tray, brass bookmark clip, weekly desk planner, and cedarwood room spray.",
-    description: "Transform any workspace into a serene, inspiring sanctuary. Includes a solid American walnut pen tray with hand-rubbed oil finish, a 60-sheet undated landscape weekly desk pad, a heavy solid brass bookmark clip, and a 50ml glass spray bottle of cedarwood and bergamot workspace mist.",
-    price: 1899,
-    salePrice: 1699,
-    category: "hamper",
-    tags: ["Desk Decor", "Gift Box", "Productivity", "Walnut Wood"],
-    images: [
-      "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.8,
-    reviewCount: 19,
-    inStock: true,
-    stockCount: 15,
-    specifications: {
-      "Wood": "Sustainably sourced natural American walnut",
-      "Planner": "100gsm fountain-pen safe paper (60 tear-off sheets)",
-      "Mist": "Pure essential oils (50ml)"
-    }
-  },
-
-  // 2. Journals & Notebooks
-  {
-    id: "prod-leather-journal",
-    slug: "handcrafted-full-grain-leather-journal",
-    title: "Handcrafted Full-Grain Leather Journal",
-    shortDescription: "240 pages of 120gsm archival paper with hand-stitched saddle binding and wrap-around tie.",
-    description: "A journal meant to age gracefully through decades of reflection, sketches, and notes. Crafted from supple full-grain pull-up leather that develops a rich natural patina with every touch. Features 240 blank deckled pages of acid-free 120gsm paper hand-bound with traditional Coptic stitch that lies completely flat on any surface.",
-    price: 1299,
-    salePrice: 1099,
-    category: "journals-planners",
-    tags: ["Leather Journal", "Handcrafted", "Archival", "Lay-flat", "Bestseller"],
-    images: [
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 65,
-    inStock: true,
-    stockCount: 22,
-    featured: true,
-    isBestSeller: true,
-    specifications: {
-      "Dimensions": "A5 (15 x 21 cm)",
-      "Pages": "240 pages (120 sheets) 120gsm unlined ivory paper",
-      "Leather": "100% Full-grain buff leather",
-      "Binding": "Hand-stitched Coptic lay-flat binding"
-    }
-  },
-  {
-    id: "prod-botanical-linen-notebook",
-    slug: "botanical-linen-hardcover-notebook",
-    title: "Botanical Linen Hardcover Notebook",
-    shortDescription: "Premium 140gsm fountain-pen friendly pages with gold foil botanical cover and ribbon marker.",
-    description: "Wrapped in tactile woven bookcloth linen in deep forest sage, adorned with delicate gold foil pressed botanical florals. Contains 192 numbered pages of ultra-smooth 140gsm bleed-resistant paper suitable for fountain pens, brush pens, and light watercolors. Includes dual ribbon markers and an expandable back pocket.",
-    price: 799,
-    salePrice: 699,
-    category: "journals-planners",
-    tags: ["Linen Notebook", "Botanical", "Fountain Pen Friendly", "Gold Foil"],
-    images: [
-      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.9,
     reviewCount: 48,
     inStock: true,
-    stockCount: 30,
-    isNewArrival: true,
-    specifications: {
-      "Dimensions": "A5 (14.8 x 21 cm)",
-      "Paper": "140gsm archival ivory dot-grid or ruled paper",
-      "Features": "Gilded edges, double ribbon bookmarks, back document envelope"
-    }
-  },
-  {
-    id: "prod-daily-undated-planner",
-    slug: "minimalist-undated-daily-planner",
-    title: "Minimalist Undated Daily Planner",
-    shortDescription: "365 days of structured productivity layouts, priority matrix, and weekly habit reviews.",
-    description: "Start anytime without wasted days. Our undated daily planner is engineered for mindful productivity with dedicated sections for daily priority focus, hourly time blocks, gratitude reflection, and end-of-week reviews. Smyth sewn binding allows the book to open 180 degrees completely flat.",
-    price: 899,
-    salePrice: 799,
-    category: "journals-planners",
-    tags: ["Daily Planner", "Undated", "Productivity", "Mindfulness"],
-    images: [
-      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.8,
-    reviewCount: 31,
-    inStock: true,
-    stockCount: 18,
-    specifications: {
-      "Pages": "384 pages (Full 12-month undated planning)",
-      "Paper": "100gsm smooth feather-proof bamboo paper",
-      "Cover": "Vegan leather soft-touch hardcover with elastic band"
-    }
-  },
-  {
-    id: "prod-cotton-deckle-journal",
-    slug: "deckle-edge-cotton-watercolor-journal",
-    title: "Deckle Edge Cotton Watercolor Journal",
-    shortDescription: "100% recycled cotton handmade paper with raw deckled edges, 300gsm cold-pressed texture.",
-    description: "Crafted by master artisans using traditional wooden deckle frames. Each page features naturally feathered deckled edges with a tactile cold-pressed texture that accepts watercolors, gouache, inks, and calligraphy without buckling. Bound with exposed raw linen thread.",
-    price: 1199,
-    salePrice: 999,
-    category: "journals-planners",
-    tags: ["Cotton Paper", "Deckle Edge", "Watercolor", "Handmade Paper"],
-    images: [
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 27,
-    inStock: true,
-    stockCount: 12,
-    specifications: {
-      "Weight": "300gsm 100% Cotton Rag paper",
-      "Leaves": "60 pages (30 leaves) double-sided",
-      "Surface": "Cold-pressed natural grain texture"
-    }
-  },
-
-  // 3. Wax Seals & Calligraphy
-  {
-    id: "prod-botanical-wax-stamp",
-    slug: "botanical-brass-wax-seal-stamp",
-    title: "Botanical Brass Wax Seal Stamp",
-    shortDescription: "Solid brass stamp head with turned walnut handle for crisp, royal envelope seals.",
-    description: "Add an unmistakable touch of old-world romance to your wedding stationery, letters, and gift hampers. Made with a heavy solid CNC-carved brass stamp head that delivers sharp, detailed impressions with zero sticking. Screws effortlessly onto a hand-turned dark walnut wood handle.",
-    price: 599,
-    salePrice: 499,
-    category: "wax-seals-calligraphy",
-    tags: ["Wax Seal", "Brass Stamp", "Botanical", "Stationery", "Bestseller"],
-    images: [
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 53,
-    inStock: true,
-    stockCount: 35,
+    stockCount: 16,
     featured: true,
     isBestSeller: true,
+    isHamper: true,
+    hamperItems: [
+      { category: "Hamper Boxes", title: "Luxury Pinewood Keepsake Slide Box", quantity: 1 },
+      { category: "Anti-tarnish Jewellery", title: "18K Gold Plated Four-Leaf Clover Necklace (Waterproof)", quantity: 1 },
+      { category: "Perfume", title: "French Madagascar Vanilla Eau de Parfum (30ml)", quantity: 1 },
+      { category: "Korean Stationery", title: "Pastel Aesthetic Grid Journal & Mildliner Set", quantity: 1 },
+      { category: "Plushies", title: "Fluffy Buttercream Bunny Plush Keepsake", quantity: 1 },
+      { category: "Ribbons", title: "Hand-frayed Sage Silk Chiffon Ribbon Wrap", quantity: 1 },
+    ],
     specifications: {
-      "Stamp Diameter": "25 mm / 30 mm",
-      "Material": "Solid precision-carved brass head & turned walnut wood handle",
-      "Compatibility": "Universal M8 threaded connection for interchangeable heads"
+      "Included Categories": "Hamper Boxes, Anti-tarnish Jewellery, Perfume, Korean Stationery, Plushies, Ribbons",
+      "Total Items": "6 Curated Items",
+      "Box Material": "Natural Pinewood with sliding lid",
+      "Packaging": "Silk Chiffon Ribbon & Custom Handwritten Card Included",
+      "Occasion": "Birthdays, Anniversaries, Milestones, Festivals"
     }
   },
   {
-    id: "prod-wax-beads-jar",
-    slug: "artisanal-sealing-wax-beads-jar",
-    title: "Artisanal Sealing Wax Beads Gift Jar",
-    shortDescription: "150 octagonal wax beads in antique gold, sage green, and pearl white inside a vintage corked vial.",
-    description: "Formulated with flexible, high-adhesion resin wax that melts smoothly without smoke or brittleness. Finished seals will flex through postal sorting without cracking or breaking. 3 to 4 beads create one perfect 25mm seal. Packed in a reusable vintage glass jar with genuine cork stopper.",
-    price: 449,
-    category: "wax-seals-calligraphy",
-    tags: ["Wax Beads", "Metallic Wax", "Sealing Wax", "Gold & Sage"],
+    id: "prod-serene-spiritual-hamper",
+    slug: "serene-spiritual-gift-hamper",
+    title: "The Serene Spiritual Gift Hamper",
+    shortDescription: "Woven seagrass basket containing an embroidered velvet Musalla, pearl Tasbih, Midnight Oud perfume, and vintage brass photo frame.",
+    description: "An uplifting and spiritually serene gift hamper. Nested inside a natural handwoven seagrass basket with sturdy handles, this curated box features: a plush embroidered travel velvet Musalla prayer mat with matching pearl Tasbih beads, a rich Midnight Rose & Oud pocket perfume, a handcrafted vintage brass pressed glass frame, and double-face satin ribbon with floral bouquet sheet accents.",
+    price: 3899,
+    salePrice: 3299,
+    category: "basket",
+    tags: ["Hamper", "Spiritual", "Quran Musalla", "Basket", "Perfume", "Frames", "Keepsake"],
     images: [
-      "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
+      "https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&q=80&w=800",
     ],
     rating: 4.9,
-    reviewCount: 37,
+    reviewCount: 31,
     inStock: true,
-    stockCount: 40,
-    specifications: {
-      "Count": "Approx. 150 octagonal beads (enough for ~45 seals)",
-      "Colors": "Antique Roman Gold, Sage Olive, Champagne Pearl",
-      "Features": "Smokeless melt, flexible postal-safe formula"
-    }
-  },
-  {
-    id: "prod-calligraphy-quill-set",
-    slug: "vintage-feather-quill-calligraphy-set",
-    title: "Vintage Feather Quill & Inkwell Set",
-    shortDescription: "Natural feather quill pen with 5 interchangeable calligraphy nibs and 15ml black ink.",
-    description: "Experience the timeless poetry of quill writing. Features a hand-selected natural quill feather with an engraved vintage alloy barrel, 5 stainless steel calligraphy nibs ranging from extra-fine script to wide Gothic italic, and a 15ml bottle of deep carbon black ink with a carved antique desk stand.",
-    price: 1149,
-    salePrice: 949,
-    category: "wax-seals-calligraphy",
-    tags: ["Quill Pen", "Calligraphy", "Vintage Desk", "Gift"],
-    images: [
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.8,
-    reviewCount: 22,
-    inStock: true,
-    stockCount: 16,
-    specifications: {
-      "Contents": "1 Feather Quill Pen, 5 Stainless Calligraphy Nibs, 15ml Black Ink Bottle, 1 Pen Stand",
-      "Box": "Vintage book-style gift box with magnetic closure"
-    }
-  },
-
-  // 4. Desk Accessories
-  {
-    id: "prod-walnut-pen-stand",
-    slug: "solid-walnut-pen-stand-organizer",
-    title: "Solid Walnut Wood Pen Stand & Organizer",
-    shortDescription: "Carved natural American walnut block with brass slots for fountain pens and stationery tools.",
-    description: "Machined from a single block of sustainably harvested American black walnut and hand-finished with organic beeswax. Features 4 angled pen slots lined with velvet felt to protect precious fountain pen barrels, alongside a carved brass catchall channel for paperclips and wax seals.",
-    price: 899,
-    salePrice: 799,
-    category: "desk-accessories",
-    tags: ["Walnut Wood", "Pen Stand", "Desk Organizer", "Minimalist"],
-    images: [
-      "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.9,
-    reviewCount: 29,
-    inStock: true,
-    stockCount: 20,
-    isNewArrival: true,
-    specifications: {
-      "Dimensions": "22 cm x 6.5 cm x 3.5 cm",
-      "Wood": "100% Solid Black Walnut (Zero veneer)",
-      "Finish": "Hand-rubbed natural oil & organic wax"
-    }
-  },
-  {
-    id: "prod-brass-ruler-bookmark",
-    slug: "vintage-solid-brass-ruler-bookmark-set",
-    title: "Vintage Solid Brass Ruler & Bookmark Clips",
-    shortDescription: "Heavy solid brass etched 15cm ruler with matching wire bookmark clips in an artisan tin.",
-    description: "Cut from heavy 2mm solid brass plate that will never bend, warp, or crack. Laser-etched with millimeter and inch precision markings that never wear off. Comes with a set of 4 geometric solid brass bookmark clips presented in a matte slide-top tin.",
-    price: 499,
-    category: "desk-accessories",
-    tags: ["Solid Brass", "Ruler", "Bookmark", "Desk Tool"],
-    images: [
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.8,
-    reviewCount: 34,
-    inStock: true,
-    stockCount: 25,
-    specifications: {
-      "Material": "100% Pure Raw Solid Brass",
-      "Length": "15 cm (6 inches)",
-      "Set": "1 Ruler + 4 Brass Wire Page Clips"
-    }
-  },
-  {
-    id: "prod-leather-desk-pad",
-    slug: "handcrafted-leather-desk-mat",
-    title: "Handcrafted Full-Grain Leather Desk Mat",
-    shortDescription: "Water-resistant oiled leather desk pad with burnished edges and non-slip suede backing.",
-    description: "The ultimate centerpiece for a refined writing workspace. Crafted from 2.5mm thick full-grain harness leather that provides the ideal cushioning for pen writing and typing. Suede backing prevents slipping, while burnished edges ensure heirloom longevity.",
-    price: 1799,
-    salePrice: 1499,
-    category: "desk-accessories",
-    tags: ["Desk Mat", "Leather", "Workspace", "Luxury"],
-    images: [
-      "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 18,
-    inStock: true,
-    stockCount: 10,
-    specifications: {
-      "Dimensions": "75 cm x 40 cm (Standard Large Desk)",
-      "Material": "Vegetable-tanned full-grain cowhide",
-      "Care": "Wipes clean with damp cloth, condition yearly"
-    }
-  },
-
-  // 5. Greeting Cards & Envelopes
-  {
-    id: "prod-deckle-botanical-cards",
-    slug: "handmade-deckle-edge-botanical-cards",
-    title: "Handmade Deckle Edge Botanical Note Cards (Box of 10)",
-    shortDescription: "100% cotton deckle cards with real pressed floral petals and matching wax-ready envelopes.",
-    description: "Each card is formed individually using century-old cotton rag papermaking techniques embedded with wild pressed cornflower and larkspur petals. The set contains 10 blank folded cards and 10 self-matching deckle-edge envelopes housed in a craft paper keepsake box with twine wrapping.",
-    price: 699,
-    salePrice: 599,
-    category: "cards-envelopes",
-    tags: ["Greeting Cards", "Deckle Edge", "Pressed Flowers", "Handmade"],
-    images: [
-      "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 5.0,
-    reviewCount: 44,
-    inStock: true,
-    stockCount: 30,
+    stockCount: 12,
     featured: true,
-    specifications: {
-      "Quantity": "10 Folded Cards + 10 Matching Envelopes",
-      "Paper": "250gsm Cotton Rag with real dried floral inclusions",
-      "Card Size": "A6 folded (10.5 x 14.8 cm)"
-    }
-  },
-  {
-    id: "prod-gold-foil-celebration-cards",
-    slug: "celebration-gold-foil-letterpress-cards",
-    title: "Celebration Gold Foil Letterpress Cards (Pack of 6)",
-    shortDescription: "Deeply debossed gold foil letterpress typography on ultra-thick 400gsm cotton board.",
-    description: "Letterpress printed using traditional Heidelberg vintage press machines. Thick 400gsm cotton paper creates a deeply tactile dimensional impression with shining warm gold foil. Blank inside for your personal wishes. Packaged with forest green Euro-flap envelopes.",
-    price: 499,
-    category: "cards-envelopes",
-    tags: ["Letterpress", "Gold Foil", "Celebration", "Luxury Cards"],
-    images: [
-      "https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"
+    isBestSeller: true,
+    isHamper: true,
+    hamperItems: [
+      { category: "Basket", title: "Handwoven Natural Seagrass Hamper Basket", quantity: 1 },
+      { category: "Quran Musalla", title: "Embroidered Velvet Travel Musalla & Pearl Tasbih", quantity: 1 },
+      { category: "Perfume", title: "Midnight Rose & Oud Artisanal Perfume (30ml)", quantity: 1 },
+      { category: "Frames", title: "Handcrafted Vintage Brass Pressed Glass Frame (4x6)", quantity: 1 },
+      { category: "Ribbons", title: "Double-face Satin Emerald Ribbon Wrap", quantity: 1 },
+      { category: "Bouquet Sheet", title: "Frosted Floral Accent Sheet Lining", quantity: 1 },
     ],
-    rating: 4.9,
-    reviewCount: 28,
-    inStock: true,
-    stockCount: 24,
     specifications: {
-      "Quantity": "6 Cards with 6 Forest Green Envelopes",
-      "Paper": "400gsm French Cotton Board",
-      "Printing": "True deep relief metallic hot foil stamping"
+      "Included Categories": "Basket, Quran Musalla, Perfume, Frames, Ribbons, Bouquet Sheet",
+      "Total Items": "6 Curated Items",
+      "Basket Material": "Natural Hand-braided Seagrass",
+      "Occasion": "Ramadan, Eid, Housewarming, Nikah, Blessings"
     }
   },
-
-  // 6. Gifting Keepsakes
   {
-    id: "prod-botanical-soy-candle",
-    slug: "hand-poured-botanical-amber-soy-candle",
-    title: "Hand-Poured Botanical Amber Soy Candle",
-    shortDescription: "Wild fig, oakmoss & cedarwood essential oils in an amber glass jar with natural wood wick.",
-    description: "Crafted in small batches with 100% natural soy wax, lead-free crackling wooden wicks, and pure botanical essential oil blends. Clean, non-toxic burn for over 45 hours, filling your sanctuary with soothing notes of sun-warmed fig, earthy cedarwood, and calming bergamot.",
-    price: 699,
-    salePrice: 599,
-    category: "gifting-keepsakes",
-    tags: ["Soy Candle", "Botanical", "Wood Wick", "Handmade", "Home Fragrance"],
+    id: "prod-kawaii-pastel-dream-trolley",
+    slug: "pastel-kawaii-dream-trolley-hamper",
+    title: "Pastel Kawaii Dream Trolley Hamper",
+    shortDescription: "Gifting trolley loaded with Korean Stationery, Soft Plushie, Acrylic Song Plaque, Floral Keychain, and Bouquet wrapping.",
+    description: "The ultimate cute and vibrant surprise! Arranged upon a miniature 2-tier rolling gifting trolley, this hamper packs: an authentic Kawaii Cuddle Bunny plushie, a 10-piece Korean pastel Mildliner & washi tape stationery kit, a personalized clear Acrylic Song Plaque with wood stand, an aesthetic hand-beaded pearl charm keychain, and Korean waterproof frosted bouquet wrapping sheets.",
+    price: 2999,
+    salePrice: 2499,
+    category: "trolley",
+    tags: ["Hamper", "Trolley", "Korean Stationery", "Plushies", "Acrylic Cutouts", "Keychains"],
     images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800",
+    ],
+    rating: 5.0,
+    reviewCount: 39,
+    inStock: true,
+    stockCount: 15,
+    featured: true,
+    isHamper: true,
+    hamperItems: [
+      { category: "Trolley", title: "Pastel Gifting Presentation Rolling Trolley", quantity: 1 },
+      { category: "Plushies", title: "Soft Bunny Ear Cuddle Plushie", quantity: 1 },
+      { category: "Korean Stationery", title: "Korean Pastel Highlighters & Deco Tape Bundle", quantity: 1 },
+      { category: "Acrylic Cutouts", title: "Custom Song/Message Clear Acrylic Plaque", quantity: 1 },
+      { category: "Keychains", title: "Handmade Beaded Pearl & Initial Charm Keychain", quantity: 1 },
+      { category: "Bouquet Sheet", title: "Pastel Korean Waterproof Frosted Wrap", quantity: 2 },
+    ],
+    specifications: {
+      "Included Categories": "Trolley, Plushies, Korean Stationery, Acrylic Cutouts, Keychains, Bouquet Sheet",
+      "Total Items": "6 Curated Items",
+      "Presentation": "Tiered Rolling Cart with ribbons & greeting card",
+      "Occasion": "Birthdays, Best Friends, Graduations, Cute Surprises"
+    }
+  },
+  {
+    id: "prod-golden-romance-anniversary-box",
+    slug: "golden-romance-anniversary-hamper-box",
+    title: "Golden Romance Anniversary Hamper Box",
+    shortDescription: "Luxury magnetic gift box featuring 18K Anti-tarnish Bracelet, French Perfume, Brass Photo Frame, and Satin Ribbon.",
+    description: "Engineered for deep romantic moments and cherished anniversaries. Enclosed in a heavy rigid matte gift box with magnetic snap closure, this box reveals: a waterproof 18K Gold Plated Herringbone & Pearl Bracelet, a warm French Amber & Vanilla Eau de Parfum, a handcrafted solid brass tabletop photo frame, and a luxurious dual-tone satin ribbon wrap.",
+    price: 3199,
+    salePrice: 2799,
+    category: "hamper-boxes",
+    tags: ["Hamper", "Anniversary", "Jewellery", "Perfume", "Frames", "Luxury"],
+    images: [
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800",
+      "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&q=80&w=800",
     ],
     rating: 5.0,
     reviewCount: 52,
     inStock: true,
-    stockCount: 28,
+    stockCount: 18,
+    featured: true,
+    isHamper: true,
+    hamperItems: [
+      { category: "Hamper Boxes", title: "Rigid Matte Champagne Gift Box with Magnetic Snap", quantity: 1 },
+      { category: "Anti-tarnish Jewellery", title: "18K Gold Plated Dainty Herringbone Bracelet", quantity: 1 },
+      { category: "Perfume", title: "Warm Vanilla & Amber Woods Eau de Parfum (30ml)", quantity: 1 },
+      { category: "Frames", title: "Handcrafted Brass & Glass Photo Frame (4x6)", quantity: 1 },
+      { category: "Ribbons", title: "French Rose Gold Double Satin Ribbon", quantity: 1 },
+    ],
+    specifications: {
+      "Included Categories": "Hamper Boxes, Anti-tarnish Jewellery, Perfume, Frames, Ribbons",
+      "Total Items": "5 Curated Items",
+      "Occasion": "Weddings, Anniversaries, Valentine, Romantic Gestures"
+    }
+  },
+
+  // ==========================================
+  // 2. HAMPER BOXES (Standalone)
+  // ==========================================
+  {
+    id: "prod-box-pinewood-slide",
+    slug: "luxury-pinewood-slide-hamper-box",
+    title: "Luxury Pinewood Keepsake Slide Hamper Box",
+    shortDescription: "Handcrafted solid pine wood gift box with smooth sliding lid, natural grain finish, and custom engraving ready.",
+    description: "Built from seasoned, smooth-sanded pine wood with a natural satin oil sealant. Features a precision sliding lid that creates an elegant reveal experience. Reusable for years as a treasured keepsake memory box.",
+    price: 799,
+    salePrice: 649,
+    category: "hamper-boxes",
+    tags: ["Hamper Boxes", "Wood Box", "Keepsake", "Custom Gifting"],
+    images: ["https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 29,
+    inStock: true,
+    stockCount: 35,
+    specifications: {
+      "Dimensions": "28 cm x 20 cm x 10 cm",
+      "Material": "100% Solid Natural Pine Wood",
+      "Closure": "Sliding Top Lid"
+    }
+  },
+  {
+    id: "prod-box-magnetic-matte",
+    slug: "rigid-matte-magnetic-gift-box",
+    title: "Rigid Matte Gift Box with Magnetic Closure",
+    shortDescription: "Ultra-heavyweight 1200gsm rigid presentation box with hidden magnetic clasp and velvet touch finish.",
+    description: "The gold standard of luxury packaging. Features a smooth matte lamination, reinforced corners, and a concealed magnetic flap with a satisfying snap shut.",
+    price: 599,
+    salePrice: 499,
+    category: "hamper-boxes",
+    tags: ["Hamper Boxes", "Magnetic Box", "Luxury Packaging"],
+    images: ["https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.8,
+    reviewCount: 34,
+    inStock: true,
+    stockCount: 50,
+  },
+
+  // ==========================================
+  // 3. PLUSHIES
+  // ==========================================
+  {
+    id: "prod-plush-bunny-keepsake",
+    slug: "fluffy-bunny-keepsake-cuddle-plushie",
+    title: "Fluffy Buttercream Bunny Plush Keepsake",
+    shortDescription: "Ultra-soft premium cotton plushie with floppy ears and hypoallergenic plush filling.",
+    description: "Delightfully soft to hold, this buttercream bunny plushie adds immense warmth and sweetness to any custom gift hamper. Made with baby-safe hypoallergenic fibers and double-stitched seams.",
+    price: 699,
+    salePrice: 549,
+    category: "plushies",
+    tags: ["Plushies", "Bunny", "Cuddle", "Cute", "Gifting"],
+    images: ["https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 41,
+    inStock: true,
+    stockCount: 40,
+    featured: true,
+  },
+  {
+    id: "prod-plush-teddy-bear",
+    slug: "vintage-honey-teddy-bear-plushie",
+    title: "Vintage Honey Teddy Bear Plushie",
+    shortDescription: "Classic textured wool teddy bear with brown gingham bow and embroidered facial features.",
+    description: "A nostalgic, timeless teddy bear that fits snugly into our hamper baskets and boxes. Features gentle hand-tied neck ribbon and soft textured fabric.",
+    price: 799,
+    salePrice: 629,
+    category: "plushies",
+    tags: ["Plushies", "Teddy Bear", "Classic", "Gift"],
+    images: ["https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 22,
+    inStock: true,
+    stockCount: 25,
+  },
+
+  // ==========================================
+  // 4. KOREAN STATIONERY
+  // ==========================================
+  {
+    id: "prod-korean-mildliner-set",
+    slug: "korean-pastel-mildliner-pen-set",
+    title: "Korean Pastel Mildliner & Gel Pen Set (6-Pack)",
+    shortDescription: "Double-ended soft pastel highlighters and quick-drying 0.5mm gel pens that never bleed.",
+    description: "Imported Korean aesthetic highlighters featuring gentle, muted pastel shades that make studying, journaling, and planning aesthetic and effortless. Dual tips for bold highlighting and precise underlining.",
+    price: 499,
+    salePrice: 399,
+    category: "korean-stationery",
+    tags: ["Korean Stationery", "Mildliner", "Pastel", "Journaling", "Bestseller"],
+    images: ["https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 63,
+    inStock: true,
+    stockCount: 60,
+    featured: true,
+    isBestSeller: true,
+  },
+  {
+    id: "prod-korean-grid-journal",
+    slug: "korean-aesthetic-grid-journal",
+    title: "Korean Aesthetic Archival Grid Journal",
+    shortDescription: "192 pages of 120gsm ink-proof grid paper with lay-flat thread binding and ribbon bookmark.",
+    description: "Engineered for bullet journaling, study logs, and daily creative brainstorming. Subtle 5mm dot-grid layout printed on silky smooth, bleed-free paper.",
+    price: 699,
+    salePrice: 599,
+    category: "korean-stationery",
+    tags: ["Korean Stationery", "Grid Notebook", "Aesthetic", "Journaling"],
+    images: ["https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 47,
+    inStock: true,
+    stockCount: 45,
+  },
+
+  // ==========================================
+  // 5. ANTI-TARNISH JEWELLERY
+  // ==========================================
+  {
+    id: "prod-jewel-clover-necklace",
+    slug: "18k-gold-anti-tarnish-clover-necklace",
+    title: "18K Gold Plated Anti-Tarnish Clover Necklace",
+    shortDescription: "Waterproof, sweat-proof four-leaf clover pendant on a hypoallergenic titanium steel chain.",
+    description: "Wear it in the shower, at the gym, and everywhere in between. Vacuum-coated in genuine 18K gold over medical-grade titanium steel with an anti-tarnish protective barrier that prevents color fading.",
+    price: 1499,
+    salePrice: 1199,
+    category: "anti-tarnish-jewellery",
+    tags: ["Anti-tarnish Jewellery", "Waterproof", "18K Gold", "Necklace", "Clover", "Bestseller"],
+    images: ["https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 78,
+    inStock: true,
+    stockCount: 30,
     featured: true,
     isBestSeller: true,
     specifications: {
-      "Weight": "200g (Approx. 45 hours burn time)",
-      "Wax": "100% Non-GMO Soy Wax, phthalate-free fragrance oils",
-      "Container": "Heavy amber apothecary jar with black screw top"
+      "Material": "18K Gold Plating over 316L Titanium Steel",
+      "Feature": "100% Waterproof & Sweatproof (Anti-Tarnish)",
+      "Chain Length": "40 cm + 5 cm extension"
     }
   },
   {
-    id: "prod-brass-floral-bookmark",
-    slug: "engraved-solid-brass-floral-bookmark",
-    title: "Engraved Solid Brass Floral Bookmark",
-    shortDescription: "Intricate etched botanical filigree brass bookmark with hand-spun olive silk tassel.",
-    description: "A cherished companion for avid readers, journalers, and dreamers. Photo-chemically etched with intricate botanical leaf patterns from a solid sheet of pure gold-toned brass, finished with a hand-twisted olive green pure silk tassel.",
-    price: 399,
-    category: "gifting-keepsakes",
-    tags: ["Brass Bookmark", "Botanical", "Reader Gift", "Silk Tassel"],
-    images: [
-      "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1507842229451-79b1be886a05?auto=format&fit=crop&q=80&w=800"
-    ],
+    id: "prod-jewel-herringbone-bracelet",
+    slug: "dainty-herringbone-anti-tarnish-bracelet",
+    title: "Dainty Herringbone Anti-Tarnish Chain Bracelet",
+    shortDescription: "Silky flat herringbone chain in radiant 18K gold finish that lays flush against the wrist.",
+    description: "Effortlessly elegant and comfortable. Lightweight, waterproof, and zero skin discoloration guaranteed.",
+    price: 999,
+    salePrice: 799,
+    category: "anti-tarnish-jewellery",
+    tags: ["Anti-tarnish Jewellery", "Bracelet", "Herringbone", "Gold"],
+    images: ["https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.8,
+    reviewCount: 32,
+    inStock: true,
+    stockCount: 28,
+  },
+
+  // ==========================================
+  // 6. PERFUME
+  // ==========================================
+  {
+    id: "prod-perfume-vanilla-edp",
+    slug: "french-madagascar-vanilla-edp",
+    title: "French Madagascar Vanilla Eau de Parfum (30ml)",
+    shortDescription: "Warm gourmand blend of pure Bourbon vanilla, sweet spun amber, and toasted marshmallow.",
+    description: "An intoxicatingly cozy fragrance crafted with high perfume oil concentration for 8+ hour longevity. Formulated without parabens or harsh alcohols, presented in a minimalist frosted glass bottle with gold cap.",
+    price: 899,
+    salePrice: 749,
+    category: "perfume",
+    tags: ["Perfume", "Vanilla", "Gourmand", "Eau de Parfum", "Long-lasting"],
+    images: ["https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 56,
+    inStock: true,
+    stockCount: 38,
+    featured: true,
+  },
+  {
+    id: "prod-perfume-midnight-oud",
+    slug: "midnight-rose-oud-pocket-perfume",
+    title: "Midnight Rose & Oud Artisanal Perfume (30ml)",
+    shortDescription: "Decadent velvet Damask rose paired with smoky Agarwood, cloves, and praline.",
+    description: "A rich, regal oriental fragrance that captivates. Deep rose top notes melting into a warm, mysterious woody base that lingers gracefully.",
+    price: 999,
+    salePrice: 849,
+    category: "perfume",
+    tags: ["Perfume", "Oud", "Rose", "Luxury Scent"],
+    images: ["https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&q=80&w=800"],
     rating: 4.9,
+    reviewCount: 42,
+    inStock: true,
+    stockCount: 26,
+  },
+
+  // ==========================================
+  // 7. RIBBONS
+  // ==========================================
+  {
+    id: "prod-ribbon-silk-chiffon",
+    slug: "hand-frayed-silk-chiffon-ribbon-spool",
+    title: "Hand-Frayed Silk Chiffon Ribbon Spool (5 Meters)",
+    shortDescription: "Airy, romantic frayed-edge silk ribbon on a rustic wooden bobbin. Perfect for hamper wrapping.",
+    description: "Handmade and dyed with botanical pigments. The raw feathered fringe gives every gift box, bouquet, and letter an ethereal artisanal touch.",
+    price: 349,
+    salePrice: 289,
+    category: "ribbons",
+    tags: ["Ribbons", "Silk Chiffon", "Frayed Edge", "Gift Wrap"],
+    images: ["https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 33,
+    inStock: true,
+    stockCount: 75,
+  },
+  {
+    id: "prod-ribbon-double-satin",
+    slug: "luxury-double-face-satin-ribbon-spool",
+    title: "Luxury Double-Face Satin Ribbon Spool (10m)",
+    shortDescription: "Ultra-silky high-gloss satin ribbon with woven edges that holds large voluminous bows.",
+    description: "Available in rich forest emerald, champagne gold, and dusty rose. Crisp woven selvedges prevent fraying and maintain perfect posture on hamper presentation boxes.",
+    price: 299,
+    salePrice: 249,
+    category: "ribbons",
+    tags: ["Ribbons", "Satin", "Gift Presentation"],
+    images: ["https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.8,
+    reviewCount: 28,
+    inStock: true,
+    stockCount: 80,
+  },
+
+  // ==========================================
+  // 8. FRAMES
+  // ==========================================
+  {
+    id: "prod-frame-brass-pressed-glass",
+    slug: "vintage-brass-pressed-glass-photo-frame",
+    title: "Vintage Brass Pressed Glass Photo Frame (4x6)",
+    shortDescription: "Solid brass frame with double float glass panels and hinged stand for photos, dried flowers, or notes.",
+    description: "Two sheets of pure float glass secured inside an antiqued brass metal border with a sliding latch. Lets your photo or pressed botanicals appear as though floating in air.",
+    price: 799,
+    salePrice: 649,
+    category: "frames",
+    tags: ["Frames", "Brass Frame", "Glass", "Vintage Decor"],
+    images: ["https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 37,
+    inStock: true,
+    stockCount: 32,
+    featured: true,
+  },
+
+  // ==========================================
+  // 9. QURAN MUSALLA
+  // ==========================================
+  {
+    id: "prod-musalla-velvet-travel",
+    slug: "embroidered-velvet-travel-musalla-tasbih-set",
+    title: "Embroidered Velvet Travel Musalla & Tasbih Set",
+    shortDescription: "Soft padded velvet prayer mat with delicate gold arch embroidery and a matching 99-bead pearl Tasbih.",
+    description: "Designed for comfortable prayers wherever you travel. Lightweight yet deeply cushioned, folds neatly into an included drawstring velvet pouch. Features anti-slip dotted backing.",
+    price: 1199,
+    salePrice: 999,
+    category: "quran-musalla",
+    tags: ["Quran Musalla", "Prayer Mat", "Velvet", "Spiritual Gifting"],
+    images: ["https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 46,
+    inStock: true,
+    stockCount: 25,
+    featured: true,
+  },
+
+  // ==========================================
+  // 10. ACRYLIC CUTOUTS
+  // ==========================================
+  {
+    id: "prod-acrylic-song-plaque",
+    slug: "personalized-song-acrylic-cutout-plaque",
+    title: "Personalized Custom Song Acrylic Cutout Plaque",
+    shortDescription: "Custom clear acrylic plaque printed with your favorite song, scannable code, and photo on a beechwood base.",
+    description: "A heartfelt keepsake that immortalizes a special song and memory. High-grade scratch-resistant cast acrylic with UV-cured vibrant printing and natural wooden stand.",
+    price: 699,
+    salePrice: 549,
+    category: "acrylic-cutouts",
+    tags: ["Acrylic Cutouts", "Plaque", "Song Plaque", "Custom Keepsake"],
+    images: ["https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 51,
+    inStock: true,
+    stockCount: 35,
+    featured: true,
+  },
+
+  // ==========================================
+  // 11. KEYCHAINS
+  // ==========================================
+  {
+    id: "prod-keychain-pearl-beaded",
+    slug: "aesthetic-hand-beaded-pearl-charm-keychain",
+    title: "Aesthetic Hand-Beaded Pearl Charm Keychain",
+    shortDescription: "Delicate glass pearl beads, gold initial charm, and swivel lobster clasp for bags and keys.",
+    description: "Hand-strung with high-strength stainless steel wire and gleaming faux pearls. Adds an instant aesthetic touch to backpacks, totes, and car key rings.",
+    price: 299,
+    salePrice: 229,
+    category: "keychains",
+    tags: ["Keychains", "Pearl", "Bag Charm", "Aesthetic"],
+    images: ["https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.8,
     reviewCount: 39,
     inStock: true,
-    stockCount: 45,
-    specifications: {
-      "Dimensions": "11.5 cm x 3 cm",
-      "Material": "Solid 0.8mm brass with clear protective lacquer to prevent tarnish",
-      "Packaging": "Sturdy kraft paper sleeve with gold foil seal"
-    }
+    stockCount: 65,
   },
+
+  // ==========================================
+  // 12. BASKET
+  // ==========================================
   {
-    id: "prod-velvet-ribbon-wrapping-set",
-    slug: "botanical-gift-wrap-velvet-ribbon-set",
-    title: "Handmade Botanical Gift Wrap & Velvet Ribbon Set",
-    shortDescription: "5 sheets of hand-printed botanical wrapping paper with 5 meters of olive green velvet ribbon.",
-    description: "Elevate your gifts with artisanal wrapping materials. Contains 5 large sheets (50 x 70 cm) of heavy 100gsm recycled paper hand-screenprinted with botanical fern motifs, paired with 5 meters of luxurious single-face Swiss velvet ribbon in muted olive and 5 deckle-edge gift tags.",
-    price: 499,
-    category: "gifting-keepsakes",
-    tags: ["Gift Wrap", "Velvet Ribbon", "Eco Friendly", "Gift Packaging"],
-    images: [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800"
-    ],
-    rating: 4.8,
-    reviewCount: 21,
+    id: "prod-basket-seagrass-woven",
+    slug: "handwoven-natural-seagrass-hamper-basket",
+    title: "Handwoven Natural Seagrass Hamper Basket with Handles",
+    shortDescription: "Artisanal braided seagrass basket with thick rope handles. Beautiful reusable base for gift hampers.",
+    description: "Eco-friendly, durable, and naturally textured. Handwoven by rural craft artisans using sun-dried seagrass. Spacious enough to hold plushies, perfumes, and books.",
+    price: 899,
+    salePrice: 749,
+    category: "basket",
+    tags: ["Basket", "Seagrass", "Hamper Base", "Woven"],
+    images: ["https://images.unsplash.com/photo-1590736969955-71cc94801759?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 36,
     inStock: true,
-    stockCount: 30,
-    specifications: {
-      "Sheets": "5 sheets (50 x 70 cm each)",
-      "Ribbon": "5 meters of 16mm wide premium velvet ribbon",
-      "Tags": "5 handmade cotton deckle gift tags with twine"
-    }
-  }
+    stockCount: 22,
+  },
+
+  // ==========================================
+  // 13. TROLLEY
+  // ==========================================
+  {
+    id: "prod-trolley-gifting-cart",
+    slug: "tiered-gifting-presentation-rolling-trolley",
+    title: "Tiered Gifting Presentation Rolling Trolley",
+    shortDescription: "Pastel powder-coated metal gift trolley with rolling castor wheels and 2 presentation shelves.",
+    description: "Turn your gift hamper into an unforgettable presentation piece! Features two sturdy metal trays and smooth-rolling wheels. Perfect for birthday morning surprises.",
+    price: 1499,
+    salePrice: 1249,
+    category: "trolley",
+    tags: ["Trolley", "Gift Cart", "Hamper Base", "Surprise Presentation"],
+    images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 18,
+    inStock: true,
+    stockCount: 15,
+  },
+
+  // ==========================================
+  // 14. BOUQUET SHEET
+  // ==========================================
+  {
+    id: "prod-bouquet-sheet-korean-frosted",
+    slug: "waterproof-korean-frosted-bouquet-sheets",
+    title: "Waterproof Korean Frosted Bouquet Sheets (10-Pack)",
+    shortDescription: "Semi-translucent matte plastic floral paper with gold foil edge border. Waterproof and tear-resistant.",
+    description: "The secret to professional Korean flower and gift hamper wraps. Creates clean, elegant folds that never wilt or absorb moisture from fresh stems.",
+    price: 399,
+    salePrice: 319,
+    category: "bouquet-sheet",
+    tags: ["Bouquet Sheet", "Korean Wrap", "Floral Packaging", "Gift Wrap"],
+    images: ["https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 44,
+    inStock: true,
+    stockCount: 55,
+  },
 ];
 
 export const mockOrders: Order[] = [
   {
     id: "ord-1001",
-    orderNumber: "BC-58492",
-    createdAt: "2026-11-18T14:32:00Z",
+    orderNumber: "BC-49201",
+    createdAt: "2026-11-19T09:30:00Z",
     status: "processing",
     customer: {
       fullName: "Ananya Sharma",
-      email: "ananya.s@gmail.com",
-      phone: "+91 98201 12345",
+      email: "ananya.sharma@gmail.com",
+      phone: "+91 98765 43210",
       address: {
-        street: "B-402, Green Glen Layout, Bellandur",
+        street: "42, Green Glen Layout, Bellandur",
         city: "Bengaluru",
         state: "Karnataka",
         postalCode: "560103",
@@ -554,66 +657,20 @@ export const mockOrders: Order[] = [
     items: [
       {
         id: "cart-item-1",
-        productId: "prod-botanical-hamper",
-        title: "The Artisanal Botanical Gift Hamper",
-        slug: "artisanal-botanical-gift-hamper",
-        price: 2199,
+        productId: "prod-ultimate-celebration-hamper",
+        title: "The Ultimate Celebration Deluxe Hamper",
+        slug: "ultimate-celebration-deluxe-hamper",
+        price: 2999,
         image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800",
         quantity: 1,
       },
     ],
-    subtotal: 2199,
+    subtotal: 2999,
     discountTotal: 0,
     shippingFee: 0,
     taxTotal: 0,
-    grandTotal: 2199,
+    grandTotal: 2999,
     paymentMethod: "razorpay",
-  },
-  {
-    id: "ord-1002",
-    orderNumber: "BC-58493",
-    createdAt: "2026-11-17T11:15:00Z",
-    status: "delivered",
-    customer: {
-      fullName: "Rhea Menon",
-      email: "rhea.menon@outlook.com",
-      phone: "+91 94471 98765",
-      address: {
-        street: "House 12, Panampilly Nagar",
-        city: "Kochi",
-        state: "Kerala",
-        postalCode: "682036",
-        country: "India",
-      },
-    },
-    items: [
-      {
-        id: "cart-item-2",
-        productId: "prod-leather-journal",
-        title: "Handcrafted Full-Grain Leather Journal",
-        slug: "handcrafted-full-grain-leather-journal",
-        price: 1099,
-        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800",
-        quantity: 1,
-      },
-      {
-        id: "cart-item-3",
-        productId: "prod-botanical-wax-stamp",
-        title: "Botanical Brass Wax Seal Stamp",
-        slug: "botanical-brass-wax-seal-stamp",
-        price: 499,
-        image: "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=800",
-        quantity: 1,
-      },
-    ],
-    subtotal: 1598,
-    discountTotal: 100,
-    shippingFee: 0,
-    taxTotal: 0,
-    grandTotal: 1498,
-    couponCode: "BLOOM10",
-    paymentMethod: "razorpay",
-    trackingNumber: "DTDC-BC-892410",
   },
 ];
 

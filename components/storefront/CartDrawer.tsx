@@ -172,6 +172,26 @@ export function CartDrawer() {
                             .join(" / ")}
                         </p>
                       )}
+
+                      {item.hamperItems && item.hamperItems.length > 0 && (
+                        <div className="mt-1.5 p-2 rounded-lg bg-[#FAF8F5] text-[11px] text-[#214332] border border-[#E7E3DC] space-y-1">
+                          <div className="font-bold text-[10px] uppercase tracking-wider text-[#214332]">
+                            Hamper Box Contents ({item.hamperItems.length} items):
+                          </div>
+                          <div className="flex flex-wrap gap-1">
+                            {item.hamperItems.map((hi, hidx) => (
+                              <span key={hidx} className="bg-white px-1.5 py-0.5 rounded text-[10px] text-stone-700 border border-stone-200">
+                                {hi.title}
+                              </span>
+                            ))}
+                          </div>
+                          {item.customMessage && (
+                            <div className="text-[10px] italic text-[#DC9924] font-medium pt-0.5">
+                              Card: &ldquo;{item.customMessage}&rdquo;
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <div className="flex items-center justify-between pt-2">

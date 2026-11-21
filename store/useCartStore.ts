@@ -13,6 +13,13 @@ interface CartStore {
 
   // Cart actions
   addItem: (product: Product, quantity?: number, selectedVariant?: CartItem["selectedVariant"]) => void;
+  addCustomHamper: (hamper: {
+    title: string;
+    price: number;
+    image: string;
+    hamperItems: { category: string; title: string; quantity?: number }[];
+    customMessage?: string;
+  }) => void;
   removeItem: (itemId: string) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
@@ -92,6 +99,25 @@ export const useCartStore = create<CartStore>()(
           };
           set({ items: [...currentItems, newItem], isCartOpen: true });
         }
+        get().autoApplyFirstPurchaseCoupon();
+      },
+
+      addCustomHamper: ({ title, price, image, hamperItems, customMessage }) => {
+        const currentItems = get().items;
+        const uniqueId = `custom-hamper-${Date.now()}`;
+        const newItem: CartItem = {
+          id: uniqueId,
+          productId: uniqueId,
+          title: title || "Custom Gift Hamper Box",
+          slug: "custom-gift-hamper",
+          price,
+          image,
+          quantity: 1,
+          isCustomHamper: true,
+          hamperItems,
+          customMessage,
+        };
+        set({ items: [...currentItems, newItem], isCartOpen: true });
         get().autoApplyFirstPurchaseCoupon();
       },
 
