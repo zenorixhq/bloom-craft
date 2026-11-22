@@ -734,7 +734,7 @@ export function CustomerReviewsWithVideos() {
                     )}
                     <div className="min-w-0">
                       <p className="text-xs sm:text-sm font-semibold truncate text-stone-900">
-                        {screenshotProductInfo?.title || selectedScreenshot.productTitle || selectedScreenshot.piece || "Alnaya Jewelry"}
+                        {screenshotProductInfo?.title || selectedScreenshot.productTitle || selectedScreenshot.piece || "Bloom Craft Item"}
                       </p>
                       {(screenshotProductInfo?.price || selectedScreenshot.productPrice) ? (
                         <p className="text-[11px] text-purple-700 font-bold font-mono">

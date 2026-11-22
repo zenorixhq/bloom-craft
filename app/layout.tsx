@@ -17,7 +17,34 @@ export const metadata: Metadata = {
   },
   description: storeConfig.meta.description,
   icons: {
-    icon: storeConfig.meta.favicon,
+    icon: [
+      { url: "/bloom-craft-logo.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    shortcut: "/bloom-craft-logo.png",
+    apple: "/bloom-craft-logo.png",
+  },
+  openGraph: {
+    title: storeConfig.meta.name,
+    description: storeConfig.meta.description,
+    url: storeConfig.meta.url,
+    siteName: storeConfig.meta.name,
+    images: [
+      {
+        url: "/bloom-craft-logo.png",
+        width: 602,
+        height: 400,
+        alt: "Bloom Craft",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: storeConfig.meta.name,
+    description: storeConfig.meta.description,
+    images: ["/bloom-craft-logo.png"],
   },
 };
 
