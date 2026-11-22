@@ -11,6 +11,7 @@ import { SmoothScrollProvider } from "@/components/storefront/SmoothScrollProvid
 import { WebsiteLoadingAnimation } from "@/components/storefront/WebsiteLoadingAnimation";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(storeConfig.meta.url || "https://www.bloomcraft.co.in"),
   title: {
     default: `${storeConfig.meta.name} | ${storeConfig.meta.tagline}`,
     template: `%s | ${storeConfig.meta.name}`,

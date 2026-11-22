@@ -71,7 +71,7 @@ export const storeConfig: StoreConfig = {
     name: "Bloom Craft",
     tagline: "Artisanal Stationery & Curated Gift Hampers",
     description: "Handcrafted Journals, Wax Seal Sets, Bespoke Paper Goods & Curated Celebration Gift Hampers. Thoughtfully crafted to make every moment memorable.",
-    url: "https://bloomcraft.in",
+    url: "https://www.bloomcraft.co.in",
     favicon: "/bloom-craft-logo.png",
   },
   brand: {
