@@ -26,6 +26,7 @@ export function Header() {
   const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileCollectionsOpen, setMobileCollectionsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryList, setCategoryList] = useState<Category[]>(() => {
@@ -108,24 +109,26 @@ export function Header() {
   // Dark navigation styling applies only if hero is dark; with Aleena's warm cream editorial hero, light styling applies throughout
   const isDarkNav = false;
 
-  const primaryNavLinks = [
-    { label: "Shop All", href: "/products", highlight: false },
-    { label: "Build Hamper", href: "/custom-hamper", highlight: true },
-    ...categoryList.slice(0, 4).map((c) => ({
-      label: c.name.replace(/\s*Collection/gi, "").trim(),
-      href: `/products?category=${c.slug}`,
-      highlight: c.slug === "hamper-boxes" || c.slug === "hamper",
-    })),
-  ];
+  const handleAboutClick = (e: React.MouseEvent) => {
+    setMobileMenuOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById("about-us");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
-  const allCategoryLinks = [
-    { label: "Build Custom Hamper ✨", href: "/custom-hamper" },
-    { label: "Shop All Products", href: "/products" },
-    ...categoryList.map((c) => ({
-      label: c.name.replace(/\s*Collection/gi, "").trim(),
-      href: `/products?category=${c.slug}`,
-    })),
-  ];
+  const handleCollectionDesktopClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById("shop-collection");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <>
@@ -158,66 +161,98 @@ export function Header() {
               />
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-5 xl:gap-8 font-sans">
-              {primaryNavLinks.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap flex items-center gap-1.5 ${
-                      isActive
-                        ? "text-[#214332] font-bold"
-                        : link.highlight
-                        ? "text-[#214332] font-semibold hover:text-[#162f23]"
-                        : "text-[#1C1917] hover:text-[#214332]"
-                    }`}
-                  >
-                    {link.highlight && <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />}
-                    <span>{link.label}</span>
-                  </Link>
-                );
-              })}
+            {/* Desktop Navigation Links: ONLY Home, Collection, Shop, About Us, Contact Us */}
+            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-6 xl:gap-8 font-sans">
+              {/* 1. Home */}
+              <Link
+                href="/"
+                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                  pathname === "/"
+                    ? "text-[#214332] font-bold"
+                    : "text-[#1C1917] hover:text-[#214332]"
+                }`}
+              >
+                Home
+              </Link>
 
-              {/* All Categories Dropdown */}
+              {/* 2. Collection (Dropdown of all categories) */}
               <div className="relative group">
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-xs xl:text-sm font-semibold transition-colors py-2 cursor-pointer whitespace-nowrap text-[#1C1917] hover:text-[#214332]"
+                <Link
+                  href="/#shop-collection"
+                  onClick={handleCollectionDesktopClick}
+                  className={`flex items-center gap-1 text-xs xl:text-sm font-semibold transition-colors py-1.5 cursor-pointer whitespace-nowrap ${
+                    pathname.startsWith("/products?category")
+                      ? "text-[#214332] font-bold"
+                      : "text-[#1C1917] hover:text-[#214332]"
+                  }`}
                 >
-                  <span>Categories</span>
+                  <span>Collection</span>
                   <ChevronDown
                     className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200 text-[#786E5E]"
                   />
-                </button>
+                </Link>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-64 bg-white/85 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
-                    {allCategoryLinks.map((item) => (
+                  <div className="w-64 max-h-[75vh] overflow-y-auto no-scrollbar bg-white/92 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
+                    <Link
+                      href="/products"
+                      className="block px-3 py-1.5 text-xs font-bold text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6] rounded-lg transition-colors"
+                    >
+                      ✦ View All Catalog
+                    </Link>
+                    <Link
+                      href="/custom-hamper"
+                      className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
+                    >
+                      <span>Build Custom Hamper</span>
+                      <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
+                    </Link>
+                    <div className="my-1 border-t border-[#E7E3DC]/60" />
+                    {categoryList.map((cat) => (
                       <Link
-                        key={item.href + item.label}
-                        href={item.href}
-                        className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
-                          item.label === "Shop All"
-                            ? "font-bold text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6]"
-                            : "font-medium text-stone-800 hover:text-[#214332] hover:bg-stone-50/80"
-                        }`}
+                        key={cat.id || cat.slug}
+                        href={`/products?category=${cat.slug}`}
+                        className="block px-3 py-1.5 text-xs font-medium text-stone-800 hover:text-[#214332] hover:bg-stone-50/80 rounded-lg transition-colors"
                       >
-                        {item.label === "Shop All" ? "✦ " + item.label : item.label}
+                        {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </Link>
                     ))}
-                    <div className="pt-2 border-t border-[#E7E3DC]/60 mt-1">
-                      <Link
-                        href="/products"
-                        className="block px-3 py-1.5 text-xs font-bold text-[#214332] hover:text-stone-900 transition-colors"
-                      >
-                        ✦ View All Catalog
-                      </Link>
-                    </div>
                   </div>
                 </div>
               </div>
+
+              {/* 3. Shop */}
+              <Link
+                href="/products"
+                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                  pathname === "/products"
+                    ? "text-[#214332] font-bold"
+                    : "text-[#1C1917] hover:text-[#214332]"
+                }`}
+              >
+                Shop
+              </Link>
+
+              {/* 4. About Us */}
+              <Link
+                href="/#about-us"
+                onClick={handleAboutClick}
+                className="text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 text-[#1C1917] hover:text-[#214332]"
+              >
+                About Us
+              </Link>
+
+              {/* 5. Contact Us */}
+              <Link
+                href="/contact"
+                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                  pathname === "/contact"
+                    ? "text-[#214332] font-bold"
+                    : "text-[#1C1917] hover:text-[#214332]"
+                }`}
+              >
+                Contact Us
+              </Link>
             </nav>
 
             {/* Right Action Icons */}
@@ -290,88 +325,169 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer Menu (Crafto Arte Inspired Minimal Layout) */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white/92 backdrop-blur-2xl shadow-2xl flex flex-col p-6 z-10 border-r border-stone-200/50 animate-in slide-in-from-left duration-300 font-sans">
-            <div className="flex items-center justify-between pb-6 border-b border-border">
-              <BrandLogo variant="full" showTagline={false} />
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FAF7F2] shadow-2xl flex flex-col p-5 sm:p-6 z-10 border-r border-[#E7E3DC] animate-in slide-in-from-left duration-300 font-sans">
+            {/* Top Bar: [X] Close | Brand Logo | [Search] [Bag] */}
+            <div className="flex items-center justify-between pb-4 border-b border-[#E7E3DC]">
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-full hover:bg-black/5"
+                className="p-1.5 -ml-1.5 rounded-full text-[#1C1917] hover:bg-black/5 transition-colors"
+                aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
               </button>
+
+              <div className="flex items-center justify-center">
+                <BrandLogo variant="full" showTagline={false} theme="light" />
+              </div>
+
+              <div className="flex items-center gap-1 -mr-1.5">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    setSearchOpen(true);
+                  }}
+                  className="p-1.5 rounded-full text-[#1C1917] hover:bg-black/5 transition-colors"
+                  aria-label="Search"
+                >
+                  <Search className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    openCart();
+                  }}
+                  className="p-1.5 rounded-full text-[#1C1917] hover:bg-black/5 transition-colors relative"
+                  aria-label="Cart"
+                >
+                  <ShoppingBag className="w-5 h-5" />
+                  {mounted && itemCount > 0 && (
+                    <span className="absolute -top-1 -right-1 bg-[#214332] text-white text-[9px] font-bold min-w-[16px] h-[16px] px-1 rounded-full flex items-center justify-center shadow-xs">
+                      {itemCount}
+                    </span>
+                  )}
+                </button>
+              </div>
             </div>
 
+            {/* Menu Items: Only Home, Collections, About us, Contact */}
             <nav className="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar font-sans">
-              {/* Prominent Shop All Button */}
-              <div className="mb-4">
-                <Link
-                  href="/products"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl bg-[#214332] text-white font-semibold text-sm shadow-md hover:bg-[#162f23] transition-colors"
-                >
-                  <span className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 text-[#DC9924]" />
-                    <span>Shop All Collections</span>
-                  </span>
-                  <span className="text-xs uppercase tracking-wider text-[#DC9924] font-sans">All →</span>
-                </Link>
-              </div>
+              {/* 1. Home */}
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-3 px-3 text-lg font-medium rounded-xl transition-colors ${
+                  pathname === "/"
+                    ? "text-[#214332] font-bold bg-[#214332]/5"
+                    : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
+                }`}
+              >
+                Home
+              </Link>
 
-              <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 pb-1 font-sans">
-                Explore Collections
-              </p>
-              {allCategoryLinks.map((link) => (
-                <Link
-                  key={link.href + link.label}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block text-sm font-medium transition-colors py-2 px-3 rounded-lg ${
-                    link.label === "Shop All"
-                      ? "text-[#214332] font-bold bg-[#EEF3F0] hover:bg-[#E2ECE6]"
-                      : "text-foreground hover:text-[#214332] hover:bg-muted/40"
+              {/* 2. Collections (Accordion: Clicking reveals all categories inside menu bar itself) */}
+              <div>
+                <button
+                  type="button"
+                  onClick={() => setMobileCollectionsOpen((prev) => !prev)}
+                  className={`flex items-center justify-between w-full py-3 px-3 text-lg font-medium rounded-xl transition-colors text-left cursor-pointer ${
+                    mobileCollectionsOpen
+                      ? "text-[#214332] font-bold bg-[#214332]/5"
+                      : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
                   }`}
                 >
-                  {link.label}
-                </Link>
-              ))}
+                  <span>Collections</span>
+                  <ChevronDown
+                    className={`w-4 h-4 text-stone-500 transition-transform duration-300 ${
+                      mobileCollectionsOpen ? "rotate-180 text-[#214332]" : ""
+                    }`}
+                  />
+                </button>
 
-              <div className="pt-3 border-t border-border space-y-0.5 font-sans">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 py-1 font-sans">
-                  Customer Care
-                </p>
-                <Link
-                  href="/policies?tab=shipping"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-xs font-medium text-muted-foreground hover:text-primary py-1.5 px-2 rounded-lg hover:bg-muted/40"
-                >
-                  🚚 Pan-India Shipping
-                </Link>
-                <Link
-                  href="/policies?tab=return-refund"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-xs font-medium text-muted-foreground hover:text-primary py-1.5 px-2 rounded-lg hover:bg-muted/40"
-                >
-                  🔄 360° Unboxing Video Policy
-                </Link>
+                {mobileCollectionsOpen && (
+                  <div className="pl-3 pr-1 py-1 space-y-0.5 my-1 border-l-2 border-[#214332]/30 ml-3 animate-in slide-in-from-top-2 duration-200">
+                    <Link
+                      href="/products"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-2 px-3 text-xs sm:text-sm font-bold text-[#214332] bg-[#EEF3F0] rounded-lg hover:bg-[#E2ECE6] transition-colors"
+                    >
+                      ✦ Shop All Collections
+                    </Link>
+                    <Link
+                      href="/custom-hamper"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center justify-between py-2 px-3 text-xs sm:text-sm font-semibold text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
+                    >
+                      <span>Build Custom Hamper</span>
+                      <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
+                    </Link>
+                    <div className="my-1 border-t border-[#E7E3DC]/60" />
+                    {categoryList.map((cat) => (
+                      <Link
+                        key={cat.id || cat.slug}
+                        href={`/products?category=${cat.slug}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-1.5 px-3 text-xs sm:text-sm font-medium text-stone-700 hover:text-[#214332] hover:bg-black/5 rounded-lg transition-colors"
+                      >
+                        {cat.name.replace(/\s*Collection/gi, "").trim()}
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              <div className="pt-3 border-t border-border">
-                <Link
-                  href="/account"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block text-sm font-medium text-muted-foreground hover:text-primary py-2 px-2"
-                >
-                  Customer Account & Orders
-                </Link>
-              </div>
+              {/* 3. About us */}
+              <Link
+                href="/#about-us"
+                onClick={handleAboutClick}
+                className="block py-3 px-3 text-lg font-medium text-[#18221D] hover:text-[#214332] hover:bg-black/5 rounded-xl transition-colors"
+              >
+                About us
+              </Link>
+
+              {/* 4. Contact */}
+              <Link
+                href="/contact"
+                onClick={() => setMobileMenuOpen(false)}
+                className={`block py-3 px-3 text-lg font-medium rounded-xl transition-colors ${
+                  pathname === "/contact"
+                    ? "text-[#214332] font-bold bg-[#214332]/5"
+                    : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
+                }`}
+              >
+                Contact
+              </Link>
             </nav>
+
+            {/* Bottom Section (Matching user reference screenshot) */}
+            <div className="pt-4 border-t border-[#E7E3DC] mt-auto space-y-3 font-sans">
+              <Link
+                href="/account"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2.5 text-sm font-medium text-[#18221D] hover:text-[#214332] transition-colors py-1.5 px-3 rounded-xl hover:bg-black/5"
+              >
+                <User className="w-4 h-4 text-stone-600" />
+                <span>Log in / My Account</span>
+              </Link>
+              <div className="flex items-center justify-between px-3 text-xs text-stone-500 pt-1">
+                <span>India (INR ₹)</span>
+                <a
+                  href={`https://wa.me/${storeConfig.brand.contact.whatsappNumber}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-[#214332] font-semibold hover:underline flex items-center gap-1"
+                >
+                  <span>WhatsApp Concierge</span>
+                  <span>↗</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       )}

@@ -26,7 +26,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#121915] text-[#FAF8F5] border-t border-emerald-950/80 mt-16 sm:mt-24 select-none font-glacial">
+    <footer id="contact" className="scroll-mt-16 sm:scroll-mt-20 bg-[#121915] text-[#FAF8F5] border-t border-emerald-950/80 mt-16 sm:mt-24 select-none font-glacial">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Main 4-Column Minimalist Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
