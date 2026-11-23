@@ -85,31 +85,76 @@ export default function HomePage() {
 
       {/* 2. The Atelier Collection / Shop by Category Grid (Crafto Arte Collection List) */}
       <div id="shop-collection" className="scroll-mt-16 sm:scroll-mt-20">
-        <section className="w-full py-8 sm:py-10 lg:py-12 bg-[#FAF8F5] border-b border-[#E7E3DC]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
-            <div className="bg-white/85 backdrop-blur-xs border border-[#E7E3DC] rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xs space-y-5 sm:space-y-6">
+        <section className="w-full py-3.5 sm:py-8 lg:py-12 bg-[#FAF8F5] border-b border-[#E7E3DC]">
+          <div className="max-w-7xl mx-auto px-3.5 sm:px-8 lg:px-12 w-full">
+            <div className="bg-white/90 backdrop-blur-xs border border-[#E7E3DC] rounded-2xl sm:rounded-3xl p-3.5 sm:p-7 lg:p-8 shadow-xs">
               {/* Window Header */}
-              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b border-[#E7E3DC]/60 pb-4">
+              <div className="flex items-center justify-between gap-2 border-b border-[#E7E3DC]/60 pb-2.5 sm:pb-4 mb-3 sm:mb-6">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-bold text-[#214332] uppercase tracking-widest font-glacial">
-                    <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#214332] uppercase tracking-widest font-glacial">
+                    <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DC9924]" />
                     <span>The Atelier Collection</span>
                   </div>
-                  <h2 className="font-editorial text-2xl sm:text-3xl font-normal text-[#18221D] mt-0.5 tracking-wide">
+                  <h2 className="font-editorial text-lg sm:text-2xl lg:text-3xl font-normal text-[#18221D] mt-0.5 tracking-wide">
                     Shop by Category
                   </h2>
                 </div>
                 <Link
                   href="/products"
-                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-glacial"
+                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-glacial shrink-0"
                 >
-                  <span>View All Categories</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span>View All <span className="hidden xs:inline">({categoryList.length})</span></span>
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
 
-              {/* Editorial Framed Arch Category Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-3 sm:gap-4">
+              {/* MOBILE: Scrollable Categories Horizontal Rail (< md) */}
+              <div className="block md:hidden">
+                <div
+                  className="flex items-start gap-3 xs:gap-4 overflow-x-auto pb-2 pt-0.5 scrollbar-none snap-x snap-mandatory select-none"
+                  style={{
+                    scrollbarWidth: "none",
+                    msOverflowStyle: "none",
+                    WebkitOverflowScrolling: "touch",
+                  }}
+                >
+                  {categoryList.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      href={`/products?category=${cat.slug}`}
+                      className="flex-shrink-0 snap-start flex flex-col items-center group w-[74px] xs:w-[84px] text-center"
+                    >
+                      <div className="relative w-16 h-16 xs:w-18 xs:h-18 rounded-2xl overflow-hidden bg-[#FAF8F5] border-2 border-[#E7E3DC] group-hover:border-[#214332] shadow-2xs group-hover:shadow-md transition-all duration-300 p-0.5">
+                        <div className="w-full h-full rounded-[14px] overflow-hidden bg-stone-100">
+                          <img
+                            src={cat.image}
+                            alt={cat.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-out"
+                            loading="lazy"
+                          />
+                        </div>
+                        {cat.slug === "hamper-boxes" && (
+                          <span className="absolute -top-1 -right-1 text-[7px] font-bold bg-[#214332] text-white px-1.5 py-0.2 rounded-full uppercase tracking-tighter shadow-2xs">
+                            HOT
+                          </span>
+                        )}
+                      </div>
+
+                      <span className="text-[11px] xs:text-xs font-medium text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight line-clamp-2 mt-1.5 font-glacial">
+                        {cat.name.replace(/\s*Collection/gi, "").trim()}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+                {/* Mobile swipe helper text */}
+                <div className="flex items-center justify-between text-[10px] text-stone-400 font-glacial pt-1.5 px-0.5 border-t border-[#E7E3DC]/40 mt-1">
+                  <span>← Swipe to explore categories →</span>
+                  <span>{categoryList.length} Collections</span>
+                </div>
+              </div>
+
+              {/* DESKTOP: Editorial Framed Arch Category Cards (>= md) */}
+              <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-4">
                 {categoryList.map((cat) => (
                   <Link
                     key={cat.id}
@@ -123,7 +168,7 @@ export default function HomePage() {
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                         loading="lazy"
                       />
-                      {cat.slug === "hamper" && (
+                      {cat.slug === "hamper-boxes" && (
                         <span className="absolute top-2 right-2 text-[8px] sm:text-[9px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider font-glacial">
                           NEW DROP
                         </span>
