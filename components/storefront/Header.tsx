@@ -130,10 +130,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`w-full font-glacial transition-all duration-300 sticky top-0 z-40 border-b border-[#E7E3DC] text-[#18221D] ${
+        className={`w-full font-sans transition-all duration-300 sticky top-0 z-40 text-[#18221D] ${
           isScrolled
-            ? "bg-[#FAF8F5]/98 backdrop-blur-md shadow-md"
-            : "bg-[#FAF8F5]/95 backdrop-blur-sm shadow-2xs"
+            ? "glass-navbar-scrolled"
+            : "glass-navbar shadow-2xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -142,7 +142,7 @@ export function Header() {
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 -ml-2 rounded-md text-[#1C1917] hover:bg-[#EEF3F0]"
+                className="p-2 -ml-2 rounded-full text-[#1C1917] hover:bg-black/5 transition-colors"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -159,14 +159,14 @@ export function Header() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-5 xl:gap-8">
+            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-5 xl:gap-8 font-sans">
               {primaryNavLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`text-xs xl:text-sm font-medium tracking-wide transition-colors whitespace-nowrap flex items-center gap-1.5 ${
+                    className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap flex items-center gap-1.5 ${
                       isActive
                         ? "text-[#214332] font-bold"
                         : link.highlight
@@ -184,7 +184,7 @@ export function Header() {
               <div className="relative group">
                 <button
                   type="button"
-                  className="flex items-center gap-1 text-xs xl:text-sm font-medium transition-colors py-2 cursor-pointer whitespace-nowrap text-[#1C1917] hover:text-[#214332]"
+                  className="flex items-center gap-1 text-xs xl:text-sm font-semibold transition-colors py-2 cursor-pointer whitespace-nowrap text-[#1C1917] hover:text-[#214332]"
                 >
                   <span>Categories</span>
                   <ChevronDown
@@ -193,7 +193,7 @@ export function Header() {
                 </button>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-64 bg-[#FFFDF9] border border-[#E7E3DC] rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
+                  <div className="w-64 bg-white/85 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
                     {allCategoryLinks.map((item) => (
                       <Link
                         key={item.href + item.label}
@@ -201,7 +201,7 @@ export function Header() {
                         className={`block px-3 py-1.5 text-xs rounded-lg transition-colors ${
                           item.label === "Shop All"
                             ? "font-bold text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6]"
-                            : "font-medium text-stone-800 hover:text-[#214332] hover:bg-[#FAF8F5]"
+                            : "font-medium text-stone-800 hover:text-[#214332] hover:bg-stone-50/80"
                         }`}
                       >
                         {item.label === "Shop All" ? "✦ " + item.label : item.label}
@@ -297,18 +297,18 @@ export function Header() {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-background shadow-2xl flex flex-col p-6 z-10 animate-in slide-in-from-left duration-300">
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-white/92 backdrop-blur-2xl shadow-2xl flex flex-col p-6 z-10 border-r border-stone-200/50 animate-in slide-in-from-left duration-300 font-sans">
             <div className="flex items-center justify-between pb-6 border-b border-border">
               <BrandLogo variant="full" showTagline={false} />
               <button
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2 rounded-md hover:bg-muted"
+                className="p-2 rounded-full hover:bg-black/5"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <nav className="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar">
+            <nav className="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar font-sans">
               {/* Prominent Shop All Button */}
               <div className="mb-4">
                 <Link
@@ -320,11 +320,11 @@ export function Header() {
                     <Sparkles className="w-4 h-4 text-[#DC9924]" />
                     <span>Shop All Collections</span>
                   </span>
-                  <span className="text-xs uppercase tracking-wider text-[#DC9924] font-glacial">All →</span>
+                  <span className="text-xs uppercase tracking-wider text-[#DC9924] font-sans">All →</span>
                 </Link>
               </div>
 
-              <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 pb-1">
+              <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 pb-1 font-sans">
                 Explore Collections
               </p>
               {allCategoryLinks.map((link) => (
@@ -342,8 +342,8 @@ export function Header() {
                 </Link>
               ))}
 
-              <div className="pt-3 border-t border-border space-y-0.5">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 py-1">
+              <div className="pt-3 border-t border-border space-y-0.5 font-sans">
+                <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider px-2 py-1 font-sans">
                   Customer Care
                 </p>
                 <Link
@@ -379,7 +379,7 @@ export function Header() {
       {/* Global Quick Search Overlay */}
       {searchOpen && (
         <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-20 px-4">
-          <div className="bg-[#FFFDF9] border border-[#EADBBE] rounded-2xl w-full max-w-xl p-4 shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95">
+          <div className="bg-white/92 backdrop-blur-2xl border border-stone-200/60 rounded-2xl w-full max-w-xl p-4 shadow-2xl space-y-4 animate-in fade-in-0 zoom-in-95 font-sans">
             <div className="flex items-center gap-3 border-b border-[#EADBBE] pb-3">
               <Search className="w-5 h-5 text-muted-foreground" />
               <input

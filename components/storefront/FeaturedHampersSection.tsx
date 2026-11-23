@@ -58,27 +58,27 @@ export function FeaturedHampersSection() {
   }, [hamperProducts, activeTab]);
 
   return (
-    <section id="featured-hampers" className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-glacial">
+    <section id="featured-hampers" className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-6 sm:space-y-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E7E3DC]/60 pb-5">
           <div>
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em]">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em] font-sans">
               <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
               <span>CURATED CELEBRATION HAMPERS</span>
             </div>
-            <h2 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-normal text-[#18221D] mt-1 tracking-tight">
+            <h2 className="font-logo text-2xl sm:text-3xl md:text-4xl font-bold text-[#18221D] mt-1 tracking-tight">
               Gift Hampers &amp; Keepsake Boxes
             </h2>
-            <p className="text-xs sm:text-sm text-[#4A5750] font-light max-w-xl mt-1">
+            <p className="font-editorial italic text-sm sm:text-base text-[#4A5750] max-w-xl mt-1">
               Thoughtfully curated for birthdays, anniversaries, and gratitude. Hand-assembled with bespoke botanical wax seals.
             </p>
           </div>
 
           <Link
             href="/products?category=hamper-boxes"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0 font-sans"
           >
             <span>View All Hampers</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

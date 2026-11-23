@@ -79,11 +79,11 @@ export default function HomePage() {
   }, [fetchProducts, productsLoaded]);
 
   return (
-    <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-glacial">
+    <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-sans">
       {/* 1. Dynamic Hero Slideshow & Campaign Showcase */}
       <HeroEditorial />
 
-      {/* 2. The Atelier Collection / Shop by Category Grid (Crafto Arte Collection List) */}
+      {/* 2. Shop by Category Grid */}
       <div id="shop-collection" className="scroll-mt-16 sm:scroll-mt-20">
         <section className="w-full py-3.5 sm:py-8 lg:py-12 bg-[#FAF8F5] border-b border-[#E7E3DC]">
           <div className="max-w-7xl mx-auto px-3.5 sm:px-8 lg:px-12 w-full">
@@ -91,17 +91,13 @@ export default function HomePage() {
               {/* Window Header */}
               <div className="flex items-center justify-between gap-2 border-b border-[#E7E3DC]/60 pb-2.5 sm:pb-4 mb-3 sm:mb-6">
                 <div>
-                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-bold text-[#214332] uppercase tracking-widest font-glacial">
-                    <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DC9924]" />
-                    <span>The Atelier Collection</span>
-                  </div>
-                  <h2 className="font-editorial text-lg sm:text-2xl lg:text-3xl font-normal text-[#18221D] mt-0.5 tracking-wide">
+                  <h2 className="font-logo text-xl sm:text-2xl lg:text-3xl font-bold text-[#18221D] tracking-wide">
                     Shop by Category
                   </h2>
                 </div>
                 <Link
                   href="/products"
-                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-glacial shrink-0"
+                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-sans shrink-0"
                 >
                   <span>View All <span className="hidden xs:inline">({categoryList.length})</span></span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
@@ -140,14 +136,14 @@ export default function HomePage() {
                         )}
                       </div>
 
-                      <span className="text-[11px] xs:text-xs font-medium text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight line-clamp-2 mt-1.5 font-glacial">
+                      <span className="text-[11px] xs:text-xs font-semibold text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight line-clamp-2 mt-1.5 font-sans">
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </span>
                     </Link>
                   ))}
                 </div>
                 {/* Mobile swipe helper text */}
-                <div className="flex items-center justify-between text-[10px] text-stone-400 font-glacial pt-1.5 px-0.5 border-t border-[#E7E3DC]/40 mt-1">
+                <div className="flex items-center justify-between text-[10px] text-stone-400 font-sans pt-1.5 px-0.5 border-t border-[#E7E3DC]/40 mt-1">
                   <span>← Swipe to explore categories →</span>
                   <span>{categoryList.length} Collections</span>
                 </div>
@@ -169,17 +165,17 @@ export default function HomePage() {
                         loading="lazy"
                       />
                       {cat.slug === "hamper-boxes" && (
-                        <span className="absolute top-2 right-2 text-[8px] sm:text-[9px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider font-glacial">
+                        <span className="absolute top-2 right-2 text-[8px] sm:text-[9px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider font-sans">
                           NEW DROP
                         </span>
                       )}
                     </div>
 
                     <div className="pt-2 pb-0.5 px-0.5 flex flex-col items-center text-center">
-                      <h3 className="font-editorial text-xs sm:text-sm md:text-[15px] font-semibold tracking-wide text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight truncate max-w-full">
+                      <h3 className="font-logo text-xs sm:text-sm md:text-[15px] font-bold tracking-wide text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight truncate max-w-full">
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </h3>
-                      <div className="flex items-center gap-1 text-[8.5px] sm:text-[9.5px] font-semibold tracking-widest uppercase text-[#DC9924] group-hover:text-[#214332] transition-colors font-glacial mt-1">
+                      <div className="flex items-center gap-1 text-[8.5px] sm:text-[9.5px] font-semibold tracking-widest uppercase text-[#DC9924] group-hover:text-[#214332] transition-colors font-sans mt-1">
                         <span>EXPLORE</span>
                         <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>

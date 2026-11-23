@@ -215,13 +215,13 @@ export function HeroEditorial() {
                   </div>
                 </div>
               ) : (
-                <h1 className="font-editorial text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-normal tracking-tight text-white leading-tight drop-shadow-xl max-w-3xl">
+                <h1 className="font-logo text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-xl max-w-3xl">
                   {slide.title}
                 </h1>
               )}
 
               {/* Subtitle / Indulgence Prompt */}
-              <p className="text-xs sm:text-base md:text-lg text-white/95 font-medium max-w-xl mx-auto leading-relaxed drop-shadow-md line-clamp-2 sm:line-clamp-none">
+              <p className="font-editorial italic text-sm sm:text-lg md:text-xl text-white/95 max-w-xl mx-auto leading-relaxed drop-shadow-md line-clamp-2 sm:line-clamp-none">
                 {slide.subtitle}
               </p>
 

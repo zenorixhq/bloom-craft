@@ -22,14 +22,14 @@ export function AboutUsSection() {
                 <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
                 <span>Our Philosophy</span>
               </span>
-              <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#18221D] leading-[1.1]">
+              <h2 className="font-logo text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#18221D] leading-[1.1]">
                 The Bloom Craft Atelier
               </h2>
               <div className="w-16 sm:w-20 h-[2.5px] bg-gradient-to-r from-[#DC9924] to-transparent rounded-full mt-2.5 sm:mt-3" />
             </div>
 
             <div className="space-y-5 max-w-md">
-              <p className="text-sm sm:text-base md:text-lg text-[#3D4942] font-normal leading-relaxed">
+              <p className="font-editorial italic text-base sm:text-lg md:text-xl text-[#3D4942] leading-relaxed">
                 In an increasingly digital world, we cherish the enduring warmth of physical paper, handwritten words, and artful gifts.
               </p>
               <p className="text-sm sm:text-base text-[#4A5750] font-light leading-relaxed">

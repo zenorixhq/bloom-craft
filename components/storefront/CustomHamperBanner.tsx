@@ -28,11 +28,11 @@ export function CustomHamperBanner() {
                 <span>BESPOKE CONCIERGE</span>
               </div>
 
-              <h2 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-white leading-[1.15]">
+              <h2 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-[1.15]">
                 Customise Your Hamper
               </h2>
 
-              <p className="text-sm sm:text-base lg:text-lg text-stone-200/90 font-light leading-relaxed max-w-xl">
+              <p className="font-editorial italic text-base sm:text-lg lg:text-xl text-stone-200/90 leading-relaxed max-w-xl">
                 Make your gifting unforgettable with a personalized hamper. Choose your journal, candle fragrance, brass wax seal monogram, and custom handwritten message — our atelier will hand-craft and wax-seal it beautifully for you.
               </p>
 
