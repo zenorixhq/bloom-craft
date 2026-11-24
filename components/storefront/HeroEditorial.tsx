@@ -155,7 +155,7 @@ export function HeroEditorial() {
         setIsPaused(false);
         if (isDragging) handleMouseUpOrLeave();
       }}
-      className="relative w-full h-[64vh] min-h-[420px] max-h-[520px] sm:h-[72vh] sm:min-h-[500px] md:h-[84vh] md:min-h-[580px] md:max-h-[820px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
+      className="relative w-full h-[58vh] min-h-[390px] max-h-[480px] sm:h-[68vh] sm:min-h-[470px] md:h-[78vh] md:min-h-[540px] md:max-h-[760px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
     >
       {/* 3 Full-Window Scrollable & Swipeable Slides */}
       <div
@@ -176,11 +176,11 @@ export function HeroEditorial() {
             key={idx}
             className="min-w-full w-full h-full flex-shrink-0 relative snap-center flex items-center justify-center"
           >
-            {/* Background Craft Image (Takes Whole Window Size) */}
+            {/* Background Craft Image (Elevated Focal Point) */}
             <img
               src={slide.image}
               alt={slide.title}
-              className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none transition-transform duration-1000 ease-out"
+              className="absolute inset-0 w-full h-full object-cover object-[center_28%] sm:object-[center_33%] pointer-events-none select-none transition-transform duration-1000 ease-out"
               loading={idx === 0 ? "eager" : "lazy"}
               draggable={false}
             />
@@ -189,8 +189,8 @@ export function HeroEditorial() {
             <div className="absolute inset-0 bg-black/35 pointer-events-none" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
-            {/* Center-Aligned Editorial Content Matching Reference */}
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-4 md:space-y-6">
+            {/* Center-Aligned Editorial Content Positioned Upper */}
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-4 md:space-y-6 -mt-3 sm:-mt-6 md:-mt-8">
               
               {/* Cursive / Script Callout ("Sale!" style) */}
               <div className="animate-fadeIn">
