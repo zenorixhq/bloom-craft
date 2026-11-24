@@ -447,7 +447,7 @@ function AccountPageContent() {
   }, [customerProfile]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8 font-glacial">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8 font-primary">
       {/* Account Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border">
         <div>
@@ -1008,7 +1008,7 @@ export default function AccountPage() {
   return (
     <Suspense
       fallback={
-        <div className="max-w-7xl mx-auto py-20 text-center font-glacial text-xs text-muted-foreground">
+        <div className="max-w-7xl mx-auto py-20 text-center font-primary text-xs text-muted-foreground">
           Loading Bloom Craft Account Hub...
         </div>
       }

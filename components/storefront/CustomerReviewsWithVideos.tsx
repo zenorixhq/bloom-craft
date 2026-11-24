@@ -463,18 +463,18 @@ export function CustomerReviewsWithVideos() {
   }, []);
 
   return (
-    <section className="w-full bg-[#FAF8F5] py-12 sm:py-16 md:py-20 border-t border-[#E7E3DC] text-[#18221D] font-glacial">
+    <section className="w-full bg-[#FAF8F5] py-12 sm:py-16 md:py-20 border-t border-[#E7E3DC] text-[#18221D] font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 space-y-8 sm:space-y-10">
         
         {/* Editorial Section Header */}
         <div className="text-center space-y-2 max-w-2xl mx-auto">
-          <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-[#214332] font-bold block">
+          <span className="text-[11px] sm:text-xs uppercase tracking-[0.28em] text-[#214332] font-bold block font-subtext">
             IN THEIR WORDS
           </span>
-          <h2 className="font-editorial text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#18221D]">
+          <h2 className="font-logo text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-[#18221D]">
             Cherished Celebrations
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 font-light max-w-lg mx-auto">
+          <p className="text-xs sm:text-sm text-stone-600 font-editorial italic max-w-lg mx-auto">
             Unboxing moments, handwritten memories, and genuine reviews from recipients across India.
           </p>
         </div>
@@ -580,10 +580,10 @@ export function CustomerReviewsWithVideos() {
           <div className="pt-6 sm:pt-10 border-t border-[#EADBBE]/70 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="font-editorial text-xl sm:text-2xl text-[#1C1917]">
+                <h3 className="font-logo text-xl sm:text-2xl text-[#1C1917]">
                   What Our Collectors Say
                 </h3>
-                <p className="text-xs text-stone-500 font-light">
+                <p className="text-xs text-stone-500 font-editorial italic">
                   Verified heirloom feedback from across India
                 </p>
               </div>
@@ -643,15 +643,15 @@ export function CustomerReviewsWithVideos() {
                     </div>
 
                     {/* Quote Body */}
-                    <p className="text-xs sm:text-sm text-stone-800 leading-relaxed font-light italic">
+                    <p className="text-xs sm:text-sm text-stone-800 leading-relaxed font-editorial italic">
                       &ldquo;{item.quote}&rdquo;
                     </p>
                   </div>
 
                   <div className="pt-3 border-t border-stone-200/70 flex items-center justify-between">
                     <div>
-                      <p className="text-xs font-bold text-stone-900">{item.author}</p>
-                      <p className="text-[11px] text-stone-500 font-light">{item.location}</p>
+                      <p className="text-xs font-bold font-primary text-stone-900">{item.author}</p>
+                      <p className="text-[11px] text-stone-500 font-subtext">{item.location}</p>
                       {item.piece && (
                         <p className="text-[10px] text-purple-700 font-medium pt-0.5 truncate max-w-[200px]">
                           Piece: {item.piece}

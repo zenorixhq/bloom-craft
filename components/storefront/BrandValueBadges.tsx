@@ -45,19 +45,19 @@ export function BrandValueBadges() {
   ];
 
   return (
-    <section id="brand-values" className="w-full py-8 sm:py-12 lg:py-14 bg-[#FAF8F5] border-b border-[#E7E3DC] font-glacial">
+    <section id="brand-values" className="w-full py-8 sm:py-12 lg:py-14 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         <div className="bg-white/90 backdrop-blur-xs border border-[#E7E3DC] rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xs space-y-6 sm:space-y-8">
           
           {/* Section Editorial Header */}
           <div className="text-center max-w-2xl mx-auto space-y-1.5 sm:space-y-2 border-b border-[#E7E3DC]/60 pb-5 sm:pb-6">
-            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-[#214332] block">
+            <span className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.3em] text-[#214332] block font-subtext">
               OUR STANDARDS
             </span>
-            <h3 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-normal text-[#18221D] tracking-tight">
+            <h3 className="font-logo text-2xl sm:text-3xl md:text-4xl font-bold text-[#18221D] tracking-tight">
               The Bloom Craft Promise
             </h3>
-            <p className="text-xs sm:text-sm text-[#4A5750] font-light max-w-md mx-auto leading-relaxed">
+            <p className="font-editorial italic text-xs sm:text-sm text-[#4A5750] max-w-md mx-auto leading-relaxed">
               Every journal, wax seal, and curated gift box is crafted to make someone feel truly special.
             </p>
           </div>
@@ -69,7 +69,7 @@ export function BrandValueBadges() {
                 key={badge.id}
                 className="group relative rounded-2xl bg-[#FFFDF9] border border-[#E7E3DC] hover:border-[#214332]/60 p-4 xl:p-5 text-center shadow-[0_2px_12px_rgba(24,34,29,0.03)] hover:shadow-[0_12px_28px_rgba(33,67,50,0.12)] hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-between"
               >
-                <span className="text-[9px] font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] border border-emerald-900/10 px-2.5 py-0.5 rounded-full mb-2.5">
+                <span className="text-[9px] font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] border border-emerald-900/10 px-2.5 py-0.5 rounded-full mb-2.5 font-subtext">
                   {badge.tag}
                 </span>
 
@@ -78,10 +78,10 @@ export function BrandValueBadges() {
                 </div>
 
                 <div className="space-y-1 flex-1 flex flex-col justify-start">
-                  <h4 className="font-editorial text-sm xl:text-[15px] font-bold tracking-wide text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight">
+                  <h4 className="font-primary text-sm xl:text-[15px] font-bold tracking-wide text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight">
                     {badge.title}
                   </h4>
-                  <p className="text-[11px] xl:text-xs text-[#4A5750] font-normal leading-snug mt-0.5">
+                  <p className="text-[11px] xl:text-xs text-[#4A5750] font-normal leading-snug mt-0.5 font-subtext">
                     {badge.desc}
                   </p>
                 </div>

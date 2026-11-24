@@ -58,13 +58,13 @@ export function FeaturedHampersSection() {
   }, [hamperProducts, activeTab]);
 
   return (
-    <section id="featured-hampers" className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-sans">
+    <section id="featured-hampers" className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-6 sm:space-y-8">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#E7E3DC]/60 pb-5">
           <div>
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em] font-sans">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em] font-subtext">
               <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
               <span>CURATED CELEBRATION HAMPERS</span>
             </div>
@@ -78,7 +78,7 @@ export function FeaturedHampersSection() {
 
           <Link
             href="/products?category=hamper-boxes"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0 font-sans"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0 font-primary"
           >
             <span>View All Hampers</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -86,7 +86,7 @@ export function FeaturedHampersSection() {
         </div>
 
         {/* Filter Pills / Tabs (Inspired by Crafto Arte Quick Filter) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-primary">
           <button
             type="button"
             onClick={() => setActiveTab("all")}

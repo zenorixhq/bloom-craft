@@ -67,7 +67,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth" style={dynamicThemeStyles} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-sans bg-background text-foreground" suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col font-primary bg-background text-foreground" suppressHydrationWarning>
         <SmoothScrollProvider>
           <WebsiteLoadingAnimation />
           <AnnouncementBar />

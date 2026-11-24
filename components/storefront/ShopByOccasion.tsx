@@ -59,12 +59,12 @@ export function ShopByOccasion() {
   ];
 
   return (
-    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-sans">
+    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
-            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em] font-sans">
+            <div className="flex items-center gap-1.5 text-xs font-bold text-[#214332] uppercase tracking-[0.25em] font-subtext">
               <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
               <span>Gifting Concierge</span>
             </div>
@@ -78,7 +78,7 @@ export function ShopByOccasion() {
 
           <Link
             href="/products?category=hamper"
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0 font-sans"
+            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] group transition-colors flex-shrink-0 font-primary"
           >
             <span>Explore All Hampers</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -91,7 +91,7 @@ export function ShopByOccasion() {
             <Link
               key={occ.id}
               href={occ.link}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/5] sm:aspect-[3/4] border border-[#E7E3DC] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between p-4 sm:p-5"
+              className="group relative rounded-2xl overflow-hidden aspect-[4/5] sm:aspect-[3/4] border border-[#E7E3DC] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 flex flex-col justify-between p-4 sm:p-5 font-primary"
             >
               {/* Background Image */}
               <img
@@ -107,7 +107,7 @@ export function ShopByOccasion() {
               />
 
               {/* Top Pill */}
-              <div className="relative z-10 flex items-center justify-between">
+              <div className="relative z-10 flex items-center justify-between font-subtext">
                 <span className="inline-flex items-center gap-1 bg-black/40 backdrop-blur-md text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider border border-white/20">
                   {occ.icon}
                   <span>{occ.badge}</span>
@@ -116,13 +116,13 @@ export function ShopByOccasion() {
 
               {/* Bottom Content */}
               <div className="relative z-10 text-white space-y-1">
-                <h3 className="font-editorial text-lg sm:text-xl font-normal leading-snug tracking-wide group-hover:text-amber-200 transition-colors">
+                <h3 className="font-primary text-base sm:text-lg font-bold leading-snug tracking-wide group-hover:text-amber-200 transition-colors">
                   {occ.title}
                 </h3>
-                <p className="text-[11px] text-white/80 line-clamp-2 leading-relaxed">
+                <p className="font-editorial italic text-xs text-white/90 line-clamp-2 leading-relaxed">
                   {occ.subtitle}
                 </p>
-                <div className="pt-2 flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase text-amber-300 group-hover:text-amber-100 transition-colors">
+                <div className="pt-2 flex items-center gap-1 text-[10px] font-bold tracking-widest uppercase text-amber-300 group-hover:text-amber-100 transition-colors font-subtext">
                   <span>DISCOVER GIFTS</span>
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>

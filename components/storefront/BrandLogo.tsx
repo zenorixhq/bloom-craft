@@ -40,7 +40,7 @@ export function BrandLogo({
         <div className="flex flex-col text-left justify-center">
           <div className="flex items-center gap-1.5">
             <span
-              className={`font-serif-luxury text-lg sm:text-xl font-bold tracking-[0.14em] uppercase transition-colors ${
+              className={`font-logo text-lg sm:text-xl font-bold tracking-[0.14em] uppercase transition-colors ${
                 theme === "dark" ? "text-white" : "text-foreground"
               }`}
             >
@@ -50,7 +50,7 @@ export function BrandLogo({
           </div>
           {showTagline && (
             <span
-              className={`font-editorial italic text-[10px] sm:text-[11.5px] tracking-wide mt-[-2px] truncate max-w-[210px] sm:max-w-none ${
+              className={`font-editorial italic text-[10.5px] sm:text-[12px] tracking-wide mt-[-2px] truncate max-w-[210px] sm:max-w-none ${
                 theme === "dark" ? "text-emerald-200/90" : "text-primary/90"
               }`}
             >

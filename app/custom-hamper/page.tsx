@@ -184,21 +184,21 @@ export default function CustomHamperPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-[#FAF8F5] text-[#18221D] font-glacial">
+    <div className="w-full min-h-screen bg-[#FAF8F5] text-[#18221D] font-primary">
       {/* 1. Header Banner */}
       <section className="relative w-full py-12 sm:py-16 bg-[#214332] text-white overflow-hidden border-b border-emerald-950/20">
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/30 pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DC9924]/20 border border-[#DC9924]/40 text-[#F5C46B] text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-2xs">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#DC9924]/20 border border-[#DC9924]/40 text-[#F5C46B] text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-2xs font-subtext">
             <Sparkles className="w-3.5 h-3.5" />
             <span>BESPOKE GIFT BOX ATELIER</span>
           </div>
 
-          <h1 className="font-editorial text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-tight">
+          <h1 className="font-logo text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-tight">
             Build Your Custom Gift Hamper
           </h1>
 
-          <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-white/90 max-w-2xl mx-auto font-editorial italic leading-relaxed">
             Curate an unforgettable gift box. Select your container, add multiple gifts across our 13 artisanal categories, and finish with luxury ribbons and a complimentary wax-sealed message card.
           </p>
 
@@ -234,10 +234,10 @@ export default function CustomHamperPage() {
                     1
                   </span>
                   <div>
-                    <h2 className="font-editorial text-xl sm:text-2xl font-semibold text-[#18221D]">
+                    <h2 className="font-logo text-xl sm:text-2xl font-semibold text-[#18221D]">
                       Choose Your Base Container
                     </h2>
-                    <p className="text-xs sm:text-sm text-stone-500">
+                    <p className="text-xs sm:text-sm text-stone-500 font-editorial italic">
                       Select a Hamper Box, Woven Basket, or Presentation Trolley
                     </p>
                   </div>
@@ -298,10 +298,10 @@ export default function CustomHamperPage() {
                     2
                   </span>
                   <div>
-                    <h2 className="font-editorial text-xl sm:text-2xl font-semibold text-[#18221D]">
+                    <h2 className="font-logo text-xl sm:text-2xl font-semibold text-[#18221D]">
                       Add Gifts from Different Categories
                     </h2>
-                    <p className="text-xs sm:text-sm text-stone-500">
+                    <p className="text-xs sm:text-sm text-stone-500 font-editorial italic">
                       Mix and match plushies, jewellery, perfumes, stationery, frames &amp; more
                     </p>
                   </div>
@@ -419,10 +419,10 @@ export default function CustomHamperPage() {
                   3
                 </span>
                 <div>
-                  <h2 className="font-editorial text-xl sm:text-2xl font-semibold text-[#18221D]">
+                  <h2 className="font-logo text-xl sm:text-2xl font-semibold text-[#18221D]">
                     Ribbons, Wrap &amp; Personalized Note
                   </h2>
-                  <p className="text-xs sm:text-sm text-stone-500">
+                  <p className="text-xs sm:text-sm text-stone-500 font-editorial italic">
                     Complimentary wax seal gift card &amp; luxury finishing touches
                   </p>
                 </div>
@@ -555,7 +555,7 @@ export default function CustomHamperPage() {
                 <span className="text-[10px] uppercase font-bold tracking-widest text-[#DC9924] block">
                   LIVE HAMPER PREVIEW
                 </span>
-                <h3 className="font-editorial text-2xl font-semibold text-[#18221D]">
+                <h3 className="font-logo text-2xl font-semibold text-[#18221D]">
                   Hamper Box Summary
                 </h3>
                 <p className="text-xs text-stone-500">
@@ -659,8 +659,8 @@ export default function CustomHamperPage() {
               {/* Price Calculation & Checkout */}
               <div className="pt-4 border-t border-[#E7E3DC] space-y-3">
                 <div className="flex items-baseline justify-between">
-                  <span className="text-sm font-medium text-stone-600">Total Hamper Price</span>
-                  <span className="font-editorial text-2xl font-bold text-[#214332]">
+                  <span className="text-sm font-medium text-stone-600 font-subtext">Total Hamper Price</span>
+                  <span className="font-primary text-2xl font-bold text-[#214332]">
                     {formatPrice(totalPrice)}
                   </span>
                 </div>
@@ -668,7 +668,7 @@ export default function CustomHamperPage() {
                 <button
                   type="button"
                   onClick={handleAddHamperToCart}
-                  className="w-full py-4 rounded-full bg-[#214332] hover:bg-[#162f23] text-white text-sm font-bold tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-4 rounded-full bg-[#214332] hover:bg-[#162f23] text-white text-xs sm:text-sm font-primary uppercase tracking-wider font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4" />
                   <span>Add Complete Hamper to Bag</span>

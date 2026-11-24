@@ -58,7 +58,7 @@ export function ProductCard({ product }: ProductCardProps) {
       : "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=800";
 
   return (
-    <div className="group relative flex flex-col bg-card rounded-xl border border-border/70 overflow-hidden hover:shadow-lg transition-all duration-500 ease-out hover:-translate-y-1 hover:border-primary/50 font-glacial card-shine">
+    <div className="group relative flex flex-col bg-card rounded-xl border border-border/70 overflow-hidden hover:shadow-lg transition-all duration-500 ease-out hover:-translate-y-1 hover:border-primary/50 font-primary card-shine">
       {/* Product Image - Clean Framed Aspect Ratio (Fits Entire Jewelry Piece) */}
       <div className="relative aspect-square w-full overflow-hidden bg-[#FAF8F5] dark:bg-stone-900/40 p-2 sm:p-2.5 flex items-center justify-center">
         <Link href={`/products/${product.slug}`} className="block w-full h-full relative flex items-center justify-center">
@@ -161,7 +161,7 @@ export function ProductCard({ product }: ProductCardProps) {
       {/* Compact Product Details */}
       <div className="p-2 sm:p-3 flex-1 flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between gap-1 text-[9px] sm:text-[10px] text-muted-foreground mb-1">
+          <div className="flex items-center justify-between gap-1 text-[9px] sm:text-[10px] text-muted-foreground mb-1 font-subtext">
             <span className={`capitalize truncate max-w-[120px] ${product.isHamper ? "text-emerald-700 font-bold" : ""}`}>
               {product.isHamper ? "Multi-Item Hamper" : product.category.replace("-", " ")}
             </span>
@@ -174,7 +174,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
 
           <Link href={`/products/${product.slug}`} className="block group-hover:text-primary transition-colors">
-            <h3 className="text-[11px] xs:text-xs sm:text-sm font-semibold text-foreground line-clamp-1" title={product.title}>
+            <h3 className="text-[11px] xs:text-xs sm:text-sm font-bold tracking-wide text-foreground line-clamp-1 font-primary" title={product.title}>
               {product.title}
             </h3>
           </Link>
@@ -182,7 +182,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
         {/* Price & Mobile Add Button */}
         <div className="pt-1.5 sm:pt-2 mt-1 sm:mt-1.5 border-t border-border/40 flex items-center justify-between gap-1">
-          <div className="flex items-baseline gap-1 min-w-0 flex-wrap">
+          <div className="flex items-baseline gap-1 min-w-0 flex-wrap font-subtext">
             <span className="text-[11px] xs:text-xs sm:text-sm font-bold text-foreground whitespace-nowrap">
               {formatPrice(effectivePrice, selectedCurrency)}
             </span>

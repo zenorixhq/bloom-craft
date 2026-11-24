@@ -79,7 +79,7 @@ export default function HomePage() {
   }, [fetchProducts, productsLoaded]);
 
   return (
-    <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-sans">
+    <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-primary">
       {/* 1. Dynamic Hero Slideshow & Campaign Showcase */}
       <HeroEditorial />
 
@@ -94,10 +94,13 @@ export default function HomePage() {
                   <h2 className="font-logo text-xl sm:text-2xl lg:text-3xl font-bold text-[#18221D] tracking-wide">
                     Shop by Category
                   </h2>
+                  <p className="font-editorial italic text-xs sm:text-sm text-stone-600 mt-0.5">
+                    Explore our curated hampers, artisanal stationery &amp; keepsake gifts
+                  </p>
                 </div>
                 <Link
                   href="/products"
-                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-sans shrink-0"
+                  className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1 group transition-colors font-primary shrink-0"
                 >
                   <span>View All <span className="hidden xs:inline">({categoryList.length})</span></span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
@@ -130,20 +133,20 @@ export default function HomePage() {
                           />
                         </div>
                         {cat.slug === "hamper-boxes" && (
-                          <span className="absolute -top-1 -right-1 text-[7px] font-bold bg-[#214332] text-white px-1.5 py-0.2 rounded-full uppercase tracking-tighter shadow-2xs">
+                          <span className="absolute -top-1 -right-1 text-[7px] font-bold bg-[#214332] text-white px-1.5 py-0.2 rounded-full uppercase tracking-tighter shadow-2xs font-subtext">
                             HOT
                           </span>
                         )}
                       </div>
 
-                      <span className="text-[11px] xs:text-xs font-semibold text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight line-clamp-2 mt-1.5 font-sans">
+                      <span className="text-[11px] xs:text-xs font-semibold text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight line-clamp-2 mt-1.5 font-primary">
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </span>
                     </Link>
                   ))}
                 </div>
                 {/* Mobile swipe helper text */}
-                <div className="flex items-center justify-between text-[10px] text-stone-400 font-sans pt-1.5 px-0.5 border-t border-[#E7E3DC]/40 mt-1">
+                <div className="flex items-center justify-between text-[10px] text-stone-400 font-subtext pt-1.5 px-0.5 border-t border-[#E7E3DC]/40 mt-1">
                   <span>← Swipe to explore categories →</span>
                   <span>{categoryList.length} Collections</span>
                 </div>
@@ -155,7 +158,7 @@ export default function HomePage() {
                   <Link
                     key={cat.id}
                     href={`/products?category=${cat.slug}`}
-                    className="group relative bg-[#FFFDF9] border border-[#E7E3DC] rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 shadow-2xs hover:shadow-xl hover:border-[#214332]/60 hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between card-shine"
+                    className="group relative bg-[#FFFDF9] border border-[#E7E3DC] rounded-2xl sm:rounded-3xl p-2.5 sm:p-3 shadow-2xs hover:shadow-xl hover:border-[#214332]/60 hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between card-shine font-primary"
                   >
                     <div className="w-full h-32 xs:h-36 sm:h-40 md:h-44 rounded-t-[1.2rem] sm:rounded-t-[1.6rem] rounded-b-xl overflow-hidden bg-[#FAF8F5] relative flex items-center justify-center border border-stone-100 shadow-2xs group-hover:shadow-md transition-shadow duration-500">
                       <img
@@ -165,7 +168,7 @@ export default function HomePage() {
                         loading="lazy"
                       />
                       {cat.slug === "hamper-boxes" && (
-                        <span className="absolute top-2 right-2 text-[8px] sm:text-[9px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider font-sans">
+                        <span className="absolute top-2 right-2 text-[8px] sm:text-[9px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full shadow-xs uppercase tracking-wider font-subtext">
                           NEW DROP
                         </span>
                       )}
@@ -175,7 +178,7 @@ export default function HomePage() {
                       <h3 className="font-logo text-xs sm:text-sm md:text-[15px] font-bold tracking-wide text-[#18221D] group-hover:text-[#214332] transition-colors leading-tight truncate max-w-full">
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </h3>
-                      <div className="flex items-center gap-1 text-[8.5px] sm:text-[9.5px] font-semibold tracking-widest uppercase text-[#DC9924] group-hover:text-[#214332] transition-colors font-sans mt-1">
+                      <div className="flex items-center gap-1 text-[8.5px] sm:text-[9.5px] font-semibold tracking-widest uppercase text-[#DC9924] group-hover:text-[#214332] transition-colors font-subtext mt-1">
                         <span>EXPLORE</span>
                         <span className="group-hover:translate-x-0.5 transition-transform">→</span>
                       </div>

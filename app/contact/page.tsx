@@ -42,10 +42,10 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] py-10 sm:py-16 font-sans">
+    <div className="min-h-screen bg-[#FAF8F5] py-10 sm:py-16 font-primary">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-stone-500 font-sans">
+        <nav className="flex items-center gap-2 text-xs text-stone-500 font-subtext">
           <Link href="/" className="hover:text-[#214332] transition-colors">
             Home
           </Link>
@@ -55,14 +55,14 @@ export default function ContactPage() {
 
         {/* Page Header */}
         <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF3F0] border border-[#214332]/15 text-[#214332] text-xs font-semibold uppercase tracking-wider">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF3F0] border border-[#214332]/15 text-[#214332] text-xs font-semibold uppercase tracking-wider font-subtext">
             <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
             <span>Bloom Craft Concierge</span>
           </span>
           <h1 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-bold text-[#18221D] tracking-tight">
             We&apos;d Love to Hear From You
           </h1>
-          <p className="text-sm sm:text-base text-stone-600 font-light leading-relaxed">
+          <p className="text-sm sm:text-base text-stone-600 font-editorial italic leading-relaxed">
             Whether you&apos;re planning a bespoke gift hamper, need assistance with your order, or want to collaborate for corporate celebrations, our team is here to assist.
           </p>
         </div>
@@ -147,7 +147,7 @@ export default function ContactPage() {
               <h2 className="font-logo text-xl sm:text-2xl font-bold text-[#18221D]">
                 Send Us a Message
               </h2>
-              <p className="text-xs sm:text-sm text-stone-500 mt-1">
+              <p className="text-xs sm:text-sm text-stone-500 mt-1 font-editorial italic">
                 Fill in the details below and we&apos;ll get back to you promptly.
               </p>
             </div>
@@ -236,7 +236,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 px-6 rounded-xl bg-[#214332] text-white font-semibold text-sm hover:bg-[#162f23] transition-colors flex items-center justify-center gap-2 shadow-sm"
+                  className="w-full py-3 px-6 rounded-xl bg-[#214332] text-white font-primary uppercase tracking-wider font-semibold text-xs sm:text-sm hover:bg-[#162f23] transition-colors flex items-center justify-center gap-2 shadow-sm"
                 >
                   <Send className="w-4 h-4" />
                   <span>Send via WhatsApp Concierge</span>

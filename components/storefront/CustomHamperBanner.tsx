@@ -11,7 +11,7 @@ export function CustomHamperBanner() {
   )}`;
 
   return (
-    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-glacial">
+    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#1E382B] via-[#214332] to-[#14261D] text-white p-6 sm:p-10 lg:p-14 shadow-xl border border-emerald-900/30">
           
@@ -23,7 +23,7 @@ export function CustomHamperBanner() {
             
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-4 sm:space-y-5 text-left">
-              <div className="inline-flex items-center gap-1.5 bg-[#DC9924]/20 border border-[#DC9924]/40 text-[#F5C46B] text-[11px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-2xs">
+              <div className="inline-flex items-center gap-1.5 bg-[#DC9924]/20 border border-[#DC9924]/40 text-[#F5C46B] text-[11px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-2xs font-subtext">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>BESPOKE CONCIERGE</span>
               </div>
@@ -37,7 +37,7 @@ export function CustomHamperBanner() {
               </p>
 
               {/* Feature Checkpoints */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-stone-200">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs sm:text-sm text-stone-200 font-subtext">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#DC9924] flex-shrink-0" />
                   <span>Choose Your Theme &amp; Items</span>
@@ -57,10 +57,10 @@ export function CustomHamperBanner() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 pt-3">
+              <div className="flex flex-wrap items-center gap-3.5 pt-3 font-primary">
                 <Link
                   href="/custom-hamper"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#DC9924] hover:bg-[#c9891c] text-[#14261D] text-sm font-bold tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#DC9924] hover:bg-[#c9891c] text-[#14261D] text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                 >
                   <Gift className="w-4 h-4 text-[#14261D]" />
                   <span>Build Custom Hamper</span>
@@ -68,7 +68,7 @@ export function CustomHamperBanner() {
                 </Link>
                 <Link
                   href="/products?category=hamper-boxes"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 hover:border-white text-white text-sm font-semibold transition-all hover:bg-white/10"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/30 hover:border-white text-white text-xs sm:text-sm font-semibold uppercase tracking-wider transition-all hover:bg-white/10"
                 >
                   <span>Browse Ready Hampers</span>
                 </Link>

@@ -67,12 +67,12 @@ export function CartDrawer() {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
-        <div data-lenis-prevent className="w-full sm:w-[420px] bg-card shadow-2xl flex flex-col border-l border-border animate-in slide-in-from-right duration-300 font-glacial">
+        <div data-lenis-prevent className="w-full sm:w-[420px] bg-card shadow-2xl flex flex-col border-l border-border animate-in slide-in-from-right duration-300 font-primary">
           {/* Header */}
           <div className="px-4 sm:px-6 py-4 sm:py-5 border-b border-border flex items-center justify-between">
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-5 h-5 text-primary" />
-              <h2 className="text-base font-bold text-foreground">Shopping Bag</h2>
+              <h2 className="text-base font-bold font-logo text-foreground">Shopping Bag</h2>
               <span className="text-xs font-semibold bg-muted px-2 py-0.5 rounded-full text-muted-foreground">
                 {items.reduce((sum, i) => sum + i.quantity, 0)} items
               </span>
@@ -309,7 +309,7 @@ export function CartDrawer() {
               <Link
                 href="/checkout"
                 onClick={closeCart}
-                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:bg-primary-hover transition-all shadow-md active:scale-[0.99]"
+                className="w-full flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-primary text-primary-foreground font-primary uppercase tracking-wider font-bold text-xs sm:text-sm hover:bg-primary-hover transition-all shadow-md active:scale-[0.99]"
               >
                 <Lock className="w-4 h-4 text-accent" />
                 <span>Proceed to Secure Checkout</span>

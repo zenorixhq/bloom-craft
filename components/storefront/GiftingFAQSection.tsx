@@ -55,19 +55,19 @@ export function GiftingFAQSection() {
   )}`;
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E7E3DC] font-glacial">
+    <section className="w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
       <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-8 sm:space-y-10">
         
         {/* Header (Inspired by Crafto Arte: Got Questions? We've Got Answers) */}
         <div className="text-center space-y-2 max-w-xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#214332]">
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-[0.25em] text-[#214332] font-subtext">
             <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
             <span>GIFTING CLARITY</span>
           </div>
-          <h2 className="font-editorial text-2xl sm:text-3xl md:text-4xl font-normal text-[#18221D] tracking-tight">
+          <h2 className="font-logo text-2xl sm:text-3xl md:text-4xl font-normal text-[#18221D] tracking-tight">
             Got Questions? We’ve Got Answers.
           </h2>
-          <p className="text-xs sm:text-sm text-[#4A5750] font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-[#4A5750] font-editorial italic leading-relaxed">
             Everything you need to know about our handcrafted assembly, delivery timelines, and personalized note cards.
           </p>
         </div>
@@ -87,7 +87,7 @@ export function GiftingFAQSection() {
                   className="w-full py-4 sm:py-5 px-5 sm:px-6 flex items-center justify-between text-left gap-4 cursor-pointer focus:outline-none"
                   aria-expanded={isOpen}
                 >
-                  <span className="font-editorial text-base sm:text-lg font-normal text-[#18221D]">
+                  <span className="font-primary text-base sm:text-lg font-medium text-[#18221D]">
                     {faq.question}
                   </span>
                   <div
@@ -100,7 +100,7 @@ export function GiftingFAQSection() {
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-[#4A5750] font-light leading-relaxed border-t border-stone-100 animate-fadeIn">
+                  <div className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-[#4A5750] font-subtext leading-relaxed border-t border-stone-100 animate-fadeIn">
                     <p>{faq.answer}</p>
                   </div>
                 )}
@@ -116,10 +116,10 @@ export function GiftingFAQSection() {
               <MessageCircle className="w-5 h-5 text-[#DC9924]" />
             </div>
             <div>
-              <h4 className="font-editorial text-base font-medium text-[#18221D]">
+              <h4 className="font-primary text-base font-semibold text-[#18221D]">
                 Still have a question or need a quick consultation?
               </h4>
-              <p className="text-xs text-[#526058] mt-0.5">
+              <p className="text-xs text-[#526058] font-subtext mt-0.5">
                 Our gifting curator is available on WhatsApp to assist with bespoke orders and express requests.
               </p>
             </div>
@@ -129,7 +129,7 @@ export function GiftingFAQSection() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full bg-[#214332] hover:bg-[#162f23] text-white text-xs font-semibold tracking-wide transition-all whitespace-nowrap shadow-xs hover:scale-105"
+            className="px-5 py-2.5 rounded-full bg-[#214332] hover:bg-[#162f23] text-white text-xs font-primary uppercase tracking-wider font-semibold transition-all whitespace-nowrap shadow-xs hover:scale-105"
           >
             Chat with Curator
           </a>

@@ -3728,7 +3728,7 @@ https://bloomcraft.in/products`;
 
         {/* Tab: Website Media & Storefront Images */}
         {activeTab === "site-images" && (
-          <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm space-y-8 font-glacial">
+          <div className="bg-card border border-border rounded-2xl p-6 sm:p-8 shadow-sm space-y-8 font-subtext">
             {/* Tab Header */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
               <div>

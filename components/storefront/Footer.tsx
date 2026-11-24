@@ -26,7 +26,7 @@ export function Footer() {
   };
 
   return (
-    <footer id="contact" className="scroll-mt-16 sm:scroll-mt-20 bg-[#121915] text-[#FAF8F5] border-t border-emerald-950/80 mt-16 sm:mt-24 select-none font-glacial">
+    <footer id="contact" className="scroll-mt-16 sm:scroll-mt-20 bg-[#121915] text-[#FAF8F5] border-t border-emerald-950/80 mt-16 sm:mt-24 select-none font-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         {/* Main 4-Column Minimalist Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12">
@@ -35,7 +35,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-4">
             <BrandLogo variant="full" showTagline={true} theme="dark" />
             
-            <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed max-w-sm">
+            <p className="text-xs sm:text-sm text-stone-300 font-subtext leading-relaxed max-w-sm">
               Artisanal stationery, handcrafted journals, bespoke wax seals, and thoughtfully curated gift hampers. Made with love for life&apos;s most cherished celebrations.
             </p>
 
@@ -75,10 +75,10 @@ export function Footer() {
 
           {/* Column 2: Collections (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924]">
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924] font-primary">
               Collections
             </h5>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-stone-300">
+            <ul className="space-y-2 text-xs sm:text-[13px] text-stone-300 font-primary tracking-wide">
               <li>
                 <Link href="/products?category=gift-hampers" className="hover:text-white transition-colors">
                   Curated Hampers
@@ -120,10 +120,10 @@ export function Footer() {
 
           {/* Column 3: Client Care & Policies (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924]">
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924] font-primary">
               Gifting Concierge
             </h5>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-stone-300">
+            <ul className="space-y-2 text-xs sm:text-[13px] text-stone-300 font-primary tracking-wide">
               <li>
                 <button
                   onClick={() => setPolicyModalTab("shipping")}
@@ -177,10 +177,10 @@ export function Footer() {
 
           {/* Column 4: Newsletter & Exclusive Offers (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924]">
+            <h5 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#DC9924] font-primary">
               Bloom Craft Circle
             </h5>
-            <p className="text-xs text-stone-300 font-light leading-relaxed">
+            <p className="text-xs text-stone-300 font-subtext leading-relaxed">
               Subscribe to receive first access to limited-edition gift hampers, seasonal drops, and 10% off your first craft order.
             </p>
 
@@ -198,7 +198,7 @@ export function Footer() {
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     required
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-[#214332] transition-colors"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-xs text-white placeholder-stone-400 focus:outline-none focus:border-[#214332] transition-colors font-subtext"
                   />
                   <button
                     type="submit"
@@ -211,7 +211,7 @@ export function Footer() {
               </form>
             )}
 
-            <div className="pt-2 text-[11px] text-stone-400 leading-normal">
+            <div className="pt-2 text-[11px] text-stone-400 leading-normal font-subtext">
               Direct Assistance: <a href="mailto:hello@bloomcraft.in" className="text-emerald-300 hover:underline">hello@bloomcraft.in</a>
             </div>
           </div>
@@ -219,7 +219,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Copyright & Payment Trust Bar */}
-        <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-400">
+        <div className="mt-12 pt-6 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-400 font-subtext">
           <p>© {new Date().getFullYear()} Bloom Craft. All rights reserved. Handcrafted in India.</p>
           <div className="flex items-center gap-3 text-stone-400 text-xs">
             <span>UPI</span>

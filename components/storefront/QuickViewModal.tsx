@@ -110,7 +110,7 @@ export function QuickViewModal() {
         onClick={closeQuickView}
       />
 
-      <div data-lenis-prevent className="relative w-full max-w-3xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in-0 zoom-in-95 my-auto max-h-[90vh] overflow-y-auto font-glacial">
+      <div data-lenis-prevent className="relative w-full max-w-3xl bg-card border border-border rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in-0 zoom-in-95 my-auto max-h-[90vh] overflow-y-auto font-primary">
         <button
           onClick={closeQuickView}
           className="absolute top-3 right-3 p-2 rounded-full bg-background/80 hover:bg-background border border-border text-foreground transition-colors z-20"
@@ -133,20 +133,20 @@ export function QuickViewModal() {
             <div className="space-y-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                  <span className="text-xs font-semibold text-primary uppercase tracking-wider font-subtext">
                     {product.category}
                   </span>
                   {isOutOfStock ? (
-                    <span className="bg-destructive/10 text-destructive border border-destructive/20 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+                    <span className="bg-destructive/10 text-destructive border border-destructive/20 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase font-subtext">
                       Out of Stock
                     </span>
                   ) : effectiveMaxStock <= 3 ? (
-                    <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                    <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 text-[10px] font-bold px-2 py-0.5 rounded-full font-subtext">
                       Only {effectiveMaxStock} Left
                     </span>
                   ) : null}
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground mt-1">
+                <h3 className="text-lg sm:text-xl font-bold font-logo text-foreground mt-1">
                   {product.title}
                 </h3>
 
@@ -304,7 +304,7 @@ export function QuickViewModal() {
               <button
                 disabled={isOutOfStock}
                 onClick={handleAddToCart}
-                className={`w-full py-3 px-4 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-md transition-all ${
+                className={`w-full py-3 px-4 rounded-xl font-primary uppercase tracking-wider font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-all ${
                   isOutOfStock
                     ? "bg-stone-200 dark:bg-stone-800 text-stone-500 dark:text-stone-400 cursor-not-allowed border border-border opacity-70"
                     : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -323,7 +323,7 @@ export function QuickViewModal() {
               <Link
                 href={`/products/${product.slug}`}
                 onClick={closeQuickView}
-                className="w-full py-2.5 px-4 rounded-xl border border-border text-foreground hover:bg-muted font-medium text-xs flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl border border-border text-foreground hover:bg-muted font-primary uppercase tracking-wider font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors"
               >
                 <span>View Full Product Specifications</span>
                 <ArrowRight className="w-3.5 h-3.5" />

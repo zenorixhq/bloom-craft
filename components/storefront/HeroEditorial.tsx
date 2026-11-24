@@ -229,14 +229,14 @@ export function HeroEditorial() {
               <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-6 pt-1 sm:pt-2">
                 <Link
                   href={slide.primaryCta.href}
-                  className="px-5 py-2.5 sm:px-8 sm:py-3 rounded-full sm:rounded-md bg-white hover:bg-stone-100 text-stone-900 text-xs sm:text-base font-bold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer"
+                  className="px-5 py-2.5 sm:px-8 sm:py-3 rounded-full sm:rounded-md bg-white hover:bg-stone-100 text-stone-900 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer font-primary"
                 >
                   {slide.primaryCta.label}
                 </Link>
 
                 <Link
                   href={slide.secondaryCta.href}
-                  className="inline-flex items-center gap-1.5 sm:gap-2 text-white hover:text-stone-200 text-xs sm:text-base font-semibold drop-shadow-md hover:underline underline-offset-4 transition-all group"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 text-white hover:text-stone-200 text-xs sm:text-sm font-semibold uppercase tracking-wider drop-shadow-md hover:underline underline-offset-4 transition-all group font-primary"
                 >
                   <span>{slide.secondaryCta.label}</span>
                   <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1.5 transition-transform" />

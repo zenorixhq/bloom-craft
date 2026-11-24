@@ -72,10 +72,10 @@ export default function CartPage() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8 font-glacial">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-8 font-primary">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-black text-foreground">Shopping Bag</h1>
-        <p className="text-xs text-muted-foreground mt-1">
+        <h1 className="text-2xl sm:text-3xl font-bold font-logo text-foreground">Shopping Bag</h1>
+        <p className="text-xs text-muted-foreground mt-1 font-editorial italic">
           Review your items before proceeding to secure checkout.
         </p>
       </div>
@@ -229,7 +229,7 @@ export default function CartPage() {
 
           <Link
             href="/checkout"
-            className="w-full py-4 px-6 rounded-xl bg-primary text-primary-foreground font-bold text-sm hover:bg-primary-hover flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.99]"
+            className="w-full py-4 px-6 rounded-xl bg-primary text-primary-foreground font-primary uppercase tracking-wider font-bold text-xs sm:text-sm hover:bg-primary-hover flex items-center justify-center gap-2 shadow-lg transition-all active:scale-[0.99]"
           >
             <Lock className="w-4 h-4 text-accent" />
             <span>Proceed to Secure Checkout</span>

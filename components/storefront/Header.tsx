@@ -133,7 +133,7 @@ export function Header() {
   return (
     <>
       <header
-        className={`w-full font-sans transition-all duration-300 sticky top-0 z-40 text-[#18221D] ${
+        className={`w-full font-primary transition-all duration-300 sticky top-0 z-40 text-[#18221D] ${
           isScrolled
             ? "glass-navbar-scrolled"
             : "glass-navbar shadow-2xs"
@@ -162,13 +162,13 @@ export function Header() {
             </div>
 
             {/* Desktop Navigation Links: ONLY Home, Collection, Shop, About Us, Contact Us */}
-            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-6 xl:gap-8 font-sans">
+            <nav className="hidden lg:flex items-center justify-center flex-1 px-4 xl:px-8 gap-6 xl:gap-9 font-primary">
               {/* 1. Home */}
               <Link
                 href="/"
-                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/"
-                    ? "text-[#214332] font-bold"
+                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >
@@ -180,9 +180,9 @@ export function Header() {
                 <Link
                   href="/#shop-collection"
                   onClick={handleCollectionDesktopClick}
-                  className={`flex items-center gap-1 text-xs xl:text-sm font-semibold transition-colors py-1.5 cursor-pointer whitespace-nowrap ${
+                  className={`flex items-center gap-1 text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors py-1.5 cursor-pointer whitespace-nowrap ${
                     pathname.startsWith("/products?category")
-                      ? "text-[#214332] font-bold"
+                      ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
                       : "text-[#1C1917] hover:text-[#214332]"
                   }`}
                 >
@@ -193,16 +193,16 @@ export function Header() {
                 </Link>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-64 max-h-[75vh] overflow-y-auto no-scrollbar bg-white/92 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1">
+                  <div className="w-64 max-h-[75vh] overflow-y-auto no-scrollbar bg-white/95 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1 font-primary">
                     <Link
                       href="/products"
-                      className="block px-3 py-1.5 text-xs font-bold text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6] rounded-lg transition-colors"
+                      className="block px-3 py-1.5 text-xs font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6] rounded-lg transition-colors"
                     >
                       ✦ View All Catalog
                     </Link>
                     <Link
                       href="/custom-hamper"
-                      className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
+                      className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold tracking-wide text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
                     >
                       <span>Build Custom Hamper</span>
                       <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
@@ -212,7 +212,7 @@ export function Header() {
                       <Link
                         key={cat.id || cat.slug}
                         href={`/products?category=${cat.slug}`}
-                        className="block px-3 py-1.5 text-xs font-medium text-stone-800 hover:text-[#214332] hover:bg-stone-50/80 rounded-lg transition-colors"
+                        className="block px-3 py-1.5 text-xs font-medium tracking-wide text-stone-800 hover:text-[#214332] hover:bg-stone-50/80 rounded-lg transition-colors"
                       >
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </Link>
@@ -224,9 +224,9 @@ export function Header() {
               {/* 3. Shop */}
               <Link
                 href="/products"
-                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/products"
-                    ? "text-[#214332] font-bold"
+                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >
@@ -237,7 +237,7 @@ export function Header() {
               <Link
                 href="/#about-us"
                 onClick={handleAboutClick}
-                className="text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 text-[#1C1917] hover:text-[#214332]"
+                className="text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 text-[#1C1917] hover:text-[#214332]"
               >
                 About Us
               </Link>
@@ -245,9 +245,9 @@ export function Header() {
               {/* 5. Contact Us */}
               <Link
                 href="/contact"
-                className={`text-xs xl:text-sm font-semibold tracking-wide transition-colors whitespace-nowrap py-1.5 ${
+                className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/contact"
-                    ? "text-[#214332] font-bold"
+                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >
@@ -377,12 +377,12 @@ export function Header() {
             </div>
 
             {/* Menu Items: Only Home, Collections, About us, Contact */}
-            <nav className="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar font-sans">
+            <nav className="flex-1 py-4 space-y-1 overflow-y-auto no-scrollbar font-primary">
               {/* 1. Home */}
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block py-3 px-3 text-lg font-medium rounded-xl transition-colors ${
+                className={`block py-3 px-3 text-lg font-bold tracking-wide uppercase rounded-xl transition-colors ${
                   pathname === "/"
                     ? "text-[#214332] font-bold bg-[#214332]/5"
                     : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
@@ -396,7 +396,7 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => setMobileCollectionsOpen((prev) => !prev)}
-                  className={`flex items-center justify-between w-full py-3 px-3 text-lg font-medium rounded-xl transition-colors text-left cursor-pointer ${
+                  className={`flex items-center justify-between w-full py-3 px-3 text-lg font-bold tracking-wide uppercase rounded-xl transition-colors text-left cursor-pointer ${
                     mobileCollectionsOpen
                       ? "text-[#214332] font-bold bg-[#214332]/5"
                       : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
@@ -411,18 +411,18 @@ export function Header() {
                 </button>
 
                 {mobileCollectionsOpen && (
-                  <div className="pl-3 pr-1 py-1 space-y-0.5 my-1 border-l-2 border-[#214332]/30 ml-3 animate-in slide-in-from-top-2 duration-200">
+                  <div className="pl-3 pr-1 py-1 space-y-0.5 my-1 border-l-2 border-[#214332]/30 ml-3 animate-in slide-in-from-top-2 duration-200 font-primary">
                     <Link
                       href="/products"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 px-3 text-xs sm:text-sm font-bold text-[#214332] bg-[#EEF3F0] rounded-lg hover:bg-[#E2ECE6] transition-colors"
+                      className="block py-2 px-3 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] rounded-lg hover:bg-[#E2ECE6] transition-colors"
                     >
                       ✦ Shop All Collections
                     </Link>
                     <Link
                       href="/custom-hamper"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center justify-between py-2 px-3 text-xs sm:text-sm font-semibold text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
+                      className="flex items-center justify-between py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
                     >
                       <span>Build Custom Hamper</span>
                       <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
@@ -433,7 +433,7 @@ export function Header() {
                         key={cat.id || cat.slug}
                         href={`/products?category=${cat.slug}`}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1.5 px-3 text-xs sm:text-sm font-medium text-stone-700 hover:text-[#214332] hover:bg-black/5 rounded-lg transition-colors"
+                        className="block py-1.5 px-3 text-xs sm:text-sm font-medium tracking-wide text-stone-700 hover:text-[#214332] hover:bg-black/5 rounded-lg transition-colors"
                       >
                         {cat.name.replace(/\s*Collection/gi, "").trim()}
                       </Link>
@@ -446,7 +446,7 @@ export function Header() {
               <Link
                 href="/#about-us"
                 onClick={handleAboutClick}
-                className="block py-3 px-3 text-lg font-medium text-[#18221D] hover:text-[#214332] hover:bg-black/5 rounded-xl transition-colors"
+                className="block py-3 px-3 text-lg font-bold tracking-wide uppercase text-[#18221D] hover:text-[#214332] hover:bg-black/5 rounded-xl transition-colors"
               >
                 About us
               </Link>
@@ -455,7 +455,7 @@ export function Header() {
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className={`block py-3 px-3 text-lg font-medium rounded-xl transition-colors ${
+                className={`block py-3 px-3 text-lg font-bold tracking-wide uppercase rounded-xl transition-colors ${
                   pathname === "/contact"
                     ? "text-[#214332] font-bold bg-[#214332]/5"
                     : "text-[#18221D] hover:text-[#214332] hover:bg-black/5"
@@ -466,7 +466,7 @@ export function Header() {
             </nav>
 
             {/* Bottom Section (Matching user reference screenshot) */}
-            <div className="pt-4 border-t border-[#E7E3DC] mt-auto space-y-3 font-sans">
+            <div className="pt-4 border-t border-[#E7E3DC] mt-auto space-y-3 font-subtext">
               <Link
                 href="/account"
                 onClick={() => setMobileMenuOpen(false)}

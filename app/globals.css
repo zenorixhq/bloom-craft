@@ -1,43 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
-
-@font-face {
-  font-family: 'Glacial Indifference';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Glacial Indifference'), url('/fonts/GlacialIndifference-Regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Glacial Indifference';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: local('Glacial Indifference Bold'), local('Glacial Indifference'), url('/fonts/GlacialIndifference-Bold.woff') format('woff');
-}
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Typography System - Primary: Bloom Craft Logo Font (Playfair Display / Cinzel) */
-.font-logo, .font-serif-luxury, .font-heading {
+/* =========================================================================
+   BLOOM CRAFT TYPOGRAPHY SYSTEM
+   Primary Website Font: Brand Logo Font ('Cinzel' & 'Playfair Display')
+   Logo Display Font: 'Cinzel Decorative' (Matches emblem wordmark)
+   Subtext & Editorial Font: 'Cormorant Garamond' (Romantic & artisanal)
+   UI, Specs & Forms Font: 'Plus Jakarta Sans' (Crisp modern legibility)
+   Script Accents: 'Alex Brush' (Handcrafted calligraphic touches)
+   ========================================================================= */
+
+:root {
+  --font-logo: 'Cinzel Decorative', 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-primary: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-heading: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-subtext: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-script: 'Alex Brush', cursive;
+}
+
+/* Base Body & Heading Typography */
+body {
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-primary);
+  letter-spacing: 0.02em;
+}
+
+/* Typography Utility Classes */
+.font-logo {
+  font-family: var(--font-logo);
+}
+.font-primary, .font-serif-luxury, .font-heading, .font-cinzel {
+  font-family: var(--font-primary);
+}
+.font-playfair {
   font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
 }
-.font-cinzel {
-  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-}
 .font-editorial {
-  font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  font-family: var(--font-editorial);
 }
-.font-sans, .font-subtext {
-  font-family: 'Plus Jakarta Sans', 'Glacial Indifference', var(--font-sans), system-ui, sans-serif;
-}
-.font-glacial {
-  font-family: 'Plus Jakarta Sans', 'Glacial Indifference', var(--font-sans), system-ui, sans-serif;
+.font-subtext, .font-sans, .font-glacial {
+  font-family: var(--font-subtext);
 }
 .font-script {
-  font-family: 'Alex Brush', cursive;
+  font-family: var(--font-script);
 }
 .font-outline-editorial {
   -webkit-text-stroke: 1.2px rgba(80, 75, 70, 0.45);

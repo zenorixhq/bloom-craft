@@ -365,9 +365,9 @@ function ProductCatalogContent() {
   const hasActiveFilters = activeFilterCount > 0;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-24 sm:pb-12 space-y-4 sm:space-y-5 font-glacial">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-24 sm:pb-12 space-y-4 sm:space-y-5 font-primary">
       {/* 1. Visual Category Cards Bar (Positioned high at top for immediate browsing) */}
-      <div className="relative group bg-[#F3F4F6] sm:bg-[#F3F4F6]/90 p-2 sm:p-3 rounded-2xl sm:rounded-3xl border border-stone-200/70 shadow-xs font-glacial">
+      <div className="relative group bg-[#F3F4F6] sm:bg-[#F3F4F6]/90 p-2 sm:p-3 rounded-2xl sm:rounded-3xl border border-stone-200/70 shadow-xs font-primary">
         {/* Left Scroll Button (Desktop) */}
         <button
           type="button"
@@ -478,17 +478,17 @@ function ProductCatalogContent() {
       {/* 2. Header & Title Banner + Search */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-3 border-b border-border">
         <div>
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-semibold mb-1">
-            <Sparkles className="w-3 h-3" />
-            <span>Waterproof • Hypoallergenic • Everyday Luxury</span>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#214332]/10 text-[#214332] text-[11px] font-semibold mb-1 font-subtext">
+            <Sparkles className="w-3 h-3 text-[#DC9924]" />
+            <span>Handcrafted • Artisanal • Thoughtfully Curated</span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-black text-foreground">
+          <h1 className="font-logo text-xl sm:text-2xl font-bold text-foreground">
             {selectedCategory === "all"
-              ? "All Jewelry Collection"
-              : categoryList.find((c) => c.slug === selectedCategory)?.name || "Jewelry Collection"}
+              ? "All Curated Collections"
+              : categoryList.find((c) => c.slug === selectedCategory)?.name || "Handcrafted Collection"}
           </h1>
-          <p className="text-xs text-muted-foreground mt-0.5">
-            Showing {displayedProducts.length} of {filteredProducts.length} pieces • 4 items per row
+          <p className="text-xs text-muted-foreground mt-0.5 font-editorial italic">
+            Showing {displayedProducts.length} of {filteredProducts.length} pieces • Handcrafted in India
           </p>
         </div>
 
@@ -497,10 +497,10 @@ function ProductCatalogContent() {
           <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
             type="text"
-            placeholder="Search clover, hoops, bangles, rings..."
+            placeholder="Search hampers, journals, wax seals..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-8 py-2 text-xs rounded-xl bg-muted/40 border border-border focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full pl-9 pr-8 py-2 text-xs rounded-xl bg-muted/40 border border-border focus:outline-none focus:ring-1 focus:ring-primary font-subtext"
           />
           {searchTerm && (
             <button
@@ -710,7 +710,7 @@ function ProductCatalogContent() {
             <div className="flex items-center justify-between px-6 py-3.5 border-b border-stone-100 shrink-0">
               <div className="flex items-center gap-2">
                 <ArrowUpDown className="w-4 h-4 text-[#214332]" />
-                <h3 className="font-editorial text-lg font-bold text-stone-900 tracking-wide">
+                <h3 className="font-logo text-lg font-bold text-stone-900 tracking-wide">
                   Sort By
                 </h3>
               </div>
@@ -789,7 +789,7 @@ function ProductCatalogContent() {
             <div className="flex items-center justify-between px-6 py-3.5 border-b border-stone-100 shrink-0">
               <div className="flex items-center gap-2">
                 <Filter className="w-4 h-4 text-[#214332]" />
-                <h3 className="font-editorial text-lg font-bold text-stone-900 tracking-wide">
+                <h3 className="font-logo text-lg font-bold text-stone-900 tracking-wide">
                   Filter Pieces
                 </h3>
               </div>

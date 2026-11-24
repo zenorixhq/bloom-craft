@@ -31,7 +31,7 @@ export function AnnouncementBar() {
   return (
     <aside
       aria-label="Store Announcement Ticker"
-      className="bg-[#182C22] text-[#FAF5EB] py-2 sm:py-2.5 text-xs font-medium relative overflow-hidden select-none border-b border-[#214332]/40 font-glacial z-30"
+      className="bg-[#182C22] text-[#FAF5EB] py-2 sm:py-2.5 text-xs font-medium relative overflow-hidden select-none border-b border-[#214332]/40 font-primary z-30"
     >
       <div className="flex items-center overflow-hidden w-full pr-10">
         <div className="animate-marquee flex items-center gap-8 py-0.5 whitespace-nowrap">

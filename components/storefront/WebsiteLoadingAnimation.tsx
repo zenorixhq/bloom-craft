@@ -87,13 +87,13 @@ export function WebsiteLoadingAnimation() {
           />
         </div>
 
-        <h1 className="font-editorial text-3xl sm:text-4xl lg:text-5xl font-light text-[#18221D] tracking-[0.34em] sm:tracking-[0.44em] uppercase leading-none pl-[0.34em] sm:pl-[0.44em]">
+        <h1 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-normal text-[#18221D] tracking-[0.25em] sm:tracking-[0.35em] uppercase leading-none pl-[0.25em] sm:pl-[0.35em]">
           {storeConfig?.meta?.name || "BLOOM CRAFT"}
         </h1>
 
         <div className="w-20 sm:w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#DC9924] to-transparent rounded-full transform scale-x-0 animate-[lineExpand_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_forwards]" />
 
-        <p className="font-glacial text-[10px] sm:text-[11.5px] font-semibold tracking-[0.28em] uppercase text-[#3D4942] pl-[0.28em] opacity-0 animate-[fadeIn_0.6s_ease-out_0.35s_forwards]">
+        <p className="font-primary text-[10px] sm:text-[11.5px] font-semibold tracking-[0.28em] uppercase text-[#3D4942] pl-[0.28em] opacity-0 animate-[fadeIn_0.6s_ease-out_0.35s_forwards]">
           ARTISANAL STATIONERY &amp; HAMPERS
         </p>
       </div>

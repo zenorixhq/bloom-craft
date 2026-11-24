@@ -16,12 +16,12 @@ export function WhatsAppFloat() {
   const waUrl = `https://wa.me/${phone}?text=${message}`;
 
   return (
-    <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-40 flex items-end gap-3 group font-glacial">
+    <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-40 flex items-end gap-3 group font-primary">
       {/* Floating Tooltip Callout */}
       {showTooltip && (
         <div className="hidden sm:flex items-center gap-2 bg-card border border-border/80 text-foreground px-3.5 py-2 rounded-2xl shadow-xl text-xs animate-in fade-in slide-in-from-right-4 duration-300">
           <Sparkles className="w-3.5 h-3.5 text-[#214332] flex-shrink-0" />
-          <span className="font-medium">Need custom hamper help? Chat on WhatsApp!</span>
+          <span className="font-medium font-subtext">Need custom hamper help? Chat on WhatsApp!</span>
           <button
             onClick={(e) => {
               e.stopPropagation();

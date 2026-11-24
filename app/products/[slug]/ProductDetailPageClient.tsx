@@ -226,9 +226,9 @@ export default function ProductDetailPageClient({
   const relatedProducts = [...categoryProducts, ...otherProducts].slice(0, 8);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-12 sm:space-y-16 pb-24 sm:pb-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-12 sm:space-y-16 pb-24 sm:pb-12 font-primary">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center space-x-2 text-xs text-muted-foreground overflow-x-auto pb-1">
+      <nav className="flex items-center space-x-2 text-xs text-muted-foreground overflow-x-auto pb-1 font-subtext">
         <Link href="/" className="hover:text-foreground whitespace-nowrap">Home</Link>
         <ChevronRight className="w-3.5 h-3.5 flex-shrink-0" />
         <Link href={`/products?category=${product.category}`} className="capitalize hover:text-foreground whitespace-nowrap">
@@ -343,7 +343,7 @@ export default function ProductDetailPageClient({
               </button>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-black text-foreground">
+            <h1 className="text-2xl sm:text-3xl font-bold font-logo text-foreground tracking-tight">
               {product.title}
             </h1>
 
@@ -626,7 +626,7 @@ export default function ProductDetailPageClient({
                 type="button"
                 disabled={isOutOfStock}
                 onClick={handleBuyNow}
-                className="w-full py-4 px-6 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed"
+                className="w-full py-4 px-6 rounded-xl bg-primary hover:bg-primary-hover text-primary-foreground font-primary uppercase tracking-wider font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <Lock className="w-4 h-4 text-accent" />
                 <span>
@@ -644,7 +644,7 @@ export default function ProductDetailPageClient({
                 type="button"
                 disabled={isOutOfStock}
                 onClick={handleAddToCart}
-                className={`w-full py-3.5 px-6 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed border-2 ${
+                className={`w-full py-3.5 px-6 rounded-xl font-primary uppercase tracking-wider font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all active:scale-[0.99] disabled:opacity-40 disabled:cursor-not-allowed border-2 ${
                   isAdded
                     ? "bg-emerald-600 text-white border-emerald-600 shadow-md"
                     : "bg-card border-primary text-primary hover:bg-primary/5"
@@ -724,10 +724,10 @@ export default function ProductDetailPageClient({
       {/* Specifications & Accordion Tabs */}
       {product.specifications && (
         <section className="border-t border-border pt-12">
-          <h2 className="text-xl font-bold text-foreground mb-6">Technical Specifications & Provenance</h2>
+          <h2 className="font-logo text-xl font-bold text-foreground mb-6">Technical Specifications & Provenance</h2>
           <div className="bg-card border border-border rounded-2xl overflow-hidden divide-y divide-border">
             {Object.entries(product.specifications).map(([key, val]) => (
-              <div key={key} className="grid grid-cols-1 sm:grid-cols-3 p-4 text-xs">
+              <div key={key} className="grid grid-cols-1 sm:grid-cols-3 p-4 text-xs font-subtext">
                 <span className="font-bold text-foreground">{key}</span>
                 <span className="sm:col-span-2 text-muted-foreground mt-0.5 sm:mt-0">{val}</span>
               </div>
@@ -740,8 +740,8 @@ export default function ProductDetailPageClient({
       <section className="border-t border-border pt-12 space-y-8">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-bold text-foreground">Customer Reviews ({product.reviews?.length || 0})</h2>
-            <p className="text-xs text-muted-foreground mt-0.5">Verified purchaser testimonials</p>
+            <h2 className="font-logo text-xl font-bold text-foreground">Customer Reviews ({product.reviews?.length || 0})</h2>
+            <p className="text-xs text-muted-foreground mt-0.5 font-editorial italic">Verified purchaser testimonials</p>
           </div>
         </div>
 
@@ -757,16 +757,16 @@ export default function ProductDetailPageClient({
                     />
                   ))}
                 </div>
-                <span className="text-[11px] text-muted-foreground">{rev.date}</span>
+                <span className="text-[11px] text-muted-foreground font-subtext">{rev.date}</span>
               </div>
 
-              <h4 className="text-sm font-bold text-foreground">{rev.title}</h4>
-              <p className="text-xs text-muted-foreground leading-relaxed">{rev.comment}</p>
+              <h4 className="text-sm font-bold text-foreground font-primary">{rev.title}</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed font-editorial italic">{rev.comment}</p>
 
               <div className="pt-2 text-[11px] flex items-center justify-between">
-                <span className="font-semibold text-foreground">{rev.author}</span>
+                <span className="font-semibold text-foreground font-primary">{rev.author}</span>
                 {rev.verifiedPurchase && (
-                  <span className="text-emerald-600 font-medium">Verified Purchase</span>
+                  <span className="text-emerald-600 font-medium font-subtext">Verified Purchase</span>
                 )}
               </div>
             </div>
@@ -774,14 +774,14 @@ export default function ProductDetailPageClient({
         </div>
       </section>
 
-      {/* Related Products: 2 rows x 4 columns on desktop (2*4 = 8), 2 rows x 2 columns on mobile (2*2 = 4) */}
+      {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section className="border-t border-border pt-10 sm:pt-14 space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h2 className="text-lg sm:text-2xl font-bold text-foreground">You May Also Appreciate</h2>
-              <p className="text-xs text-muted-foreground hidden sm:block">
-                Matching waterproof everyday luxury jewelry pieces.
+              <h2 className="font-logo text-lg sm:text-2xl font-bold text-foreground">You May Also Appreciate</h2>
+              <p className="text-xs text-muted-foreground hidden sm:block font-editorial italic">
+                Thoughtfully curated handcrafted pieces and matching keepsakes.
               </p>
             </div>
             <Link
