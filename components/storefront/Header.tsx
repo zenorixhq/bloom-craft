@@ -145,10 +145,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`w-full font-primary transition-all duration-300 sticky top-0 z-40 text-[#18221D] ${
+        className={`w-full font-primary transition-all duration-300 sticky top-0 z-40 text-[#18221D] backdrop-blur-2xl ${
           isScrolled
-            ? "glass-navbar-scrolled"
-            : "glass-navbar shadow-2xs"
+            ? "glass-navbar-scrolled bg-white/75 border-b border-white/50 shadow-md"
+            : "glass-navbar bg-white/65 border-b border-white/40 shadow-xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

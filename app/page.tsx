@@ -105,7 +105,7 @@ export default function HomePage() {
             {/* MOBILE: Horizontally Scrollable Cards (Matching uploaded diecutsmart screenshot) */}
             <div className="block md:hidden">
               <div
-                className="flex items-start gap-4 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory select-none -mx-4 px-4 sm:-mx-8 sm:px-8"
+                className="flex items-start gap-4 sm:gap-6 overflow-x-auto pb-5 pt-3 scrollbar-none snap-x snap-mandatory select-none -mx-4 px-4 sm:-mx-8 sm:px-8"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
@@ -116,10 +116,10 @@ export default function HomePage() {
                   <Link
                     key={cat.id || cat.slug}
                     href={`/products?category=${cat.slug}`}
-                    className="w-[68vw] xs:w-[64vw] max-w-[275px] flex-shrink-0 snap-start flex flex-col group cursor-pointer"
+                    className="w-[78vw] xs:w-[74vw] sm:w-[70vw] max-w-[340px] flex-shrink-0 snap-start flex flex-col group cursor-pointer pt-2"
                   >
-                    {/* Rounded Photo Card with Top-Right Arrow Badge */}
-                    <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl transition-all duration-300">
+                    {/* Big Rounded Photo Card with Scooped Top-Right Arrow Badge */}
+                    <div className="relative w-full aspect-[4/4.3] xs:h-[350px] sm:h-[380px] rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl transition-all duration-300">
                       <img
                         src={cat.image}
                         alt={cat.name}
@@ -127,9 +127,9 @@ export default function HomePage() {
                         loading="lazy"
                       />
                       
-                      {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart badge) */}
-                      <div className="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
-                        <ArrowUpRight className="w-5 h-5 text-[#214332] group-hover:text-white transition-colors" />
+                      {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart scoop badge) */}
+                      <div className="absolute top-2.5 right-2.5 w-11 h-11 xs:w-12 xs:h-12 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] ring-[5px] xs:ring-[6px] ring-[#FAF8F5] group-hover:bg-[#214332] transition-all duration-300 z-10">
+                        <ArrowUpRight className="w-5 h-5 xs:w-5.5 xs:h-5.5 text-[#214332] group-hover:text-white transition-colors" />
                       </div>
 
                       {cat.slug === "hamper-boxes" && (
@@ -140,7 +140,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Centered Category Title Below Card */}
-                    <h3 className="text-center font-bold text-sm xs:text-base text-[#18221D] group-hover:text-[#214332] transition-colors mt-3 font-primary tracking-wide">
+                    <h3 className="text-center font-bold text-base sm:text-lg text-[#18221D] group-hover:text-[#214332] transition-colors mt-3 font-primary tracking-wide">
                       {cat.name.replace(/\s*Collection/gi, "").trim()}
                     </h3>
                   </Link>
@@ -154,16 +154,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* DESKTOP: Grid of the Same Large Rounded Cards with Arrow Badges (>= md) */}
-            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+            {/* DESKTOP: Grid of the Same Large Rounded Cards with Scooped Arrow Badges (>= md) */}
+            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-7 lg:gap-8 pt-2">
               {categoryList.map((cat) => (
                 <Link
                   key={cat.id || cat.slug}
                   href={`/products?category=${cat.slug}`}
-                  className="flex flex-col group cursor-pointer"
+                  className="flex flex-col group cursor-pointer pt-2"
                 >
-                  {/* Rounded Photo Card with Top-Right Arrow Badge */}
-                  <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl group-hover:border-[#214332]/60 hover:-translate-y-1 transition-all duration-500 ease-out">
+                  {/* Big Rounded Photo Card with Scooped Top-Right Arrow Badge */}
+                  <div className="relative w-full aspect-[4/4.3] md:h-84 lg:h-96 rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl group-hover:border-[#214332]/60 hover:-translate-y-1.5 transition-all duration-500 ease-out">
                     <img
                       src={cat.image}
                       alt={cat.name}
@@ -171,9 +171,9 @@ export default function HomePage() {
                       loading="lazy"
                     />
 
-                    {/* Floating Circular Up-Right Arrow Button */}
-                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
-                      <ArrowUpRight className="w-5 h-5 text-[#214332] group-hover:text-white transition-colors" />
+                    {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart scoop badge) */}
+                    <div className="absolute top-3 right-3 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] ring-[6px] ring-[#FAF8F5] group-hover:bg-[#214332] transition-all duration-300 z-10">
+                      <ArrowUpRight className="w-5.5 h-5.5 text-[#214332] group-hover:text-white transition-colors" />
                     </div>
 
                     {cat.slug === "hamper-boxes" && (

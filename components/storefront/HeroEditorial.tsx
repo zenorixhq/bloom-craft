@@ -155,7 +155,7 @@ export function HeroEditorial() {
         setIsPaused(false);
         if (isDragging) handleMouseUpOrLeave();
       }}
-      className="relative w-full h-[75vh] sm:h-[75vh] md:h-[80vh] md:min-h-[560px] md:max-h-[780px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
+      className="relative w-full h-[75vh] h-[75dvh] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
     >
       {/* 3 Full-Window Scrollable & Swipeable Slides */}
       <div
