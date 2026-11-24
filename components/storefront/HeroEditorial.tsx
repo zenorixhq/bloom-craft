@@ -155,7 +155,7 @@ export function HeroEditorial() {
         setIsPaused(false);
         if (isDragging) handleMouseUpOrLeave();
       }}
-      className="relative w-full h-[50vh] min-h-[300px] max-h-[390px] sm:h-[68vh] sm:min-h-[470px] md:h-[78vh] md:min-h-[540px] md:max-h-[760px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
+      className="relative w-full h-[72vh] min-h-[480px] max-h-[620px] sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px] md:max-h-[760px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
     >
       {/* 3 Full-Window Scrollable & Swipeable Slides */}
       <div
@@ -190,11 +190,11 @@ export function HeroEditorial() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
             {/* Center-Aligned Editorial Content Positioned Upper */}
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-1.5 xs:space-y-2 sm:space-y-4 md:space-y-6 -mt-2 sm:-mt-6 md:-mt-8">
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-4 md:space-y-6 -mt-3 sm:-mt-6 md:-mt-8">
               
               {/* Cursive / Script Callout ("Sale!" style) */}
               <div className="animate-fadeIn">
-                <span className="font-script text-2xl xs:text-3xl sm:text-5xl md:text-6xl text-white font-normal drop-shadow-md select-none tracking-wide">
+                <span className="font-script text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-white font-normal drop-shadow-md select-none tracking-wide">
                   {slide.kicker}
                 </span>
               </div>
@@ -202,44 +202,44 @@ export function HeroEditorial() {
               {/* Giant Display Headline */}
               {slide.hasDiscountBadge ? (
                 <div className="flex items-start justify-center drop-shadow-xl text-white select-none">
-                  <span className="font-extrabold text-5xl xs:text-6xl sm:text-8xl md:text-9xl tracking-tight leading-none">
+                  <span className="font-extrabold text-6xl xs:text-7xl sm:text-8xl md:text-9xl tracking-tight leading-none">
                     {slide.discountNumber}
                   </span>
-                  <div className="flex flex-col items-start ml-1.5 sm:ml-3 pt-0.5 sm:pt-2 text-left leading-none">
-                    <span className="text-xl xs:text-2xl sm:text-4xl md:text-5xl font-black">
+                  <div className="flex flex-col items-start ml-2 sm:ml-3 pt-1 sm:pt-2 text-left leading-none">
+                    <span className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black">
                       {slide.discountUnit}
                     </span>
-                    <span className="text-xs xs:text-sm sm:text-2xl md:text-3xl font-bold lowercase tracking-wider mt-0.5">
+                    <span className="text-base xs:text-xl sm:text-2xl md:text-3xl font-bold lowercase tracking-wider mt-0.5">
                       {slide.discountSub}
                     </span>
                   </div>
                 </div>
               ) : (
-                <h1 className="font-logo text-xl xs:text-2xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-xl max-w-3xl">
+                <h1 className="font-logo text-2xl xs:text-3xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white leading-tight drop-shadow-xl max-w-3xl">
                   {slide.title}
                 </h1>
               )}
 
               {/* Subtitle / Indulgence Prompt */}
-              <p className="font-editorial italic text-xs xs:text-sm sm:text-lg md:text-xl text-white/95 max-w-xl mx-auto leading-relaxed drop-shadow-md line-clamp-1 xs:line-clamp-2 sm:line-clamp-none">
+              <p className="font-editorial italic text-sm sm:text-lg md:text-xl text-white/95 max-w-xl mx-auto leading-relaxed drop-shadow-md line-clamp-2 sm:line-clamp-none">
                 {slide.subtitle}
               </p>
 
               {/* Dual Action Buttons matching reference */}
-              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-6 pt-0.5 sm:pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-6 pt-1 sm:pt-2">
                 <Link
                   href={slide.primaryCta.href}
-                  className="px-3.5 py-1.5 xs:px-4 xs:py-2 sm:px-8 sm:py-3 rounded-full sm:rounded-md bg-white hover:bg-stone-100 text-stone-900 text-[11px] xs:text-xs sm:text-sm font-bold uppercase tracking-wider shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer font-primary"
+                  className="px-5 py-2.5 sm:px-8 sm:py-3 rounded-full sm:rounded-md bg-white hover:bg-stone-100 text-stone-900 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] cursor-pointer font-primary"
                 >
                   {slide.primaryCta.label}
                 </Link>
 
                 <Link
                   href={slide.secondaryCta.href}
-                  className="inline-flex items-center gap-1 sm:gap-2 text-white hover:text-stone-200 text-[11px] xs:text-xs sm:text-sm font-semibold uppercase tracking-wider drop-shadow-md hover:underline underline-offset-4 transition-all group font-primary"
+                  className="inline-flex items-center gap-1.5 sm:gap-2 text-white hover:text-stone-200 text-xs sm:text-sm font-semibold uppercase tracking-wider drop-shadow-md hover:underline underline-offset-4 transition-all group font-primary"
                 >
                   <span>{slide.secondaryCta.label}</span>
-                  <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1.5 transition-transform" />
                 </Link>
               </div>
 

@@ -20,12 +20,10 @@ export function AnnouncementBar() {
   }
 
   const tickerItems = [
-    "Handcrafted Stationery & Bespoke Gift Hampers",
-    `Free Pan-India Delivery Above ₹${storeConfig.commerce.freeShippingThreshold}`,
-    "Complimentary Handwritten Calligraphy Note in Every Hamper",
-    "Hand-Poured Soy Wax & Solid Brass Monogram Seals",
-    "Express Dispatch Within 24-48 Hours",
-    "Custom Corporate & Wedding Gifting Concierge",
+    "ALL INDIA DELIVERY AVAILABLE",
+    "LOVED BY 5000+ HAPPY CUSTOMERS",
+    "CUSTOM HAMPERS AVAILABLE",
+    "PREPAID ORDERS ONLY",
   ];
 
   return (
@@ -34,26 +32,24 @@ export function AnnouncementBar() {
       className="bg-[#182C22] text-[#FAF5EB] py-2 sm:py-2.5 text-xs font-medium relative overflow-hidden select-none border-b border-[#214332]/40 font-primary z-30"
     >
       <div className="flex items-center overflow-hidden w-full pr-10">
-        <div className="animate-marquee flex items-center gap-8 py-0.5 whitespace-nowrap">
+        <div className="animate-marquee flex items-center gap-6 py-0.5 whitespace-nowrap">
           {/* First sequence */}
           {tickerItems.map((item, idx) => (
-            <div key={`ticker-a-${idx}`} className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-[#DC9924] flex-shrink-0 animate-pulse" />
-              <span className="tracking-wider uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
+            <div key={`ticker-a-${idx}`} className="flex items-center gap-3">
+              <span className="tracking-widest uppercase text-[11px] sm:text-xs font-bold text-[#F7EEDD]">
                 {item}
               </span>
-              <span className="text-[#DC9924]/70 text-xs ml-3 font-serif">✦</span>
+              <span className="text-[#DC9924] font-bold text-xs mx-1">|</span>
             </div>
           ))}
 
           {/* Duplicate sequence for continuous seamless scrolling */}
           {tickerItems.map((item, idx) => (
-            <div key={`ticker-b-${idx}`} className="flex items-center gap-2">
-              <Sparkles className="w-3 h-3 text-[#DC9924] flex-shrink-0 animate-pulse" />
-              <span className="tracking-wider uppercase text-[11px] sm:text-xs font-semibold text-[#F7EEDD]">
+            <div key={`ticker-b-${idx}`} className="flex items-center gap-3">
+              <span className="tracking-widest uppercase text-[11px] sm:text-xs font-bold text-[#F7EEDD]">
                 {item}
               </span>
-              <span className="text-[#DC9924]/70 text-xs ml-3 font-serif">✦</span>
+              <span className="text-[#DC9924] font-bold text-xs mx-1">|</span>
             </div>
           ))}
         </div>
