@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { storeConfig } from "@/config/store.config";
@@ -27,6 +27,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileCollectionsOpen, setMobileCollectionsOpen] = useState(false);
+  const [mobileHamperOpen, setMobileHamperOpen] = useState(true);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [categoryList, setCategoryList] = useState<Category[]>(() => {
@@ -41,6 +42,17 @@ export function Header() {
     }
     return defaultCategories;
   });
+
+  const collectionCategories = useMemo(() => {
+    return categoryList.filter(
+      (cat) =>
+        cat.slug !== "hamper-boxes" &&
+        cat.slug !== "hamper" &&
+        cat.slug !== "bouquets" &&
+        cat.slug !== "bouquet-sheet" &&
+        !/hamper/i.test(cat.name)
+    );
+  }, [categoryList]);
 
   const products = useProductStore((s) => s.products);
   const items = useCartStore((s) => s.items);
@@ -193,22 +205,53 @@ export function Header() {
                 </Link>
 
                 <div className="absolute left-1/2 -translate-x-1/2 top-full pt-1 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
-                  <div className="w-64 max-h-[75vh] overflow-y-auto no-scrollbar bg-white/95 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-3 grid grid-cols-1 gap-1 font-primary">
+                  <div className="w-68 max-h-[78vh] overflow-y-auto no-scrollbar bg-white/95 backdrop-blur-2xl border border-stone-200/60 rounded-2xl shadow-2xl p-2.5 grid grid-cols-1 gap-1 font-primary">
                     <Link
                       href="/products"
-                      className="block px-3 py-1.5 text-xs font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6] rounded-lg transition-colors"
+                      className="block px-3 py-1.5 text-xs font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] hover:bg-[#E2ECE6] rounded-lg transition-colors text-center"
                     >
                       ✦ View All Catalog
                     </Link>
+
+                    {/* Field: Hamper (Contains Hamper Boxes & Build Custom Hamper) */}
+                    <div className="rounded-xl border border-[#214332]/15 bg-[#FAF8F5] p-2 space-y-1 my-0.5">
+                      <div className="px-1 text-[11px] font-bold uppercase tracking-wider text-[#214332] flex items-center justify-between">
+                        <span className="flex items-center gap-1">
+                          <Sparkles className="w-3 h-3 text-[#DC9924]" />
+                          <span>Hamper</span>
+                        </span>
+                        <span className="text-[9px] font-semibold text-[#DC9924] font-subtext lowercase bg-amber-50 px-1.5 py-0.2 rounded-full border border-amber-200/60">
+                          2 options
+                        </span>
+                      </div>
+                      <div className="pl-2 space-y-0.5 pt-0.5 border-l border-[#214332]/25 ml-1">
+                        <Link
+                          href="/products?category=hamper-boxes"
+                          className="block px-2 py-1 text-xs font-medium text-stone-700 hover:text-[#214332] hover:bg-white rounded-md transition-colors"
+                        >
+                          • Hamper Boxes
+                        </Link>
+                        <Link
+                          href="/custom-hamper"
+                          className="block px-2 py-1 text-xs font-semibold text-[#DC9924] hover:text-[#162f23] hover:bg-white rounded-md transition-colors"
+                        >
+                          • Build Custom Hamper
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="my-0.5 border-t border-[#E7E3DC]/60" />
+
+                    {/* Field: Bouquets */}
                     <Link
-                      href="/custom-hamper"
-                      className="flex items-center justify-between px-3 py-1.5 text-xs font-semibold tracking-wide text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
+                      href="/products?category=bouquets"
+                      className="block px-3 py-1.5 text-xs font-medium tracking-wide text-stone-800 hover:text-[#214332] hover:bg-stone-50/80 rounded-lg transition-colors"
                     >
-                      <span>Build Custom Hamper</span>
-                      <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
+                      Bouquets
                     </Link>
-                    <div className="my-1 border-t border-[#E7E3DC]/60" />
-                    {categoryList.map((cat) => (
+
+                    {/* All other categories (excluding hamper-boxes) */}
+                    {collectionCategories.map((cat) => (
                       <Link
                         key={cat.id || cat.slug}
                         href={`/products?category=${cat.slug}`}
@@ -411,24 +454,65 @@ export function Header() {
                 </button>
 
                 {mobileCollectionsOpen && (
-                  <div className="pl-3 pr-1 py-1 space-y-0.5 my-1 border-l-2 border-[#214332]/30 ml-3 animate-in slide-in-from-top-2 duration-200 font-primary">
+                  <div className="pl-3 pr-1 py-1 space-y-1 my-1 border-l-2 border-[#214332]/30 ml-3 animate-in slide-in-from-top-2 duration-200 font-primary">
                     <Link
                       href="/products"
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block py-2 px-3 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] rounded-lg hover:bg-[#E2ECE6] transition-colors"
+                      className="block py-2 px-3 text-xs sm:text-sm font-bold tracking-wider uppercase text-[#214332] bg-[#EEF3F0] rounded-lg hover:bg-[#E2ECE6] transition-colors text-center"
                     >
                       ✦ Shop All Collections
                     </Link>
-                    <Link
-                      href="/custom-hamper"
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex items-center justify-between py-2 px-3 text-xs sm:text-sm font-semibold tracking-wide text-[#DC9924] hover:bg-amber-50/70 rounded-lg transition-colors"
-                    >
-                      <span>Build Custom Hamper</span>
-                      <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
-                    </Link>
+
+                    {/* Field: Hamper (Nested with Hamper Boxes & Build Custom Hamper) */}
+                    <div className="rounded-xl border border-[#214332]/15 bg-[#FAF8F5] p-2 space-y-1 my-1">
+                      <button
+                        type="button"
+                        onClick={() => setMobileHamperOpen((prev) => !prev)}
+                        className="flex items-center justify-between w-full px-1 py-1 text-xs sm:text-sm font-bold uppercase tracking-wider text-[#214332] text-left cursor-pointer"
+                      >
+                        <span className="flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-[#DC9924]" />
+                          <span>Hamper</span>
+                        </span>
+                        <ChevronDown
+                          className={`w-3.5 h-3.5 text-stone-500 transition-transform duration-200 ${
+                            mobileHamperOpen ? "rotate-180 text-[#214332]" : ""
+                          }`}
+                        />
+                      </button>
+                      {mobileHamperOpen && (
+                        <div className="pl-2.5 space-y-1 pt-1 border-l border-[#214332]/25 ml-1.5 animate-in slide-in-from-top-1 duration-150">
+                          <Link
+                            href="/products?category=hamper-boxes"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block py-1 px-2 text-xs sm:text-sm font-medium text-stone-700 hover:text-[#214332] rounded-md transition-colors"
+                          >
+                            • Hamper Boxes
+                          </Link>
+                          <Link
+                            href="/custom-hamper"
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block py-1 px-2 text-xs sm:text-sm font-semibold text-[#DC9924] hover:text-[#162f23] rounded-md transition-colors"
+                          >
+                            • Build Custom Hamper
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+
                     <div className="my-1 border-t border-[#E7E3DC]/60" />
-                    {categoryList.map((cat) => (
+
+                    {/* Field: Bouquets */}
+                    <Link
+                      href="/products?category=bouquets"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-1.5 px-3 text-xs sm:text-sm font-medium tracking-wide text-stone-700 hover:text-[#214332] hover:bg-black/5 rounded-lg transition-colors"
+                    >
+                      Bouquets
+                    </Link>
+
+                    {/* All other categories (excluding hamper-boxes) */}
+                    {collectionCategories.map((cat) => (
                       <Link
                         key={cat.id || cat.slug}
                         href={`/products?category=${cat.slug}`}

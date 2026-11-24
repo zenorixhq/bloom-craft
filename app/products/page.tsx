@@ -65,6 +65,15 @@ function matchesCategory(p: Product, catSlug: string): boolean {
       p.tags?.some((t) => /hamper/i.test(t))
     );
   }
+  if (catSlug === "bouquets" || catSlug === "bouquet" || catSlug === "bouquet-sheet") {
+    return (
+      p.category === "bouquets" ||
+      p.category === "bouquet" ||
+      p.category === "bouquet-sheet" ||
+      /bouquet/i.test(p.title) ||
+      p.tags?.some((t) => /bouquet/i.test(t))
+    );
+  }
   return (
     p.category === catSlug ||
     p.subcategory === catSlug ||

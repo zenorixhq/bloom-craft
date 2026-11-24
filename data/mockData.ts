@@ -10,6 +10,14 @@ export const categories: Category[] = [
     productCount: 8,
   },
   {
+    id: "cat-bouquets",
+    slug: "bouquets",
+    name: "Bouquets",
+    description: "Handcrafted everlasting floral bouquets, Korean wrapped rose arrangements, and luxury floral wraps.",
+    image: "https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=800",
+    productCount: 8,
+  },
+  {
     id: "cat-plushies",
     slug: "plushies",
     name: "Plushies",
@@ -633,6 +641,44 @@ export const products: Product[] = [
     reviewCount: 44,
     inStock: true,
     stockCount: 55,
+  },
+
+  // ==========================================
+  // 15. BOUQUETS (Floral Keepsakes)
+  // ==========================================
+  {
+    id: "prod-everlasting-satin-rose-bouquet",
+    slug: "handcrafted-everlasting-satin-rose-bouquet",
+    title: "Handcrafted Everlasting Satin Ribbon Rose Bouquet",
+    shortDescription: "Artisanal everlasting blush & cream satin ribbon roses wrapped in Korean frosted bouquet paper.",
+    description: "A breathtaking forever keepsake. Each individual rose petal is hand-folded from luxurious double-face satin ribbon, accented with fairy lights, and wrapped in delicate Korean frosted paper with raw-edge chiffon ribbons.",
+    price: 1899,
+    salePrice: 1499,
+    category: "bouquets",
+    tags: ["Bouquets", "Satin Roses", "Handmade Flower", "Gift Bouquet", "Forever Flowers"],
+    images: ["https://images.unsplash.com/photo-1561181286-d3fee7d55364?auto=format&fit=crop&q=80&w=800"],
+    rating: 5.0,
+    reviewCount: 38,
+    inStock: true,
+    stockCount: 20,
+    featured: true,
+    isNewArrival: true,
+  },
+  {
+    id: "prod-korean-pastel-blush-bouquet",
+    slug: "korean-pastel-blush-everlasting-bouquet",
+    title: "Korean Pastel Blush Everlasting Floral Bouquet",
+    shortDescription: "Aesthetic pastel floral bouquet with dried baby's breath and lavender accents.",
+    description: "Inspired by Seoul floral ateliers. Wrapped in waterproof pearl frosted bouquet sheets and tied with hand-frayed emerald silk chiffon ribbon.",
+    price: 1599,
+    salePrice: 1299,
+    category: "bouquets",
+    tags: ["Bouquets", "Korean Floral", "Pastel Bouquet", "Everlasting Flowers"],
+    images: ["https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&q=80&w=800"],
+    rating: 4.9,
+    reviewCount: 29,
+    inStock: true,
+    stockCount: 15,
   },
 ];
 
