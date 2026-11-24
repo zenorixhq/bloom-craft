@@ -15,7 +15,7 @@ export function AnnouncementBar() {
   }, []);
 
   // Show on all pages when enabled
-  if (!mounted || !storeConfig.features.enableAnnouncementBar || !visible) {
+  if (!storeConfig.features.enableAnnouncementBar || !visible) {
     return null;
   }
 
