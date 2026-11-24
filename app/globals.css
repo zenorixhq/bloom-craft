@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,20 +6,19 @@
 
 /* =========================================================================
    BLOOM CRAFT TYPOGRAPHY SYSTEM
-   Primary Website Font: 'Playfair Display' (Luxury Roman elegance with graceful lowercase)
+   Primary Website Font: 'Poppins' (Modern, clean, geometric elegance)
    Logo Display Font: 'Cinzel Decorative' / 'Cinzel' (Matches emblem wordmark)
    Subtext & Editorial Font: 'Cormorant Garamond' (Romantic & artisanal)
-   UI, Specs & Forms Font: 'Plus Jakarta Sans' (Crisp modern legibility)
    Script Accents: 'Alex Brush' (Handcrafted calligraphic touches)
    ========================================================================= */
 
 :root {
   --font-logo: 'Cinzel Decorative', 'Cinzel', 'Playfair Display', Georgia, serif;
-  --font-primary: 'Playfair Display', 'Cinzel', Georgia, serif;
-  --font-heading: 'Playfair Display', 'Cinzel', Georgia, serif;
-  --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-subtext: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-primary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-editorial: 'Cormorant Garamond', Georgia, serif;
+  --font-subtext: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-script: 'Alex Brush', cursive;
 }
 
@@ -32,14 +31,14 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* Typography Utility Classes */
 .font-logo {
   font-family: var(--font-logo);
 }
-.font-primary, .font-serif-luxury, .font-heading {
+.font-primary, .font-serif-luxury, .font-heading, .font-poppins {
   font-family: var(--font-primary);
 }
 .font-playfair {
@@ -136,9 +135,9 @@ h1, h2, h3, h4, h5, h6 {
 
     --radius: 0.75rem;
 
-    --font-sans: 'Plus Jakarta Sans', 'Glacial Indifference', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-heading: 'Playfair Display', 'Cinzel', Georgia, serif;
-    --font-logo: 'Playfair Display', 'Cinzel', Georgia, serif;
+    --font-sans: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-logo: 'Cinzel Decorative', 'Cinzel', 'Playfair Display', Georgia, serif;
   }
 
   .dark {
