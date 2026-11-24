@@ -277,7 +277,7 @@ export function HeroEditorial() {
       </button>
 
       {/* Centered Bottom Indicator Pill */}
-      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 sm:gap-2.5 bg-black/45 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-white/20 shadow-md">
+      <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-1.5 sm:gap-2 bg-black/40 backdrop-blur-md px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-white/20 shadow-md">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -291,9 +291,6 @@ export function HeroEditorial() {
             }`}
           />
         ))}
-        <span className="text-[10px] sm:text-[11px] font-mono text-white/80 font-semibold pl-1">
-          0{currentSlide + 1} / 0{slides.length}
-        </span>
       </div>
     </section>
   );
