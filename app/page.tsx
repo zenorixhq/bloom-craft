@@ -88,29 +88,24 @@ export default function HomePage() {
       <div id="shop-collection" className="scroll-mt-16 sm:scroll-mt-20">
         <section className="w-full py-8 sm:py-12 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC]">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-6 sm:space-y-8">
-            {/* Header - Matching screenshot clean style */}
-            <div className="flex items-end justify-between gap-3 border-b border-[#E7E3DC]/80 pb-3 sm:pb-4">
-              <div>
-                <h2 className="font-logo text-2xl sm:text-3xl md:text-4xl font-bold text-[#18221D] tracking-tight">
-                  Our Collection
-                </h2>
-                <p className="font-editorial italic text-xs sm:text-sm text-stone-600 mt-1">
-                  Explore our curated hampers, artisanal stationery &amp; keepsake gifts
-                </p>
-              </div>
+            {/* Header - Clean style matching diecutsmart screenshot */}
+            <div className="flex items-center justify-between pb-1 sm:pb-2">
+              <h2 className="font-logo text-2xl sm:text-3xl md:text-4xl font-bold text-[#18221D] tracking-tight">
+                Our Collection
+              </h2>
               <Link
                 href="/products"
-                className="text-xs sm:text-sm font-bold text-[#214332] hover:text-[#162f23] flex items-center gap-1.5 group transition-colors font-primary shrink-0 pb-1"
+                className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1.5 group transition-colors font-primary shrink-0"
               >
-                <span>View All Collections ({categoryList.length})</span>
+                <span>View All ({categoryList.length})</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
-            {/* MOBILE: Horizontally Scrollable Cards (Matching uploaded screenshot) */}
+            {/* MOBILE: Horizontally Scrollable Cards (Matching uploaded diecutsmart screenshot) */}
             <div className="block md:hidden">
               <div
-                className="flex items-start gap-4 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory select-none"
+                className="flex items-start gap-4 overflow-x-auto pb-4 pt-1 scrollbar-none snap-x snap-mandatory select-none -mx-4 px-4 sm:-mx-8 sm:px-8"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
@@ -121,10 +116,10 @@ export default function HomePage() {
                   <Link
                     key={cat.id || cat.slug}
                     href={`/products?category=${cat.slug}`}
-                    className="w-[74vw] xs:w-[70vw] max-w-[290px] flex-shrink-0 snap-start flex flex-col group cursor-pointer"
+                    className="w-[68vw] xs:w-[64vw] max-w-[275px] flex-shrink-0 snap-start flex flex-col group cursor-pointer"
                   >
                     {/* Rounded Photo Card with Top-Right Arrow Badge */}
-                    <div className="relative w-full h-56 xs:h-64 rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl transition-all duration-300">
+                    <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl transition-all duration-300">
                       <img
                         src={cat.image}
                         alt={cat.name}
@@ -133,7 +128,7 @@ export default function HomePage() {
                       />
                       
                       {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart badge) */}
-                      <div className="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-0.5 border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
+                      <div className="absolute top-3.5 right-3.5 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
                         <ArrowUpRight className="w-5 h-5 text-[#214332] group-hover:text-white transition-colors" />
                       </div>
 
@@ -160,7 +155,7 @@ export default function HomePage() {
             </div>
 
             {/* DESKTOP: Grid of the Same Large Rounded Cards with Arrow Badges (>= md) */}
-            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-7">
+            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
               {categoryList.map((cat) => (
                 <Link
                   key={cat.id || cat.slug}
@@ -168,7 +163,7 @@ export default function HomePage() {
                   className="flex flex-col group cursor-pointer"
                 >
                   {/* Rounded Photo Card with Top-Right Arrow Badge */}
-                  <div className="relative w-full h-64 lg:h-72 rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl group-hover:border-[#214332]/60 hover:-translate-y-1 transition-all duration-500 ease-out">
+                  <div className="relative w-full aspect-square rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl group-hover:border-[#214332]/60 hover:-translate-y-1 transition-all duration-500 ease-out">
                     <img
                       src={cat.image}
                       alt={cat.name}
@@ -177,7 +172,7 @@ export default function HomePage() {
                     />
 
                     {/* Floating Circular Up-Right Arrow Button */}
-                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center p-0.5 border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
+                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] group-hover:bg-[#214332] transition-all duration-300">
                       <ArrowUpRight className="w-5 h-5 text-[#214332] group-hover:text-white transition-colors" />
                     </div>
 

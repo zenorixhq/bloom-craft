@@ -155,7 +155,7 @@ export function HeroEditorial() {
         setIsPaused(false);
         if (isDragging) handleMouseUpOrLeave();
       }}
-      className="relative w-full h-[72vh] min-h-[480px] max-h-[620px] sm:h-[75vh] sm:min-h-[520px] md:h-[80vh] md:min-h-[560px] md:max-h-[760px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
+      className="relative w-full h-[75vh] sm:h-[75vh] md:h-[80vh] md:min-h-[560px] md:max-h-[780px] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
     >
       {/* 3 Full-Window Scrollable & Swipeable Slides */}
       <div
