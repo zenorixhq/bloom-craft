@@ -6,8 +6,8 @@
 
 /* =========================================================================
    BLOOM CRAFT TYPOGRAPHY SYSTEM
-   Primary Website Font: Brand Logo Font ('Cinzel' & 'Playfair Display')
-   Logo Display Font: 'Cinzel Decorative' (Matches emblem wordmark)
+   Primary Website Font: 'Playfair Display' (Luxury Roman elegance with graceful lowercase)
+   Logo Display Font: 'Cinzel Decorative' / 'Cinzel' (Matches emblem wordmark)
    Subtext & Editorial Font: 'Cormorant Garamond' (Romantic & artisanal)
    UI, Specs & Forms Font: 'Plus Jakarta Sans' (Crisp modern legibility)
    Script Accents: 'Alex Brush' (Handcrafted calligraphic touches)
@@ -15,8 +15,8 @@
 
 :root {
   --font-logo: 'Cinzel Decorative', 'Cinzel', 'Playfair Display', Georgia, serif;
-  --font-primary: 'Cinzel', 'Playfair Display', Georgia, serif;
-  --font-heading: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-primary: 'Playfair Display', 'Cinzel', Georgia, serif;
+  --font-heading: 'Playfair Display', 'Cinzel', Georgia, serif;
   --font-editorial: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-subtext: 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -39,11 +39,14 @@ h1, h2, h3, h4, h5, h6 {
 .font-logo {
   font-family: var(--font-logo);
 }
-.font-primary, .font-serif-luxury, .font-heading, .font-cinzel {
+.font-primary, .font-serif-luxury, .font-heading {
   font-family: var(--font-primary);
 }
 .font-playfair {
-  font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+.font-cinzel {
+  font-family: 'Cinzel', 'Cinzel Decorative', Georgia, serif;
 }
 .font-editorial {
   font-family: var(--font-editorial);
