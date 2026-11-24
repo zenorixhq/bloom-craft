@@ -10,6 +10,10 @@ import { WhatsAppFloat } from "@/components/storefront/WhatsAppFloat";
 import { SmoothScrollProvider } from "@/components/storefront/SmoothScrollProvider";
 import { WebsiteLoadingAnimation } from "@/components/storefront/WebsiteLoadingAnimation";
 
+// Force dynamic server rendering to eliminate Vercel Edge stale prerender cache
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   metadataBase: new URL(storeConfig.meta.url || "https://www.bloomcraft.co.in"),
   title: {

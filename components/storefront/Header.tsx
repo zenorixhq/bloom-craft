@@ -118,8 +118,8 @@ export function Header() {
 
   const isHomePage = pathname === "/" || pathname === "";
   const isTransparent = mounted && isHomePage && !isScrolled;
-  // Dark navigation styling applies only if hero is dark; with Aleena's warm cream editorial hero, light styling applies throughout
-  const isDarkNav = false;
+  // Glassmorphic navigation styling over dark cinematic hero slideshow
+  const isDarkNav = isTransparent;
 
   const handleAboutClick = (e: React.MouseEvent) => {
     setMobileMenuOpen(false);
@@ -145,10 +145,12 @@ export function Header() {
   return (
     <>
       <header
-        className={`w-full font-primary transition-all duration-300 sticky top-0 z-40 text-[#18221D] backdrop-blur-2xl ${
-          isScrolled
-            ? "glass-navbar-scrolled bg-white/75 border-b border-white/50 shadow-md"
-            : "glass-navbar bg-white/65 border-b border-white/40 shadow-xs"
+        className={`w-full font-primary transition-all duration-300 sticky top-0 z-40 backdrop-blur-2xl ${
+          isTransparent
+            ? "bg-black/30 backdrop-blur-2xl border-b border-white/20 text-white shadow-xl"
+            : isScrolled
+            ? "glass-navbar-scrolled bg-white/85 border-b border-stone-200/70 text-[#18221D] shadow-md"
+            : "glass-navbar bg-white/70 border-b border-white/40 text-[#18221D] shadow-xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -157,7 +159,9 @@ export function Header() {
             <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(true)}
-                className="p-2 -ml-2 rounded-full text-[#1C1917] hover:bg-black/5 transition-colors"
+                className={`p-2 -ml-2 rounded-full transition-colors ${
+                  isDarkNav ? "text-white hover:bg-white/10" : "text-[#1C1917] hover:bg-black/5"
+                }`}
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -169,7 +173,7 @@ export function Header() {
               <BrandLogo
                 variant="full"
                 showTagline={false}
-                theme="light"
+                theme={isDarkNav ? "dark" : "light"}
               />
             </div>
 
@@ -180,7 +184,11 @@ export function Header() {
                 href="/"
                 className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/"
-                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    ? isDarkNav
+                      ? "text-white font-bold border-b-2 border-white pb-0.5"
+                      : "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    : isDarkNav
+                    ? "text-white/85 hover:text-white"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >
@@ -194,13 +202,19 @@ export function Header() {
                   onClick={handleCollectionDesktopClick}
                   className={`flex items-center gap-1 text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors py-1.5 cursor-pointer whitespace-nowrap ${
                     pathname.startsWith("/products?category")
-                      ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                      ? isDarkNav
+                        ? "text-white font-bold border-b-2 border-white pb-0.5"
+                        : "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                      : isDarkNav
+                      ? "text-white/85 hover:text-white"
                       : "text-[#1C1917] hover:text-[#214332]"
                   }`}
                 >
                   <span>Collection</span>
                   <ChevronDown
-                    className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200 text-[#786E5E]"
+                    className={`w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200 ${
+                      isDarkNav ? "text-white/70" : "text-[#786E5E]"
+                    }`}
                   />
                 </Link>
 
@@ -269,7 +283,11 @@ export function Header() {
                 href="/products"
                 className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/products"
-                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    ? isDarkNav
+                      ? "text-white font-bold border-b-2 border-white pb-0.5"
+                      : "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    : isDarkNav
+                    ? "text-white/85 hover:text-white"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >
@@ -280,7 +298,9 @@ export function Header() {
               <Link
                 href="/#about-us"
                 onClick={handleAboutClick}
-                className="text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 text-[#1C1917] hover:text-[#214332]"
+                className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
+                  isDarkNav ? "text-white/85 hover:text-white" : "text-[#1C1917] hover:text-[#214332]"
+                }`}
               >
                 About Us
               </Link>
@@ -290,7 +310,11 @@ export function Header() {
                 href="/contact"
                 className={`text-xs xl:text-sm font-semibold tracking-[0.14em] uppercase transition-colors whitespace-nowrap py-1.5 ${
                   pathname === "/contact"
-                    ? "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    ? isDarkNav
+                      ? "text-white font-bold border-b-2 border-white pb-0.5"
+                      : "text-[#214332] font-bold border-b-2 border-[#214332] pb-0.5"
+                    : isDarkNav
+                    ? "text-white/85 hover:text-white"
                     : "text-[#1C1917] hover:text-[#214332]"
                 }`}
               >

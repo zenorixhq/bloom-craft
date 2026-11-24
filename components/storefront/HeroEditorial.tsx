@@ -155,7 +155,7 @@ export function HeroEditorial() {
         setIsPaused(false);
         if (isDragging) handleMouseUpOrLeave();
       }}
-      className="relative w-full h-[75vh] h-[75dvh] bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
+      className="relative w-full h-[75vh] h-[75dvh] -mt-16 sm:-mt-20 bg-stone-950 text-white overflow-hidden select-none border-b border-stone-800"
     >
       {/* 3 Full-Window Scrollable & Swipeable Slides */}
       <div
@@ -190,7 +190,7 @@ export function HeroEditorial() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30 pointer-events-none" />
 
             {/* Center-Aligned Editorial Content Positioned Upper */}
-            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-4 md:space-y-6 -mt-3 sm:-mt-6 md:-mt-8">
+            <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-12 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-4 md:space-y-6 pt-14 sm:pt-16">
               
               {/* Cursive / Script Callout ("Sale!" style) */}
               <div className="animate-fadeIn">
