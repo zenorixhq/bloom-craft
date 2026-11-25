@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Sparkles } from "lucide-react";
 import { storeConfig } from "@/config/store.config";
+import { BloomCraftWordmark } from "./BloomCraftWordmark";
 
 export function WebsiteLoadingAnimation() {
   const [isVisible, setIsVisible] = useState(true);
@@ -81,15 +82,16 @@ export function WebsiteLoadingAnimation() {
       <div className="relative flex flex-col items-center text-center space-y-4 px-6">
         <div className="w-14 h-14 rounded-full border border-emerald-900/15 p-2 bg-white shadow-xs">
           <img
-            src="/bloom-craft-logo.png"
+            src="/bloom-craft-emblem.png"
             alt="Bloom Craft"
             className="w-full h-full object-contain"
           />
         </div>
 
-        <h1 className="font-logo text-3xl sm:text-4xl lg:text-5xl font-normal text-[#18221D] tracking-[0.25em] sm:tracking-[0.35em] uppercase leading-none pl-[0.25em] sm:pl-[0.35em]">
-          {storeConfig?.meta?.name || "BLOOM CRAFT"}
-        </h1>
+        <div className="flex items-center justify-center">
+          <BloomCraftWordmark className="h-7 sm:h-9 lg:h-11 w-auto max-w-[280px] sm:max-w-[360px]" theme="light" />
+          <h1 className="sr-only">{storeConfig?.meta?.name || "BLOOM CRAFT"}</h1>
+        </div>
 
         <div className="w-20 sm:w-28 h-[1.5px] bg-gradient-to-r from-transparent via-[#DC9924] to-transparent rounded-full transform scale-x-0 animate-[lineExpand_0.8s_cubic-bezier(0.16,1,0.3,1)_0.1s_forwards]" />
 
