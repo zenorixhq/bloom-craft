@@ -71,9 +71,9 @@ export function WebsiteLoadingAnimation() {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FAF8F5] select-none transition-all duration-700 ease-out ${
+      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FAF8F5] select-none transition-opacity duration-700 ease-out overflow-hidden max-w-full ${
         isFading
-          ? "opacity-0 pointer-events-none scale-[1.03]"
+          ? "opacity-0 pointer-events-none"
           : "opacity-100 pointer-events-auto"
       }`}
     >

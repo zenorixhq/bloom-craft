@@ -323,11 +323,11 @@ export function Header() {
             </nav>
 
             {/* Right Action Icons */}
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center gap-1 sm:gap-3 flex-shrink-0">
               {/* Search Trigger */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center transition-colors ${
                   isDarkNav
                     ? "hover:bg-white/10 text-white"
                     : "hover:bg-[#EADBBE]/50 text-[#1C1917]"
@@ -337,10 +337,10 @@ export function Header() {
                 <Search className="w-4 h-4" />
               </button>
 
-              {/* User Account */}
+              {/* User Account - hidden on small mobile, accessible via menu/bottom bar */}
               <Link
                 href="/account"
-                className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                className={`hidden sm:flex w-9 h-9 rounded-full items-center justify-center transition-colors ${
                   isDarkNav
                     ? "hover:bg-white/10 text-white"
                     : "hover:bg-[#EADBBE]/50 text-[#1C1917]"
@@ -354,7 +354,7 @@ export function Header() {
               {storeConfig.features.enableWishlist && (
                 <Link
                   href="/account?tab=wishlist"
-                  className={`w-9 h-9 rounded-full transition-colors relative flex items-center justify-center ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full transition-colors relative flex items-center justify-center ${
                     isDarkNav
                       ? "hover:bg-white/10 text-white"
                       : "hover:bg-[#EADBBE]/50 text-[#1C1917]"
