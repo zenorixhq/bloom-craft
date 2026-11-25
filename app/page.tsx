@@ -80,67 +80,73 @@ export default function HomePage() {
   }, [fetchProducts, productsLoaded]);
 
   return (
-    <div className="w-full bg-[#FAF8F5] overflow-x-hidden font-primary">
+    <div className="w-full max-w-full bg-[#FAF8F5] overflow-x-clip font-primary">
       {/* 1. Dynamic Hero Slideshow & Campaign Showcase */}
       <HeroEditorial />
 
       {/* 2. Shop by Category / Our Collection Grid */}
       <div id="shop-collection" className="scroll-mt-16 sm:scroll-mt-20">
-        <section className="w-full py-8 sm:py-12 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC]">
+        <section className="w-full max-w-full py-8 sm:py-12 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-6 sm:space-y-8">
             {/* Header - Clean style matching diecutsmart screenshot */}
             <div className="flex items-center justify-between pb-1 sm:pb-2">
-              <h2 className="font-logo text-2xl sm:text-3xl md:text-4xl font-bold text-[#18221D] tracking-tight">
+              <h2 className="font-primary text-2xl sm:text-3xl md:text-4xl font-semibold text-[#18221D] tracking-tight">
                 Our Collection
               </h2>
               <Link
                 href="/products"
-                className="text-xs sm:text-sm font-semibold text-[#214332] hover:text-[#162f23] flex items-center gap-1.5 group transition-colors font-primary shrink-0"
+                className="text-xs sm:text-sm font-medium text-[#214332] hover:text-[#162f23] flex items-center gap-1.5 group transition-colors font-primary shrink-0"
               >
                 <span>View All ({categoryList.length})</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
 
-            {/* MOBILE: Horizontally Scrollable Cards (Matching uploaded diecutsmart screenshot) */}
-            <div className="block md:hidden">
+            {/* MOBILE: Horizontally Scrollable Cards (Matching diecutsmart screenshot) */}
+            <div className="block md:hidden overflow-hidden w-full max-w-full">
               <div
-                className="flex items-start gap-4 sm:gap-6 overflow-x-auto pb-5 pt-3 scrollbar-none snap-x snap-mandatory select-none -mx-4 px-4 sm:-mx-8 sm:px-8"
+                className="flex items-start gap-5 sm:gap-6 overflow-x-auto pb-5 pt-4 scrollbar-none snap-x snap-mandatory select-none -mx-4 px-4 sm:-mx-8 sm:px-8 overscroll-x-contain"
                 style={{
                   scrollbarWidth: "none",
                   msOverflowStyle: "none",
                   WebkitOverflowScrolling: "touch",
+                  overscrollBehaviorX: "contain",
                 }}
               >
                 {categoryList.map((cat) => (
                   <Link
                     key={cat.id || cat.slug}
                     href={`/products?category=${cat.slug}`}
-                    className="w-[78vw] xs:w-[74vw] sm:w-[70vw] max-w-[340px] flex-shrink-0 snap-start flex flex-col group cursor-pointer pt-2"
+                    className="w-[240px] xs:w-[250px] sm:w-[260px] flex-shrink-0 snap-start flex flex-col group cursor-pointer pt-3 relative"
                   >
-                    {/* Big Rounded Photo Card with Scooped Top-Right Arrow Badge */}
-                    <div className="relative w-full aspect-[4/4.3] xs:h-[350px] sm:h-[380px] rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl transition-all duration-300">
-                      <img
-                        src={cat.image}
-                        alt={cat.name}
-                        className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-500 ease-out"
-                        loading="lazy"
-                      />
-                      
-                      {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart scoop badge) */}
-                      <div className="absolute top-2.5 right-2.5 w-11 h-11 xs:w-12 xs:h-12 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] ring-[5px] xs:ring-[6px] ring-[#FAF8F5] group-hover:bg-[#214332] transition-all duration-300 z-10">
-                        <ArrowUpRight className="w-5 h-5 xs:w-5.5 xs:h-5.5 text-[#214332] group-hover:text-white transition-colors" />
+                    {/* Rounded Photo Card with Floating Top-Right Circular Arrow Badge */}
+                    <div className="relative w-full">
+                      <div className="relative w-full aspect-[241/272] rounded-2xl overflow-hidden bg-white border border-[#E7E3DC] shadow-xs group-hover:shadow-md transition-all duration-300">
+                        <img
+                          src={cat.image}
+                          alt={cat.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                          loading="lazy"
+                        />
                       </div>
 
-                      {cat.slug === "hamper-boxes" && (
-                        <span className="absolute top-3.5 left-3.5 text-[8px] font-bold bg-[#214332] text-white px-2 py-0.5 rounded-full uppercase tracking-tight shadow-xs font-subtext">
-                          HOT
-                        </span>
-                      )}
+                      {/* Floating Circular Arrow Badge (Exact SVG geometry from diecutsmart) */}
+                      <div className="absolute -top-3 right-2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] border border-stone-200/80 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#214332] group-hover:text-white transition-all duration-300 z-10 text-[#18221D]">
+                        <svg viewBox="0 0 48 48" className="w-4.5 h-4.5 sm:w-5 sm:h-5" fill="none">
+                          <circle cx="24" cy="24" r="22.5" fill="#ffffff" stroke="rgba(0,0,0,0.08)" strokeWidth="1" className="group-hover:fill-[#214332] transition-colors" />
+                          <path
+                            d="M17 31L31 17M31 17H21M31 17V27"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
                     </div>
 
                     {/* Centered Category Title Below Card */}
-                    <h3 className="text-center font-bold text-base sm:text-lg text-[#18221D] group-hover:text-[#214332] transition-colors mt-3 font-primary tracking-wide">
+                    <h3 className="text-center font-medium text-base text-[#214332] group-hover:text-[#18221D] transition-colors mt-3 font-primary tracking-normal">
                       {cat.name.replace(/\s*Collection/gi, "").trim()}
                     </h3>
                   </Link>
@@ -154,37 +160,42 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* DESKTOP: Grid of the Same Large Rounded Cards with Scooped Arrow Badges (>= md) */}
-            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-7 lg:gap-8 pt-2">
+            {/* DESKTOP: Grid of the Same Large Rounded Cards with Corner Arrow Badges (>= md) */}
+            <div className="hidden md:grid md:grid-cols-3 lg:grid-cols-4 gap-7 lg:gap-8 pt-4">
               {categoryList.map((cat) => (
                 <Link
                   key={cat.id || cat.slug}
                   href={`/products?category=${cat.slug}`}
-                  className="flex flex-col group cursor-pointer pt-2"
+                  className="flex flex-col group cursor-pointer pt-3 relative"
                 >
-                  {/* Big Rounded Photo Card with Scooped Top-Right Arrow Badge */}
-                  <div className="relative w-full aspect-[4/4.3] md:h-84 lg:h-96 rounded-[2rem] overflow-hidden bg-white border border-[#E7E3DC] shadow-sm group-hover:shadow-xl group-hover:border-[#214332]/60 hover:-translate-y-1.5 transition-all duration-500 ease-out">
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
-                      loading="lazy"
-                    />
-
-                    {/* Floating Circular Up-Right Arrow Button (Matching diecutsmart scoop badge) */}
-                    <div className="absolute top-3 right-3 w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center border-2 border-[#214332] ring-[6px] ring-[#FAF8F5] group-hover:bg-[#214332] transition-all duration-300 z-10">
-                      <ArrowUpRight className="w-5.5 h-5.5 text-[#214332] group-hover:text-white transition-colors" />
+                  {/* Rounded Photo Card with Floating Top-Right Circular Arrow Badge */}
+                  <div className="relative w-full">
+                    <div className="relative w-full aspect-[241/272] rounded-2xl overflow-hidden bg-white border border-[#E7E3DC] shadow-xs group-hover:shadow-lg group-hover:-translate-y-1 transition-all duration-300">
+                      <img
+                        src={cat.image}
+                        alt={cat.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                        loading="lazy"
+                      />
                     </div>
 
-                    {cat.slug === "hamper-boxes" && (
-                      <span className="absolute top-4 left-4 text-[9px] font-bold bg-[#214332] text-white px-2.5 py-1 rounded-full shadow-xs uppercase tracking-wider font-subtext">
-                        NEW DROP
-                      </span>
-                    )}
+                    {/* Floating Circular Arrow Badge */}
+                    <div className="absolute -top-3 right-2.5 w-10 h-10 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] border border-stone-200/80 flex items-center justify-center group-hover:scale-110 group-hover:bg-[#214332] group-hover:text-white transition-all duration-300 z-10 text-[#18221D]">
+                      <svg viewBox="0 0 48 48" className="w-5 h-5" fill="none">
+                        <circle cx="24" cy="24" r="22.5" fill="#ffffff" stroke="rgba(0,0,0,0.08)" strokeWidth="1" className="group-hover:fill-[#214332] transition-colors" />
+                        <path
+                          d="M17 31L31 17M31 17H21M31 17V27"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
                   </div>
 
                   {/* Centered Category Title Below Card */}
-                  <h3 className="text-center font-bold text-base sm:text-lg text-[#18221D] group-hover:text-[#214332] transition-colors mt-3.5 font-primary tracking-wide">
+                  <h3 className="text-center font-medium text-base sm:text-lg text-[#214332] group-hover:text-[#18221D] transition-colors mt-3.5 font-primary tracking-normal">
                     {cat.name.replace(/\s*Collection/gi, "").trim()}
                   </h3>
                 </Link>

@@ -58,7 +58,7 @@ export function FeaturedHampersSection() {
   }, [hamperProducts, activeTab]);
 
   return (
-    <section id="featured-hampers" className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
+    <section id="featured-hampers" className="w-full max-w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-6 sm:space-y-8">
         
         {/* Section Header */}
@@ -86,7 +86,7 @@ export function FeaturedHampersSection() {
         </div>
 
         {/* Filter Pills / Tabs (Inspired by Crafto Arte Quick Filter) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-primary">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-primary overscroll-x-contain">
           <button
             type="button"
             onClick={() => setActiveTab("all")}

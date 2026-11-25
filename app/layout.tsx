@@ -70,13 +70,13 @@ export default function RootLayout({
   } as React.CSSProperties;
 
   return (
-    <html lang="en" className="scroll-smooth" style={dynamicThemeStyles} suppressHydrationWarning>
-      <body className="min-h-screen flex flex-col font-primary bg-background text-foreground" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth overflow-x-clip max-w-full" style={dynamicThemeStyles} suppressHydrationWarning>
+      <body className="min-h-screen flex flex-col font-primary bg-background text-foreground overflow-x-clip max-w-full relative" suppressHydrationWarning>
         <SmoothScrollProvider>
           <WebsiteLoadingAnimation />
           <AnnouncementBar />
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 w-full max-w-full overflow-x-clip">{children}</main>
           <Footer />
 
           {/* Global Slide-overs & Modals */}

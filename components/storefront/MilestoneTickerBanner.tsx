@@ -28,9 +28,9 @@ export function MilestoneTickerBanner() {
   }, [words.length]);
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20 bg-[#214332] text-white overflow-hidden relative border-b border-[#182C22] font-primary">
+    <section className="w-full max-w-full py-12 sm:py-16 lg:py-20 bg-[#214332] text-white overflow-hidden relative border-b border-[#182C22] font-primary">
       {/* Background Ambience */}
-      <div className="absolute inset-0 pointer-events-none select-none">
+      <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#DC9924]/10 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl" />
       </div>

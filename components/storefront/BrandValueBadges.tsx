@@ -45,7 +45,7 @@ export function BrandValueBadges() {
   ];
 
   return (
-    <section id="brand-values" className="w-full py-8 sm:py-12 lg:py-14 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
+    <section id="brand-values" className="w-full max-w-full py-8 sm:py-12 lg:py-14 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         <div className="bg-white/90 backdrop-blur-xs border border-[#E7E3DC] rounded-3xl p-5 sm:p-7 lg:p-8 shadow-xs space-y-6 sm:space-y-8">
           

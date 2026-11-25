@@ -222,7 +222,7 @@ export function FollowTheHouseSection() {
         {/* The Scrollable Horizontal Strip Filling the Entire Page Width */}
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-auto snap-x snap-mandatory gap-2 sm:gap-3 px-2 sm:px-4 w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] select-none scroll-smooth"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-2 sm:gap-3 px-2 sm:px-4 w-full max-w-full overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] select-none scroll-smooth"
         >
           {panels.map((panel, idx) => {
             const hasPlayableVideo =

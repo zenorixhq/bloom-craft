@@ -59,7 +59,7 @@ export function ShopByOccasion() {
   ];
 
   return (
-    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
+    <section className="w-full max-w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">

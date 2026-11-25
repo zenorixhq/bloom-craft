@@ -164,11 +164,12 @@ export function HeroEditorial() {
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUpOrLeave}
-        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth select-none cursor-grab active:cursor-grabbing"
+        className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-none scroll-smooth select-none cursor-grab active:cursor-grabbing overscroll-x-contain"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           WebkitOverflowScrolling: "touch",
+          overscrollBehaviorX: "contain",
         }}
       >
         {slides.map((slide, idx) => (

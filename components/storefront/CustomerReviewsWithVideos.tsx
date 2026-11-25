@@ -463,7 +463,7 @@ export function CustomerReviewsWithVideos() {
   }, []);
 
   return (
-    <section className="w-full bg-[#FAF8F5] py-12 sm:py-16 md:py-20 border-t border-[#E7E3DC] text-[#18221D] font-primary">
+    <section className="w-full max-w-full bg-[#FAF8F5] py-12 sm:py-16 md:py-20 border-t border-[#E7E3DC] text-[#18221D] font-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 space-y-8 sm:space-y-10">
         
         {/* Editorial Section Header */}
@@ -551,7 +551,7 @@ export function CustomerReviewsWithVideos() {
         {/* ONE SINGLE SCROLLABLE CARD CAROUSEL FOR BOTH VIDEOS AND SCREENSHOTS */}
         <div
           ref={carouselRef}
-          className="flex gap-2.5 sm:gap-4 md:gap-5 overflow-x-auto pb-4 pt-1 px-0.5 no-scrollbar scroll-smooth snap-x snap-mandatory"
+          className="flex gap-2.5 sm:gap-4 md:gap-5 overflow-x-auto pb-4 pt-1 px-0.5 no-scrollbar scroll-smooth snap-x snap-mandatory overscroll-x-contain"
         >
           {visibleItems.map((item) => {
             if (item.kind === "video") {
@@ -622,7 +622,7 @@ export function CustomerReviewsWithVideos() {
             {/* Scrollable Container with Snap */}
             <div
               ref={quotesScrollRef}
-              className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory"
+              className="flex gap-4 sm:gap-5 overflow-x-auto pb-4 no-scrollbar scroll-smooth snap-x snap-mandatory overscroll-x-contain"
             >
               {reviewQuotes.map((item, idx) => (
                 <div

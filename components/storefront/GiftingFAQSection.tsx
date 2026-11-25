@@ -55,7 +55,7 @@ export function GiftingFAQSection() {
   )}`;
 
   return (
-    <section className="w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
+    <section className="w-full max-w-full py-12 sm:py-16 lg:py-20 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-12 w-full space-y-8 sm:space-y-10">
         
         {/* Header (Inspired by Crafto Arte: Got Questions? We've Got Answers) */}

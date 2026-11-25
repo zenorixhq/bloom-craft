@@ -11,7 +11,7 @@ export function CustomHamperBanner() {
   )}`;
 
   return (
-    <section className="w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary">
+    <section className="w-full max-w-full py-10 sm:py-14 lg:py-16 bg-[#FAF8F5] border-b border-[#E7E3DC] font-primary overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full">
         <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#1E382B] via-[#214332] to-[#14261D] text-white p-6 sm:p-10 lg:p-14 shadow-xl border border-emerald-900/30">
           
