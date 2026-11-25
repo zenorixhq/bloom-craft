@@ -11,6 +11,7 @@ interface BrandLogoProps {
   showTagline?: boolean;
   className?: string;
   theme?: "light" | "dark";
+  showWordmark?: boolean;
 }
 
 export function BrandLogo({
@@ -18,13 +19,20 @@ export function BrandLogo({
   showTagline = true,
   className = "",
   theme = "light",
+  showWordmark,
 }: BrandLogoProps) {
   const { images } = useSiteImages();
 
   return (
     <Link
       href="/"
-      className={`inline-flex items-center gap-2.5 sm:gap-3 group select-none ${className}`}
+      className={`inline-flex items-center group select-none transition-all duration-500 ease-out ${
+        showWordmark !== undefined
+          ? showWordmark
+            ? "gap-2 sm:gap-2.5"
+            : "gap-0"
+          : "gap-2 sm:gap-2.5"
+      } ${className}`}
       aria-label="Bloom Craft Home"
     >
       {/* 1. Official Bloom Craft Emblem */}
@@ -38,8 +46,16 @@ export function BrandLogo({
 
       {/* 2. Official Brand Wordmark matching logo font */}
       {variant !== "emblem-only" && (
-        <div className="flex flex-col text-left justify-center">
-          <div className="flex items-center gap-1.5">
+        <div
+          className={`flex flex-col text-left justify-center overflow-hidden transition-all duration-500 ease-out ${
+            showWordmark !== undefined
+              ? showWordmark
+                ? "opacity-100 max-w-[190px] translate-x-0"
+                : "opacity-0 max-w-0 -translate-x-2 pointer-events-none"
+              : ""
+          }`}
+        >
+          <div className="flex items-center gap-1.5 whitespace-nowrap">
             <BloomCraftWordmark
               theme={theme}
               className="h-[18px] sm:h-[22px] w-auto max-w-[150px] sm:max-w-[185px]"

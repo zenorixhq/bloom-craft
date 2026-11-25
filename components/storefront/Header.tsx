@@ -65,8 +65,9 @@ export function Header() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      setIsScrolled(window.scrollY > 20);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
 
     const loadCategories = () => {
@@ -174,6 +175,7 @@ export function Header() {
                 variant="full"
                 showTagline={false}
                 theme={isDarkNav ? "dark" : "light"}
+                showWordmark={isScrolled}
               />
             </div>
 
