@@ -7,6 +7,7 @@ import { Footer } from "@/components/storefront/Footer";
 import { CartDrawer } from "@/components/storefront/CartDrawer";
 import { QuickViewModal } from "@/components/storefront/QuickViewModal";
 import { WhatsAppFloat } from "@/components/storefront/WhatsAppFloat";
+import { MobileBottomDock } from "@/components/storefront/MobileBottomDock";
 import { SmoothScrollProvider } from "@/components/storefront/SmoothScrollProvider";
 import { WebsiteLoadingAnimation } from "@/components/storefront/WebsiteLoadingAnimation";
 
@@ -76,13 +77,14 @@ export default function RootLayout({
           <WebsiteLoadingAnimation />
           <AnnouncementBar />
           <Header />
-          <main className="flex-1 w-full max-w-full overflow-x-clip">{children}</main>
+          <main className="flex-1 w-full max-w-full overflow-x-clip pb-28 md:pb-0">{children}</main>
           <Footer />
 
           {/* Global Slide-overs & Modals */}
           <CartDrawer />
           <QuickViewModal />
           <WhatsAppFloat />
+          <MobileBottomDock />
         </SmoothScrollProvider>
       </body>
     </html>

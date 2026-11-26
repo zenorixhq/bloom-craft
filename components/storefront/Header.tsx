@@ -94,13 +94,19 @@ export function Header() {
       }
     };
 
+    const handleOpenSearch = () => {
+      setSearchOpen(true);
+    };
+
     window.addEventListener("bloomcraft:categories-updated", handleUpdate);
+    window.addEventListener("bloomcraft:open-search", handleOpenSearch);
     window.addEventListener("storage", handleUpdate);
     window.addEventListener("focus", loadCategories);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("bloomcraft:categories-updated", handleUpdate);
+      window.removeEventListener("bloomcraft:open-search", handleOpenSearch);
       window.removeEventListener("storage", handleUpdate);
       window.removeEventListener("focus", loadCategories);
     };
